@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&amp;display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&amp;display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Articulat CF';src:url('fonts/ArticulatCF-Regular.woff2') format('woff2');font-weight:400 800}
+body{margin:0;background:#FDFDFC;color:#0F0F16;font-family:'Satoshi',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#5251FD;text-decoration:none}a:hover{color:#010165}
+</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column">
+
+<div style="position:sticky;top:0;z-index:5;background:#FDFDFC;border-bottom:1px solid #E4E1D9">
+<div style="max-width:1120px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+<img src="src/assets/aiprise/logo.svg" alt="AiPrise" style="height:24px;display:block">
+<span style="flex:1"></span>
+<nav style="display:flex;align-items:center;gap:24px;font-size:14px;font-weight:500;flex-wrap:wrap">
+<div style="display:flex;align-items:center;gap:12px"><a href="about.dc.html" style="color:#0F0F16;padding:4px 0;border-bottom:2px solid transparent">About</a><a href="about.dc.html#how" style="color:#5F5F72;font-size:13px">How it works</a><a href="about.dc.html#examples" style="color:#5F5F72;font-size:13px">Examples</a></div>
+<span style="width:1px;height:18px;background:#E4E1D9"></span>
+<a href="demo.dc.html" style="color:#0F0F16;padding:4px 0;border-bottom:2px solid transparent">Product Demo</a>
+<span style="width:1px;height:18px;background:#E4E1D9"></span>
+<a href="roadmap.dc.html" style="color:#5251FD;padding:4px 0;border-bottom:2px solid #5251FD">Phases &amp; Timelines</a>
+</nav>
+</div>
+</div>
+
+<section style="background:linear-gradient(160deg,#F7EEF0 0%,#EEF0FB 45%,#FDFDFC 100%)">
+<div style="max-width:1120px;margin:0 auto;padding:72px 24px 56px;display:flex;flex-direction:column;gap:16px">
+<a href="demo.dc.html" style="font-size:14px;font-weight:500">← Back to overview and demos</a>
+<span style="align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5251FD;background:color-mix(in srgb,#5251FD 10%,#FDFDFC);padding:6px 12px;border-radius:999px">Token Sharing</span>
+<h1 style="margin:0;font-family:'Articulat CF',sans-serif;font-weight:700;font-size:clamp(34px,4.8vw,52px);line-height:1.05;letter-spacing:-0.02em;color:#010165;max-width:820px;text-wrap:balance">Roadmap &amp; Phase Distribution</h1>
+<p style="margin:0;font-size:18px;line-height:28px;color:#3E3E56;max-width:680px;text-wrap:pretty">What each phase shares, starting with Phase 1.</p>
+</div>
+</section>
+
+<section id="phase1" style="background:#F0EEEA;scroll-margin-top:64px">
+<div style="max-width:1120px;margin:0 auto;padding:80px 24px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px;max-width:680px">
+<div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5251FD">Phases</div>
+<h2 style="margin:0;font-family:'Articulat CF',sans-serif;font-weight:700;font-size:clamp(28px,3.6vw,40px);line-height:1.1;letter-spacing:-0.02em;color:#010165">Data Shared in a Token, by Phase</h2>
+<p style="margin:0;font-size:16px;line-height:26px;color:#3E3E56">Planned order. Scope and timing may change based on customer feedback.</p>
+</div>
+<div style="background:#FDFDFC;border-radius:16px;overflow-x:auto;border:1px solid #E4E1D9">
+<table style="width:100%;min-width:760px;border-collapse:collapse;font-family:'Satoshi',sans-serif">
+<thead><tr>
+<th style="padding:14px 18px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#3E3E56;text-align:center;text-align:left;width:34%">Phase</th><th style="padding:14px 18px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#3E3E56;text-align:left;white-space:nowrap">Release</th><th style="padding:14px 18px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#3E3E56;text-align:center">Donor input data</th><th style="padding:14px 18px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#3E3E56;text-align:center">Donor lookups</th><th style="padding:14px 18px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#3E3E56;text-align:center">Donor verdict</th><th style="padding:14px 18px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#3E3E56;text-align:center">Recipient re-run / checks</th>
+</tr></thead>
+<tbody>
+<tr style="background:color-mix(in srgb,#5251FD 8%,#FDFDFC)">
+<td style="padding:16px 18px;border-top:1px solid #E4E1D9;box-shadow:inset 4px 0 0 #5251FD;"><div style="display:flex;flex-direction:column;gap:4px"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="font-size:15px;font-weight:700;color:#010165">Phase 1</span><span style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;background:#5251FD;color:#FDFDFC;white-space:nowrap">First release</span></div><span style="font-size:14px;line-height:21px;color:#3E3E56">The Donor shares input data. The Recipient runs its own checks.</span></div></td>
+<td style="padding:16px 18px;border-top:1px solid #E4E1D9;vertical-align:middle;font:600 14px 'DM Sans',sans-serif;color:#0F0F16;white-space:nowrap"><div>Q4 2026</div><div style="font:400 13px 'DM Sans',sans-serif;color:#3E3E56;margin-top:2px">November, 1st week</div></td>
+<td style="padding:16px 18px;border-top:1px solid #E4E1D9;text-align:center;vertical-align:middle"><span style="width:20px;height:20px;display:block;margin:0 auto;background:#0F8A0F;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat"></span></td><td style="padding:16px 18px;border-top:1px solid #E4E1D9;text-align:center;vertical-align:middle"><span style="width:20px;height:20px;display:block;margin:0 auto;background:#A10D0F;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/x.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/x.svg) center/contain no-repeat"></span></td><td style="padding:16px 18px;border-top:1px solid #E4E1D9;text-align:center;vertical-align:middle"><span style="width:20px;height:20px;display:block;margin:0 auto;background:#A10D0F;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/x.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/x.svg) center/contain no-repeat"></span></td><td style="padding:16px 18px;border-top:1px solid #E4E1D9;text-align:center;vertical-align:middle"><span style="width:20px;height:20px;display:block;margin:0 auto;background:#0F8A0F;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat"></span></td>
+</tr>
+<tr style="background:#FDFDFC">
+<td style="padding:16px 18px;border-top:1px solid #E4E1D9;"><div style="display:flex;flex-direction:column;gap:4px"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="font-size:15px;font-weight:700;color:#010165">Phase 2</span><span style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;background:#FFF2E6;color:#9A4A00;white-space:nowrap">Next</span></div><span style="font-size:14px;line-height:21px;color:#3E3E56">The Recipient relies fully on the Donor's data and verdict.</span></div></td>
+<td style="padding:16px 18px;border-top:1px solid #E4E1D9;vertical-align:middle;font:600 14px 'DM Sans',sans-serif;color:#0F0F16;white-space:nowrap">Q4 2026</td>
+<td style="padding:16px 18px;border-top:1px solid #E4E1D9;text-align:center;vertical-align:middle"><span style="width:20px;height:20px;display:block;margin:0 auto;background:#0F8A0F;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat"></span></td><td style="padding:16px 18px;border-top:1px solid #E4E1D9;text-align:center;vertical-align:middle"><span style="width:20px;height:20px;display:block;margin:0 auto;background:#0F8A0F;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat"></span></td><td style="padding:16px 18px;border-top:1px solid #E4E1D9;text-align:center;vertical-align:middle"><span style="width:20px;height:20px;display:block;margin:0 auto;background:#0F8A0F;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat"></span></td><td style="padding:16px 18px;border-top:1px solid #E4E1D9;text-align:center;vertical-align:middle"><span style="width:20px;height:20px;display:block;margin:0 auto;background:#A10D0F;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/x.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/x.svg) center/contain no-repeat"></span></td>
+</tr>
+<tr style="background:#FDFDFC">
+<td style="padding:16px 18px;border-top:1px solid #E4E1D9;"><div style="display:flex;flex-direction:column;gap:4px"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="font-size:15px;font-weight:700;color:#010165">Phase 3</span><span style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;background:#F0EEEA;color:#3E3E56;white-space:nowrap">Planned</span></div><span style="font-size:14px;line-height:21px;color:#3E3E56">The Donor shares data and lookups. The Recipient replays its own checks to reach a verdict.</span></div></td>
+<td style="padding:16px 18px;border-top:1px solid #E4E1D9;vertical-align:middle;font:600 14px 'DM Sans',sans-serif;color:#0F0F16;white-space:nowrap">Q1 2027</td>
+<td style="padding:16px 18px;border-top:1px solid #E4E1D9;text-align:center;vertical-align:middle"><span style="width:20px;height:20px;display:block;margin:0 auto;background:#0F8A0F;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat"></span></td><td style="padding:16px 18px;border-top:1px solid #E4E1D9;text-align:center;vertical-align:middle"><span style="width:20px;height:20px;display:block;margin:0 auto;background:#0F8A0F;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat"></span></td><td style="padding:16px 18px;border-top:1px solid #E4E1D9;text-align:center;vertical-align:middle"><span style="width:20px;height:20px;display:block;margin:0 auto;background:#A10D0F;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/x.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/x.svg) center/contain no-repeat"></span></td><td style="padding:16px 18px;border-top:1px solid #E4E1D9;text-align:center;vertical-align:middle"><span style="width:20px;height:20px;display:block;margin:0 auto;background:#0F8A0F;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat"></span></td>
+</tr>
+<tr style="background:#FDFDFC">
+<td style="padding:16px 18px;border-top:1px solid #E4E1D9;"><div style="display:flex;flex-direction:column;gap:4px"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="font-size:15px;font-weight:700;color:#010165">Phase 4</span><span style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;background:#F0EEEA;color:#3E3E56;white-space:nowrap">Planned</span></div><span style="font-size:14px;line-height:21px;color:#3E3E56">The Recipient reuses the Donor's data and lookups and checks only what is missing.</span></div></td>
+<td style="padding:16px 18px;border-top:1px solid #E4E1D9;vertical-align:middle;font:600 14px 'DM Sans',sans-serif;color:#0F0F16;white-space:nowrap">Q1 2027</td>
+<td style="padding:16px 18px;border-top:1px solid #E4E1D9;text-align:center;vertical-align:middle"><span style="width:20px;height:20px;display:block;margin:0 auto;background:#0F8A0F;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat"></span></td><td style="padding:16px 18px;border-top:1px solid #E4E1D9;text-align:center;vertical-align:middle"><span style="width:20px;height:20px;display:block;margin:0 auto;background:#0F8A0F;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat"></span></td><td style="padding:16px 18px;border-top:1px solid #E4E1D9;text-align:center;vertical-align:middle"><span style="width:20px;height:20px;display:block;margin:0 auto;background:#A10D0F;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/x.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/x.svg) center/contain no-repeat"></span></td><td style="padding:16px 18px;border-top:1px solid #E4E1D9;text-align:center;vertical-align:middle"><span style="width:20px;height:20px;display:block;margin:0 auto;background:#0F8A0F;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat"></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:15px;line-height:24px;color:#3E3E56"><span style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;background:#FDFDFC;color:#3E3E56;white-space:nowrap">Exploring</span><span>After Phase 4: sharing data between Third party (example, Sumsub) and AiPrise, in both directions.</span></div>
+</div>
+</section>
+
+<section style="background:#010165">
+<div style="max-width:1120px;margin:0 auto;padding:64px 24px;display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+<div style="flex:1;min-width:260px;display:flex;flex-direction:column;gap:8px">
+<div style="font-family:'Articulat CF',sans-serif;font-weight:700;font-size:28px;line-height:1.15;letter-spacing:-0.02em;color:#FDFDFC">Questions about Token Sharing?</div>
+<p style="margin:0;font-size:16px;line-height:26px;color:#FDFDFC">Your AiPrise account team can walk you through Phase 1 on your own data.</p>
+</div>
+<a href="mailto:support@aiprise.com" style="background:#5251FD;color:#FDFDFC;font-weight:500;font-size:15px;padding:12px 20px;border-radius:999px">Contact your account team</a>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {}
+</script>
+</body>
+</html>

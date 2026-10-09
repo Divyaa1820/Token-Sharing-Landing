@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:'DM Sans',sans-serif;color:#20202c;background:#ebe9e4}
+a{color:#5251fd;text-decoration:none}a:hover{color:#4a4ae4}
+*{box-sizing:border-box}
+</style>
+</helmet>
+<div style="display:flex;flex-direction:column;height:100vh;min-width:1280px">
+
+<div style="background:#010165;color:#fff;padding:10px 16px;display:flex;flex-direction:column;gap:6px;flex:none">
+<div style="display:flex;align-items:center;gap:12px">
+<span style="font-size:13px;font-weight:600;letter-spacing:.04em;opacity:.7">TOKEN SHARING DEMO</span>
+<sc-if value="{{ bar.show }}" hint-placeholder-val="{{ true }}">
+<sc-if value="{{ bar.full }}" hint-placeholder-val="{{ true }}"><span style="background:rgba(255,255,255,.14);border-radius:999px;padding:2px 10px;font-size:12.5px">Step {{ bar.no }} of {{ bar.total }}</span></sc-if>
+<span style="border-radius:999px;padding:2px 10px;font-size:12.5px;font-weight:600;background:{{ bar.sideBg }};color:#fff">{{ bar.side }}</span>
+<span style="font-size:15px;font-weight:600">{{ bar.title }}</span>
+</sc-if>
+<sc-if value="{{ bar.hidden }}" hint-placeholder-val="{{ false }}"><span style="font-size:14px;opacity:.85">Free click-through. Both sides update each other.</span></sc-if>
+<span style="flex:1"></span>
+<sc-if value="{{ bar.show }}" hint-placeholder-val="{{ true }}">
+<sc-if value="{{ bar.full }}" hint-placeholder-val="{{ true }}"><button onClick="{{ prev }}" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:6px;padding:5px 12px;font:500 13px 'DM Sans',sans-serif;cursor:pointer">Back</button>
+<sc-if value="{{ bar.notEnd }}" hint-placeholder-val="{{ true }}"><button onClick="{{ next }}" style="background:#fff;color:#010165;border:0;border-radius:6px;padding:6px 14px;font:600 13px 'DM Sans',sans-serif;cursor:pointer">Do it for me →</button></sc-if>
+</sc-if>
+<button onClick="{{ reset }}" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:6px;padding:5px 12px;font:500 13px 'DM Sans',sans-serif;cursor:pointer">Reset</button></sc-if>
+</div>
+<sc-if value="{{ bar.show }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;align-items:center;gap:16px">
+<span style="font-size:13.5px;opacity:.85;flex:1;text-wrap:pretty">{{ bar.hint }}</span>
+<div style="display:flex;gap:4px;flex:none">
+<sc-for list="{{ dots }}" as="dot" hint-placeholder-count="15"><span onClick="{{ dot.go }}" title="{{ dot.title }}" style="width:18px;height:6px;border-radius:3px;cursor:pointer;background:{{ dot.bg }}"></span></sc-for>
+</div>
+</div>
+</sc-if>
+</div>
+
+<div style="flex:1;min-height:0;display:flex;gap:12px;padding:12px">
+
+<!-- DONOR PANE -->
+<div data-screen-label="Donor" style="flex:1;min-width:0;display:{{ dPane.display }};flex-direction:column;background:#fff;border-radius:10px;overflow:hidden;box-shadow:{{ dPane.ring }}">
+<div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:#fff7f0;border-bottom:2px solid #FF8F2E;flex:none">
+<span style="display:flex;align-items:center;gap:7px;background:#FF8F2E;color:#fff;border-radius:8px;padding:5px 12px;font:700 15px 'DM Sans',sans-serif;letter-spacing:.08em"><span style="width:16px;height:16px;display:block;flex:none;background:#fff;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/building-2.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/building-2.svg) center/contain no-repeat"></span>DONOR</span><span style="font-size:14px;font-weight:500;color:#20202c">{{ dn }} · shares customer data</span><span style="flex:1"></span>
+<sc-if value="{{ dPane.turn }}" hint-placeholder-val="{{ false }}"><span style="display:flex;align-items:center;gap:6px;background:#fff;color:#FF8F2E;border:2px solid #FF8F2E;border-radius:999px;padding:4px 14px 4px 10px;font:700 14px 'DM Sans',sans-serif;box-shadow:0 0 0 4px color-mix(in srgb,#FF8F2E 22%,transparent)"><span style="width:16px;height:16px;display:block;flex:none;background:#FF8F2E;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/mouse-pointer-click.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/mouse-pointer-click.svg) center/contain no-repeat"></span>Your move</span></sc-if>
+</div>
+<div style="flex:1;min-height:0;display:flex;position:relative">
+
+<div style="width:176px;flex:none;background:#f9f8f6;border-right:1px solid #f0eeea;display:flex;flex-direction:column;overflow:auto">
+<div style="padding:12px 12px 10px;border-bottom:1px solid #f0eeea"><img src="src/assets/aiprise/logo.svg" style="height:22px;display:block" alt="AiPrise"></div>
+<div style="padding:8px;display:flex;flex-direction:column;gap:2px;font-size:13.5px;color:#3e3e56">
+<div style="display:flex;align-items:center;gap:8px;padding:6px 8px"><img src="https://unpkg.com/lucide-static@0.469.0/icons/book.svg" style="width:17px;opacity:.7" alt="">Case</div>
+<div onClick="{{ go.dCases }}" style="display:flex;align-items:center;gap:8px;padding:6px 8px 6px 30px;border-radius:6px;cursor:pointer;background:{{ dnav.cases }}">Business</div>
+<div style="display:flex;align-items:center;gap:8px;padding:6px 8px"><img src="https://unpkg.com/lucide-static@0.469.0/icons/id-card.svg" style="width:17px;opacity:.7" alt="">Profile</div>
+<div style="display:flex;align-items:center;gap:8px;padding:6px 8px"><img src="https://unpkg.com/lucide-static@0.469.0/icons/inbox.svg" style="width:17px;opacity:.7" alt="">Queues</div>
+<div style="display:flex;align-items:center;gap:8px;padding:6px 8px"><img src="https://unpkg.com/lucide-static@0.469.0/icons/list-checks.svg" style="width:17px;opacity:.7" alt="">Templates</div>
+<div style="height:1px;background:#f0eeea;margin:6px 0"></div>
+<div style="display:flex;align-items:center;gap:7px;padding:6px 6px;font-size:12.5px"><img src="https://unpkg.com/lucide-static@0.469.0/icons/arrow-down-to-line.svg" style="width:17px;opacity:.7" alt="">Token Sharing: As Recipient</div>
+<div onClick="{{ go.dEmpty }}" style="padding:5px 8px 5px 30px;border-radius:6px;cursor:pointer;background:{{ dnav.empty }}">My Donors</div>
+<div onClick="{{ go.dEmpty }}" style="padding:5px 8px 5px 30px;border-radius:6px;cursor:pointer">Imports</div>
+<sc-if value="{{ showAsDonor }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;gap:7px;padding:6px 6px;font-size:12.5px;margin-top:4px"><img src="https://unpkg.com/lucide-static@0.469.0/icons/arrow-up-from-line.svg" style="width:17px;opacity:.7" alt="">Token Sharing: As Donor</div>
+<div onClick="{{ go.dRecipients }}" style="display:flex;align-items:center;padding:5px 8px 5px 30px;border-radius:6px;cursor:pointer;background:{{ dnav.recipients }}"><span>My Recipients</span><span style="flex:1"></span><sc-if value="{{ pend.dRecipients }}" hint-placeholder-val="{{ false }}"><span title="Pending on you" style="width:16px;height:16px;border-radius:50%;background:#FF8F2E;color:#fff;font:700 11px/16px 'DM Sans',sans-serif;text-align:center">!</span></sc-if></div>
+<div onClick="{{ go.dExports }}" style="padding:5px 8px 5px 30px;border-radius:6px;cursor:pointer;background:{{ dnav.exports }}">Exports</div>
+</sc-if>
+</div>
+<div style="flex:1"></div>
+<div style="display:flex;align-items:center;gap:8px;padding:10px 12px;border-top:1px solid #f0eeea;font-size:12.5px"><span style="width:26px;height:26px;border-radius:50%;background:#FF8F2E;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600">PS</span><div><div style="font-weight:500">Priya S.</div><div style="color:#6b6b80">{{ dn }} · Admin</div></div></div>
+</div>
+
+<div style="flex:1;min-width:0;overflow:auto">
+
+<sc-if value="{{ d.cases }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="Donor · Business Verifications">
+<div style="padding:14px 18px 10px;border-bottom:1px solid #f0eeea;font-size:17px;font-weight:500;white-space:nowrap">Business Verifications</div>
+<div style="padding:12px 18px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:6px;font-size:13px"><span style="white-space:nowrap;background:#e7e7fd;border:1px solid #d2d2fd;border-radius:6px;padding:3px 8px">Completed <span style="color:#6b6b80">5,802</span></span><span style="white-space:nowrap;padding:3px 8px">Pending <span style="color:#6b6b80">525</span></span><span style="white-space:nowrap;padding:3px 8px">All <span style="color:#6b6b80">7,892</span></span></div>
+<sc-if value="{{ caseFlags.queued }}" hint-placeholder-val="{{ false }}"><div style="background:#f3f3ff;border:1px solid #d2d2fd;color:#2c2b9e;border-radius:8px;padding:9px 12px;font-size:13px;display:flex;align-items:center;gap:10px"><span style="flex:1">PT Maju Jaya matches {{ agName }}. A token is queued and exports after the 30-minute hold.</span><a onClick="{{ go.dExports }}" style="cursor:pointer;white-space:nowrap">View in Exports →</a></div></sc-if>
+<sc-if value="{{ caseFlags.notShared }}" hint-placeholder-val="{{ false }}"><div style="background:#f4f3f0;border:1px solid #e4e0d9;color:#3e3e56;border-radius:8px;padding:9px 12px;font-size:13px">PT Maju Jaya approved. No live agreement matched, so nothing was shared.</div></sc-if>
+<div style="border:1px solid #f0eeea;border-radius:8px;overflow:hidden">
+<div style="display:grid;grid-template-columns:28px minmax(0,1fr) auto 76px;gap:8px;padding:8px 12px;background:#f4f3f0;font-size:12.5px;color:#6b6b80"><span></span><span>Name</span><span>Result</span><span></span></div>
+<div style="display:grid;grid-template-columns:28px minmax(0,1fr) auto 76px;gap:8px;padding:10px 12px;border-top:1px solid #f0eeea;font-size:13.5px;align-items:center;background:#fffdf9"><span style="font-size:12px;color:#6b6b80">ID</span><span>PT Maju Jaya</span>
+<sc-if value="{{ caseFlags.inReview }}" hint-placeholder-val="{{ true }}"><span style="color:#f57200;font-size:12.5px;white-space:nowrap">◉ In Review</span></sc-if>
+<sc-if value="{{ caseFlags.approved }}" hint-placeholder-val="{{ false }}"><span style="color:#0f8a0f;font-size:12.5px;white-space:nowrap">● Approved</span></sc-if>
+<span style="display:flex;justify-content:flex-end"><sc-if value="{{ caseFlags.inReview }}" hint-placeholder-val="{{ true }}"><button onClick="{{ approveCase }}" style="background:#5251fd;color:#fff;border:1px solid #5251fd;border-radius:6px;padding:4px 10px;font:500 12.5px 'DM Sans',sans-serif;cursor:pointer">Approve</button></sc-if></span></div>
+<div style="display:grid;grid-template-columns:28px minmax(0,1fr) auto 76px;gap:8px;padding:10px 12px;border-top:1px solid #f0eeea;font-size:13.5px;align-items:center"><span style="font-size:12px;color:#6b6b80">ID</span><span>CV Sinar Abadi</span><span style="color:#0f8a0f;font-size:12.5px;white-space:nowrap">● Approved</span><span></span></div>
+<div style="display:grid;grid-template-columns:28px minmax(0,1fr) auto 76px;gap:8px;padding:10px 12px;border-top:1px solid #f0eeea;font-size:13.5px;align-items:center"><span style="font-size:12px;color:#6b6b80">SG</span><span>Global Trade Pte</span><span style="color:#0f8a0f;font-size:12.5px;white-space:nowrap">● Approved</span><span></span></div>
+<div style="display:grid;grid-template-columns:28px minmax(0,1fr) auto 76px;gap:8px;padding:10px 12px;border-top:1px solid #f0eeea;font-size:13.5px;align-items:center"><span style="font-size:12px;color:#6b6b80">NG</span><span>Big manager</span><span style="color:#a10d0f;font-size:12.5px;white-space:nowrap">◉ Declined</span><span></span></div>
+</div>
+<div style="font-size:12.5px;color:#6b6b80">Approved cases that match a live agreement are shared automatically. There is no manual send.</div>
+</div></div>
+</sc-if>
+
+<sc-if value="{{ d.invite }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Donor · Contract invite">
+<div style="padding:14px 18px 10px;border-bottom:1px solid #f0eeea;display:flex;align-items:center;gap:10px"><span style="font-size:17px;font-weight:500;white-space:nowrap">Contract invite from {{ rn }}</span><span style="white-space:nowrap;padding:1px 8px;border-radius:999px;font-size:12px;font-weight:500;background:{{ cChip.bg }};color:{{ cChip.fg }};border:1px solid {{ cChip.bd }}">{{ cChip.label }}</span></div>
+<div style="padding:14px 18px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:center;gap:12px;border:1px solid #f0eeea;border-radius:8px;padding:14px">
+<div style="text-align:center;min-width:80px"><div style="font-weight:600">{{ dn }}</div><div style="font-size:12px;color:#6b6b80">You · Donor</div></div>
+<div style="flex:1;display:flex;align-items:center;gap:6px;color:#5251fd;font-size:12px"><span style="flex:1;height:1px;background:#d2d2fd"></span>customer data<span style="flex:1;height:1px;background:#d2d2fd"></span>→</div>
+<div style="text-align:center;min-width:80px"><div style="font-weight:600">{{ rn }}</div><div style="font-size:12px;color:#6b6b80">Recipient</div></div>
+</div>
+<div style="background:#f9f8f6;border-radius:8px;padding:12px 14px;font-size:13.5px;display:flex;flex-direction:column;gap:5px"><div style="font-weight:600">What accepting means</div><div>No data is shared when you accept.</div><div>{{ rn }} can send you agreement requests.</div><div>Data only moves once you approve an agreement and it goes live.</div><div>Either side can end the contract later.</div></div>
+<div style="display:grid;grid-template-columns:110px 1fr;gap:6px 12px;font-size:13px"><span style="color:#6b6b80">Invited by</span><span>Arjun M. · admin@recipient.com</span><span style="color:#6b6b80">Sent</span><span>29 Sep 2026</span><span style="color:#6b6b80">Expires</span><span>29 Oct 2026</span></div>
+<sc-if value="{{ contract.pending }}" hint-placeholder-val="{{ true }}"><div style="display:flex;gap:8px;justify-content:flex-end"><button onClick="{{ declineContract }}" style="background:#fff;color:#20202c;border:1px solid #e4e0d9;border-radius:6px;padding:6px 12px;font:500 13px 'DM Sans',sans-serif;cursor:pointer">Decline</button><button onClick="{{ acceptContract }}" style="background:#5251fd;color:#fff;border:1px solid #5251fd;border-radius:6px;padding:6px 14px;font:500 13px 'DM Sans',sans-serif;cursor:pointer">Accept contract</button></div></sc-if>
+</div></div>
+</sc-if>
+
+<sc-if value="{{ d.recipients }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Donor · My Recipients">
+<div style="padding:14px 18px 10px;border-bottom:1px solid #f0eeea;font-size:17px;font-weight:500;white-space:nowrap">My Recipients</div>
+<div style="padding:12px 18px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:6px;font-size:13px"><span onClick="{{ setDRecTab.contracts }}" style="cursor:pointer;white-space:nowrap;border-radius:6px;padding:3px 8px;background:{{ dRecTab.contracts }}">Contracts</span><span onClick="{{ setDRecTab.agreements }}" style="cursor:pointer;white-space:nowrap;border-radius:6px;padding:3px 8px;display:flex;align-items:center;gap:5px;background:{{ dRecTab.agreements }}">Agreements<sc-if value="{{ pend.dAgreements }}" hint-placeholder-val="{{ false }}"><span style="width:14px;height:14px;border-radius:50%;background:#FF8F2E;color:#fff;font:700 10px/14px 'DM Sans',sans-serif;text-align:center">!</span></sc-if></span></div>
+<sc-if value="{{ dRecTab.isContracts }}" hint-placeholder-val="{{ true }}">
+<div style="border:1px solid #f0eeea;border-radius:8px;overflow:hidden">
+<div style="display:grid;grid-template-columns:1fr 1.1fr 1.2fr 80px;gap:8px;padding:8px 12px;background:#f4f3f0;font-size:12.5px;color:#6b6b80"><span>Recipient</span><span>Status</span><span>Date</span><span></span></div>
+<sc-if value="{{ contract.declined }}" hint-placeholder-val="{{ false }}"><div style="display:grid;grid-template-columns:1fr 1.1fr 1.2fr 80px;gap:8px;padding:10px 12px;border-top:1px solid #f0eeea;font-size:13.5px;align-items:center"><span>{{ rn }}</span><span><span style="white-space:nowrap;padding:1px 8px;border-radius:999px;font-size:12px;background:#fdeff0;color:#a10d0f;border:1px solid #fbcbcc">Declined</span></span><span style="font-size:12.5px">"Not now." · Priya S. · 29 Sep</span><span></span></div></sc-if>
+<sc-if value="{{ contract.pending }}" hint-placeholder-val="{{ false }}"><div style="display:grid;grid-template-columns:1fr 1.1fr 1.2fr 80px;gap:8px;padding:10px 12px;border-top:1px solid #f0eeea;font-size:13.5px;align-items:center"><span>{{ rn }}</span><span><span style="white-space:nowrap;padding:1px 8px;border-radius:999px;font-size:12px;background:#fff7f0;color:#de6800;border:1px solid #ffe1c7">Invite pending</span></span><span>expires 29 Oct 2026</span><span><button onClick="{{ go.dInvite }}" style="background:#fff;color:#20202c;border:1px solid #e4e0d9;border-radius:6px;padding:3px 10px;font:500 12.5px 'DM Sans',sans-serif;cursor:pointer">Review</button></span></div></sc-if>
+<sc-if value="{{ contract.active }}" hint-placeholder-val="{{ false }}"><div onClick="{{ go.dAgreements }}" style="display:grid;grid-template-columns:1fr 1.1fr 1.2fr 80px;gap:8px;padding:10px 12px;border-top:1px solid #f0eeea;font-size:13.5px;align-items:center;cursor:pointer" style-hover="background:#f9f8f6"><span>{{ rn }}</span><span><span style="white-space:nowrap;padding:1px 8px;border-radius:999px;font-size:12px;background:#f2f7ef;color:#0f8a0f;border:1px solid #c1dabe">Active</span></span><span>since 29 Sep 2026</span><span style="color:#5251fd;font-size:12.5px">Open →</span></div></sc-if>
+</div>
+</sc-if>
+<sc-if value="{{ dRecTab.isAgreements }}" hint-placeholder-val="{{ false }}">
+<div style="border:1px solid #f0eeea;border-radius:8px;overflow:hidden">
+<div style="display:grid;grid-template-columns:minmax(0,2fr) .8fr 1.3fr;gap:8px;padding:8px 12px;background:#f4f3f0;font-size:12.5px;color:#6b6b80"><span>Agreement</span><span>Entity</span><span>Status</span></div>
+<sc-if value="{{ hasAg }}" hint-placeholder-val="{{ false }}"><div onClick="{{ go.dAgreement }}" style="display:grid;grid-template-columns:minmax(0,2fr) .8fr 1.3fr;gap:8px;padding:10px 12px;border-top:1px solid #f0eeea;font-size:13.5px;align-items:center;cursor:pointer" style-hover="background:#f9f8f6"><span>{{ agName }} · v{{ agV }}</span><span>Business</span><span style="display:flex;align-items:center;gap:6px"><span style="white-space:nowrap;padding:1px 8px;border-radius:999px;font-size:12px;white-space:nowrap;background:{{ dChip.bg }};color:{{ dChip.fg }};border:1px solid {{ dChip.bd }}">{{ dChip.label }}</span><sc-if value="{{ pend.dAgreements }}" hint-placeholder-val="{{ false }}"><span style="width:16px;height:16px;border-radius:50%;background:#FF8F2E;color:#fff;font:700 11px/16px 'DM Sans',sans-serif;text-align:center">!</span></sc-if></span></div></sc-if>
+</div>
+<sc-if value="{{ noAg }}" hint-placeholder-val="{{ true }}"><div style="font-size:13px;color:#6b6b80">No agreement from {{ rn }} yet. It appears here when {{ rn }} sends one.</div></sc-if>
+</sc-if>
+
+</div></div>
+</sc-if>
+
+
+
+<sc-if value="{{ d.agreement }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Donor · Agreement review">
+<div style="padding:14px 18px 10px;border-bottom:1px solid #f0eeea;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+<span style="font-size:16px;font-weight:500">{{ agName }} · v{{ agV }}</span><span style="white-space:nowrap;padding:1px 8px;border-radius:999px;font-size:12px;white-space:nowrap;background:{{ dChip.bg }};color:{{ dChip.fg }};border:1px solid {{ dChip.bd }}">{{ dChip.label }}</span><span style="flex:1"></span>
+<sc-if value="{{ agF.live }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ask.dPause }}" style="background:#fff;color:#20202c;border:1px solid #e4e0d9;border-radius:6px;padding:5px 12px;font:500 13px 'DM Sans',sans-serif;cursor:pointer">Pause</button></sc-if>
+<sc-if value="{{ agF.canTerminate }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ask.dTerminate }}" style="background:#fff;color:#a10d0f;border:1px solid #fbcbcc;border-radius:6px;padding:5px 12px;font:500 13px 'DM Sans',sans-serif;cursor:pointer">Terminate</button></sc-if>
+</div>
+<div style="padding:12px 18px;display:flex;flex-direction:column;gap:10px">
+<sc-if value="{{ noAg }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;color:#6b6b80">No agreement yet.</div></sc-if>
+<sc-if value="{{ agF.review }}" hint-placeholder-val="{{ false }}"><div style="background:#f3f3ff;border:1px solid #d2d2fd;color:#2c2b9e;border-radius:8px;padding:9px 12px;font-size:13px">Accept or decline each section. You can't edit. Any decline sends it back to {{ rn }}.</div></sc-if>
+<sc-if value="{{ agF.v2review }}" hint-placeholder-val="{{ false }}"><div style="background:#fff7f0;border:1px solid #ffe1c7;color:#9a4a00;border-radius:8px;padding:9px 12px;font-size:13px">{{ rn }} resent this after your decline. Changed: Eligibility, max staleness 12 → 6 months. Review all sections again.</div></sc-if>
+<sc-if value="{{ agF.declined }}" hint-placeholder-val="{{ false }}"><div style="background:#f4f3f0;border:1px solid #e4e0d9;color:#3e3e56;border-radius:8px;padding:9px 12px;font-size:13px">Sent back to {{ rn }} with your reason. Waiting for a new version.</div></sc-if>
+<sc-if value="{{ agF.live }}" hint-placeholder-val="{{ false }}"><div style="background:#f2f7ef;border:1px solid #c1dabe;color:#0e7c0e;border-radius:8px;padding:9px 12px;font-size:13px">Live. Cases you approve that match these terms are shared after a 30-minute hold.</div></sc-if>
+<sc-if value="{{ pausedMsg.dShow }}" hint-placeholder-val="{{ false }}"><div style="background:#fff7f0;border:1px solid #ffe1c7;color:#9a4a00;border-radius:8px;padding:9px 12px;font-size:13px;display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="flex:1;min-width:180px">{{ pausedMsg.d }}</span>
+<sc-if value="{{ pausedMsg.dCanRequest }}" hint-placeholder-val="{{ false }}"><button onClick="{{ requestResume.d }}" style="background:#5251fd;color:#fff;border:1px solid #5251fd;border-radius:6px;padding:4px 10px;font:500 12.5px 'DM Sans',sans-serif;cursor:pointer">Send resume request</button></sc-if>
+<sc-if value="{{ pausedMsg.dCanAccept }}" hint-placeholder-val="{{ false }}"><button onClick="{{ acceptResume }}" style="background:#5251fd;color:#fff;border:1px solid #5251fd;border-radius:6px;padding:4px 10px;font:500 12.5px 'DM Sans',sans-serif;cursor:pointer">Accept resume</button></sc-if>
+</div></sc-if>
+<sc-if value="{{ agF.terminated }}" hint-placeholder-val="{{ false }}"><div style="background:#fdeff0;border:1px solid #fbcbcc;color:#8e0c0e;border-radius:8px;padding:9px 12px;font-size:13px">Terminated. No new cases are shared and RFIs on shared tokens are revoked.</div></sc-if>
+<sc-if value="{{ hasAg }}" hint-placeholder-val="{{ false }}">
+<sc-for list="{{ sections }}" as="sec" hint-placeholder-count="3">
+<div style="border:1px solid #f0eeea;border-radius:8px;overflow:hidden">
+<div style="background:#f4f3f0;padding:8px 12px;display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:500"><span>{{ sec.title }}</span><sc-if value="{{ sec.changed }}" hint-placeholder-val="{{ false }}"><span style="padding:0 7px;border-radius:999px;font-size:11.5px;background:#e7e7fd;color:#3a39c9;border:1px solid #d2d2fd">Changed</span></sc-if><span style="flex:1"></span>
+<sc-if value="{{ sec.canAct }}" hint-placeholder-val="{{ false }}"><button onClick="{{ sec.decline }}" style="background:#fff;color:#20202c;border:1px solid #e4e0d9;border-radius:6px;padding:3px 10px;font:500 12.5px 'DM Sans',sans-serif;cursor:pointer">Decline</button><button onClick="{{ sec.accept }}" style="background:#5251fd;color:#fff;border:1px solid #5251fd;border-radius:6px;padding:3px 10px;font:500 12.5px 'DM Sans',sans-serif;cursor:pointer">Accept</button></sc-if>
+<sc-if value="{{ sec.decided }}" hint-placeholder-val="{{ false }}"><span style="white-space:nowrap;padding:1px 8px;border-radius:999px;font-size:12px;font-weight:500;background:{{ sec.chip.bg }};color:{{ sec.chip.fg }};border:1px solid {{ sec.chip.bd }}">{{ sec.chip.label }}</span><sc-if value="{{ sec.canUndo }}" hint-placeholder-val="{{ false }}"><a onClick="{{ sec.undo }}" style="font-size:12.5px;cursor:pointer;font-weight:400">Undo</a></sc-if></sc-if>
+</div>
+<div style="padding:10px 12px;display:grid;grid-template-columns:130px 1fr;gap:5px 12px;font-size:13px">
+<sc-for list="{{ sec.rows }}" as="row" hint-placeholder-count="2"><span style="color:#6b6b80">{{ row.k }}</span><span>{{ row.v }}</span></sc-for>
+</div>
+<sc-if value="{{ sec.reason }}" hint-placeholder-val="{{ false }}"><div style="margin:0 12px 10px;border-left:3px solid #a10d0f;padding:2px 10px;font-size:13px;color:#8e0c0e">Your reason: "{{ declineText }}"</div></sc-if>
+</div>
+</sc-for>
+<div style="border:1px dashed #e4e0d9;border-radius:8px;padding:9px 12px;font-size:13px;color:#6b6b80">4. Recipient config · private to {{ rn }}</div>
+<sc-if value="{{ agF.review }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:13px;color:#6b6b80">{{ decidedCount }} of 3 decided</span><span style="flex:1"></span><button onClick="{{ submitReview }}" disabled="{{ submitDisabled }}" style="background:#5251fd;color:#fff;border:1px solid #5251fd;border-radius:6px;padding:6px 14px;font:500 13px 'DM Sans',sans-serif;cursor:pointer;opacity:{{ submitOpacity }}">Submit review</button></div></sc-if>
+</sc-if>
+</div></div>
+</sc-if>
+
+<sc-if value="{{ d.exports }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Donor · Exports">
+<div style="padding:14px 18px 10px;border-bottom:1px solid #f0eeea;font-size:17px;font-weight:500;white-space:nowrap">Exports</div>
+<div style="padding:12px 18px;display:flex;flex-direction:column;gap:12px">
+<div style="border:1px solid #f0eeea;border-radius:8px;overflow:hidden">
+<div style="display:grid;grid-template-columns:minmax(0,1.3fr) .8fr 1fr 1.4fr;gap:8px;padding:8px 12px;background:#f4f3f0;font-size:12.5px;color:#6b6b80"><span>Entity</span><span>Recipient</span><span>Exported</span><span>State</span></div>
+<sc-if value="{{ tok.has }}" hint-placeholder-val="{{ false }}"><div onClick="{{ go.dExport }}" style="display:grid;grid-template-columns:minmax(0,1.3fr) .8fr 1fr 1.4fr;gap:8px;padding:10px 12px;border-top:1px solid #f0eeea;font-size:13.5px;align-items:center;cursor:pointer" style-hover="background:#f9f8f6"><span><span style="display:block">PT Maju Jaya</span><span style="font-size:12px;color:#6b6b80">Business</span></span><span>{{ rn }}</span><span>{{ tok.exported }}</span><span style="display:flex;align-items:center;gap:6px;flex-wrap:wrap"><span style="white-space:nowrap;padding:1px 8px;border-radius:999px;font-size:12px;white-space:nowrap;background:{{ tok.chip.bg }};color:{{ tok.chip.fg }};border:1px solid {{ tok.chip.bd }}">{{ tok.chip.label }}</span><sc-if value="{{ tok.rfiDot }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#5251fd">RFI</span></sc-if></span></div></sc-if>
+</div>
+<sc-if value="{{ tok.queued }}" hint-placeholder-val="{{ false }}"><div style="background:#f3f3ff;border:1px solid #d2d2fd;color:#2c2b9e;border-radius:8px;padding:9px 12px;font-size:13px;display:flex;align-items:center;gap:10px"><span style="flex:1">PT Maju Jaya is in the 30-minute hold. Exports at 15:06.</span><button onClick="{{ fastForward }}" style="background:#5251fd;color:#fff;border:1px solid #5251fd;border-radius:6px;padding:4px 10px;font:500 12.5px 'DM Sans',sans-serif;cursor:pointer;white-space:nowrap">Skip the hold (demo)</button></div></sc-if>
+<div style="font-size:12.5px;color:#6b6b80">You see Ready or Imported only. {{ rn }}'s profile and results stay with {{ rn }}.</div>
+</div></div>
+</sc-if>
+
+<sc-if value="{{ d.export }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Donor · Token detail">
+<div style="padding:14px 18px 10px;border-bottom:1px solid #f0eeea;display:flex;align-items:center;gap:10px"><a onClick="{{ go.dExports }}" style="cursor:pointer;font-size:13px">Exports</a><span style="color:#6b6b80">›</span><span style="font-size:16px;font-weight:500">tok_51d9f2</span><span style="white-space:nowrap;padding:1px 8px;border-radius:999px;font-size:12px;background:{{ tok.chip.bg }};color:{{ tok.chip.fg }};border:1px solid {{ tok.chip.bd }}">{{ tok.chip.label }}</span></div>
+<div style="padding:12px 18px;display:flex;flex-direction:column;gap:12px">
+<div style="display:grid;grid-template-columns:120px 1fr;gap:6px 12px;font-size:13px"><span style="color:#6b6b80">Entity</span><span>PT Maju Jaya · ent_8812</span><span style="color:#6b6b80">Recipient</span><span>{{ rn }}</span><span style="color:#6b6b80">Agreement</span><span>{{ agName }} · v{{ agV }}</span><span style="color:#6b6b80">Your template</span><span>{{ dn }} KYB Standard</span><span style="color:#6b6b80">Consent</span><span>Given via SDK · 29 Sep 13:30</span><span style="color:#6b6b80">Exported</span><span>{{ tok.exported }}</span></div>
+<div style="border:1px solid #f0eeea;border-radius:8px;overflow:hidden">
+<div style="background:#f4f3f0;padding:8px 12px;display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:500"><span>RFIs on this token</span><span style="flex:1"></span>
+<sc-if value="{{ rfiF.canRevoke }}" hint-placeholder-val="{{ false }}"><button onClick="{{ revoke }}" style="background:#fff;color:#a10d0f;border:1px solid #fbcbcc;border-radius:6px;padding:3px 10px;font:500 12.5px 'DM Sans',sans-serif;cursor:pointer">Revoke RFIs</button></sc-if>
+<sc-if value="{{ rfiF.revoked }}" hint-placeholder-val="{{ false }}"><span style="white-space:nowrap;padding:1px 8px;border-radius:999px;font-size:12px;background:#fdeff0;color:#a10d0f;border:1px solid #fbcbcc">Revoked</span></sc-if>
+</div>
+<sc-if value="{{ rfiF.none }}" hint-placeholder-val="{{ true }}"><div style="padding:12px;font-size:13px;color:#6b6b80">No RFIs from {{ rn }} yet.</div></sc-if>
+<sc-for list="{{ dRfiItems }}" as="it" hint-placeholder-count="0"><div style="padding:10px 12px;border-top:1px solid #f0eeea;display:flex;align-items:center;gap:8px;font-size:13.5px;flex-wrap:wrap"><span style="flex:1;min-width:140px"><span style="display:block">{{ it.name }}</span><span style="font-size:12px;color:#6b6b80">{{ it.note }}</span></span><span style="white-space:nowrap;padding:1px 8px;border-radius:999px;font-size:12px;white-space:nowrap;background:{{ it.bg }};color:{{ it.fg }};border:1px solid {{ it.bd }}">{{ it.label }}</span></div></sc-for>
+<sc-if value="{{ rfiF.waiting }}" hint-placeholder-val="{{ false }}"><div style="padding:10px 12px;border-top:1px solid #f0eeea;display:flex;align-items:center;gap:10px;background:#f9f8f6;font-size:13px"><span style="flex:1">The merchant was asked under {{ dn }}'s name.</span><button onClick="{{ merchantReply }}" style="background:#fff;color:#5251fd;border:1px solid #d2d2fd;border-radius:6px;padding:4px 10px;font:500 12.5px 'DM Sans',sans-serif;cursor:pointer">Merchant replies (demo)</button></div></sc-if>
+</div>
+<div style="font-size:12.5px;color:#6b6b80">Answers are saved on your profile and reused for the next Recipient who asks.</div>
+</div></div>
+</sc-if>
+
+<sc-if value="{{ d.empty }}" hint-placeholder-val="{{ false }}">
+<div style="padding:40px 24px;text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center"><div style="font-size:15px;font-weight:500">{{ dn }} isn't receiving data from anyone yet</div><div style="font-size:13px;color:#6b6b80;max-width:320px">Add a Donor to start a contract. This demo shows {{ dn }} as the Donor.</div></div>
+</sc-if>
+
+</div>
+
+<sc-if value="{{ overlay.email }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;background:#eef1f6;display:flex;flex-direction:column;z-index:10;font-family:Arial,Helvetica,sans-serif;color:#202124">
+<div style="display:flex;align-items:center;gap:12px;padding:8px 14px;background:#fff;border-bottom:1px solid #dde1e7;flex:none">
+<span style="display:flex;align-items:center;gap:6px;font-size:15px;color:#3c4043;white-space:nowrap"><span style="width:22px;height:16px;border:2px solid #5f6368;border-radius:3px;position:relative;display:inline-block"></span>Mail</span>
+<span style="flex:1;max-width:340px;background:#eef1f6;border-radius:999px;padding:6px 14px;font-size:13px;color:#80868b">Search mail</span>
+<span style="flex:1"></span>
+<span style="width:26px;height:26px;border-radius:50%;background:#FF8F2E;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600">PS</span>
+</div>
+<div style="flex:1;min-height:0;display:flex">
+<div style="width:150px;flex:none;padding:10px 8px;display:flex;flex-direction:column;gap:2px;font-size:13px;color:#3c4043">
+<div style="background:#fff;border-radius:14px;padding:9px 14px;box-shadow:0 1px 2px rgba(0,0,0,.12);margin-bottom:8px;font-weight:500">Compose</div>
+<div style="display:flex;align-items:center;background:#d6e2fb;border-radius:0 999px 999px 0;padding:5px 12px;font-weight:700"><span>Inbox</span><span style="flex:1"></span><span>1</span></div>
+<div style="padding:5px 12px">Starred</div>
+<div style="padding:5px 12px">Sent</div>
+<div style="padding:5px 12px">Drafts</div>
+</div>
+<div style="flex:1;min-width:0;background:#fff;border-radius:12px 0 0 0;overflow:auto;display:flex;flex-direction:column">
+<div style="padding:14px 20px 8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="font-size:19px">{{ rn }} wants to form a contract with you</span><span style="background:#e8eaed;border-radius:4px;padding:1px 6px;font-size:11.5px;color:#5f6368">Inbox</span></div>
+<div style="padding:4px 20px 10px;display:flex;align-items:center;gap:10px">
+<span style="width:34px;height:34px;border-radius:50%;background:#010165;flex:none;display:flex;align-items:center;justify-content:center"><img src="src/assets/aiprise/logo.svg" style="width:22px;filter:brightness(0) invert(1)" alt=""></span>
+<div style="flex:1;min-width:0;font-size:13px"><div><b style="font-weight:700">AiPrise</b> <span style="color:#5f6368">&lt;no-reply@aiprise.com&gt;</span></div><div style="color:#5f6368;font-size:12px">to admin@donor.com</div></div>
+<span style="font-size:12px;color:#5f6368;white-space:nowrap">14:02 (0 minutes ago)</span>
+</div>
+<div style="margin:6px 20px 20px 64px;border:1px solid #e8eaed;border-radius:8px;overflow:hidden;max-width:460px;font-family:'DM Sans',sans-serif">
+<div style="background:#010165;padding:12px 16px"><img src="src/assets/aiprise/logo.svg" style="height:18px;filter:brightness(0) invert(1);display:block" alt="AiPrise"></div>
+<div style="padding:16px;display:flex;flex-direction:column;gap:10px">
+<div style="font-size:17px;font-weight:600;color:#010165">{{ rn }} wants to form a contract with you</div>
+<div style="font-size:13.5px;line-height:1.5;color:#20202c">{{ rn }} wants to form a contract with you to receive customer data from your end. Accepting doesn't share any data. You review every agreement first.</div>
+<div><button onClick="{{ go.dInvite }}" style="background:#5251fd;color:#fff;border:1px solid #5251fd;border-radius:6px;padding:7px 14px;font:500 13px 'DM Sans',sans-serif;cursor:pointer">Review invite</button></div>
+<div style="font-size:12px;color:#6b6b80">This link works once and expires on 29 Oct 2026.</div>
+</div></div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ overlay.decline }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;background:rgba(15,15,22,.35);display:flex;align-items:center;justify-content:center;padding:20px;z-index:10">
+<div style="background:#fff;border-radius:12px;box-shadow:0 12px 40px rgba(15,15,22,.18);width:100%;max-width:420px;padding:18px;display:flex;flex-direction:column;gap:12px">
+<div style="font-size:16px;font-weight:600">Decline "{{ declineTitle }}"</div>
+<div style="font-size:13px;color:#6b6b80">Tell {{ rn }} what you'd want changed. Required.</div>
+<textarea value="{{ declineText }}" onChange="{{ onDeclineText }}" style="height:80px;border:1px solid #e4e0d9;border-radius:8px;padding:8px 10px;font:13.5px 'DM Sans',sans-serif;resize:none;outline-color:#5251fd"></textarea>
+<div style="display:flex;gap:8px;justify-content:flex-end"><button onClick="{{ closeDecline }}" style="background:#fff;color:#20202c;border:1px solid #e4e0d9;border-radius:6px;padding:6px 12px;font:500 13px 'DM Sans',sans-serif;cursor:pointer">Cancel</button><button onClick="{{ confirmDecline }}" style="background:#a10d0f;color:#fff;border:1px solid #a10d0f;border-radius:6px;padding:6px 12px;font:500 13px 'DM Sans',sans-serif;cursor:pointer">Decline section</button></div>
+</div></div>
+</sc-if>
+
+<sc-if value="{{ overlay.dConfirm }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;background:rgba(15,15,22,.35);display:flex;align-items:center;justify-content:center;padding:20px;z-index:10">
+<div style="background:#fff;border-radius:12px;box-shadow:0 12px 40px rgba(15,15,22,.18);width:100%;max-width:420px;padding:18px;display:flex;flex-direction:column;gap:10px">
+<div style="font-size:16px;font-weight:600">{{ conf.title }}</div>
+<sc-for list="{{ conf.lines }}" as="ln" hint-placeholder-count="2"><div style="font-size:13.5px">{{ ln }}</div></sc-for>
+<div style="display:flex;gap:8px;justify-content:flex-end;margin-top:4px"><button onClick="{{ closeConfirm }}" style="background:#fff;color:#20202c;border:1px solid #e4e0d9;border-radius:6px;padding:6px 12px;font:500 13px 'DM Sans',sans-serif;cursor:pointer">Cancel</button><button onClick="{{ doConfirm }}" style="color:#fff;border:0;border-radius:6px;padding:6px 12px;font:500 13px 'DM Sans',sans-serif;cursor:pointer;background:{{ conf.bg }}">{{ conf.cta }}</button></div>
+</div></div>
+</sc-if>
+
+<sc-if value="{{ toast.d }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:50%;bottom:16px;transform:translateX(-50%);background:#20202c;color:#fff;padding:8px 14px;border-radius:8px;font-size:13px;z-index:20;box-shadow:0 6px 20px rgba(0,0,0,.2);max-width:90%;text-align:center">{{ toast.d }}</div></sc-if>
+</div>
+</div>
+
+<!-- RECIPIENT PANE -->
+<div data-screen-label="Recipient" style="flex:1;min-width:0;display:{{ rPane.display }};flex-direction:column;background:#fff;border-radius:10px;overflow:hidden;box-shadow:{{ rPane.ring }}">
+<div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:#f3f3ff;border-bottom:2px solid #5251fd;flex:none">
+<span style="display:flex;align-items:center;gap:7px;background:#5251fd;color:#fff;border-radius:8px;padding:5px 12px;font:700 15px 'DM Sans',sans-serif;letter-spacing:.08em"><span style="width:16px;height:16px;display:block;flex:none;background:#fff;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/building-2.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/building-2.svg) center/contain no-repeat"></span>RECIPIENT</span><span style="font-size:14px;font-weight:500;color:#20202c">{{ rn }} · receives customer data</span><span style="flex:1"></span>
+<sc-if value="{{ rPane.turn }}" hint-placeholder-val="{{ false }}"><span style="display:flex;align-items:center;gap:6px;background:#fff;color:#5251fd;border:2px solid #5251fd;border-radius:999px;padding:4px 14px 4px 10px;font:700 14px 'DM Sans',sans-serif;box-shadow:0 0 0 4px color-mix(in srgb,#5251fd 22%,transparent)"><span style="width:16px;height:16px;display:block;flex:none;background:#5251fd;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/mouse-pointer-click.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/mouse-pointer-click.svg) center/contain no-repeat"></span>Your move</span></sc-if>
+</div>
+<div style="flex:1;min-height:0;display:flex;position:relative">
+
+<div style="width:176px;flex:none;background:#f9f8f6;border-right:1px solid #f0eeea;display:flex;flex-direction:column;overflow:auto">
+<div style="padding:12px 12px 10px;border-bottom:1px solid #f0eeea"><img src="src/assets/aiprise/logo.svg" style="height:22px;display:block" alt="AiPrise"></div>
+<div style="padding:8px;display:flex;flex-direction:column;gap:2px;font-size:13.5px;color:#3e3e56">
+<div style="display:flex;align-items:center;gap:8px;padding:6px 8px"><img src="https://unpkg.com/lucide-static@0.469.0/icons/book.svg" style="width:17px;opacity:.7" alt="">Case</div>
+<div style="padding:6px 8px 6px 30px">Business</div>
+<div style="display:flex;align-items:center;gap:8px;padding:6px 8px"><img src="https://unpkg.com/lucide-static@0.469.0/icons/id-card.svg" style="width:17px;opacity:.7" alt="">Profile</div>
+<div onClick="{{ go.rProfiles }}" style="padding:6px 8px 6px 30px;border-radius:6px;cursor:pointer;background:{{ rnav.profiles }}">Business</div>
+<div style="display:flex;align-items:center;gap:8px;padding:6px 8px"><img src="https://unpkg.com/lucide-static@0.469.0/icons/inbox.svg" style="width:17px;opacity:.7" alt="">Queues</div>
+<div style="display:flex;align-items:center;gap:8px;padding:6px 8px"><img src="https://unpkg.com/lucide-static@0.469.0/icons/list-checks.svg" style="width:17px;opacity:.7" alt="">Templates</div>
+<div style="height:1px;background:#f0eeea;margin:6px 0"></div>
+<div style="display:flex;align-items:center;gap:7px;padding:6px 6px;font-size:12.5px"><img src="https://unpkg.com/lucide-static@0.469.0/icons/arrow-down-to-line.svg" style="width:17px;opacity:.7" alt="">Token Sharing: As Recipient</div>
+<div onClick="{{ go.rDonors }}" style="display:flex;align-items:center;padding:5px 8px 5px 30px;border-radius:6px;cursor:pointer;background:{{ rnav.donors }}"><span>My Donors</span><span style="flex:1"></span><sc-if value="{{ pend.rAgreements }}" hint-placeholder-val="{{ false }}"><span title="Pending on you" style="width:16px;height:16px;border-radius:50%;background:#FF8F2E;color:#fff;font:700 11px/16px 'DM Sans',sans-serif;text-align:center">!</span></sc-if></div>
+<div onClick="{{ go.rImports }}" style="padding:5px 8px 5px 30px;border-radius:6px;cursor:pointer;background:{{ rnav.imports }}">Imports</div>
+</div>
+<div style="flex:1"></div>
+<div style="display:flex;align-items:center;gap:8px;padding:10px 12px;border-top:1px solid #f0eeea;font-size:12.5px"><span style="width:26px;height:26px;border-radius:50%;background:#5251fd;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600">AM</span><div><div style="font-weight:500">Arjun M.</div><div style="color:#6b6b80">{{ rn }} · Admin</div></div></div>
+</div>
+
+<div style="flex:1;min-width:0;overflow:auto">
+
+<sc-if value="{{ r.donors }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="Recipient · My Donors">
+<div style="padding:14px 18px 10px;border-bottom:1px solid #f0eeea;display:flex;align-items:center"><span style="font-size:17px;font-weight:500;white-space:nowrap">My Donors</span><span style="flex:1"></span><button onClick="{{ openAddDonor }}" style="background:#5251fd;color:#fff;border:1px solid #5251fd;border-radius:6px;padding:6px 12px;font:500 13px 'DM Sans',sans-serif;cursor:pointer">+ Add Donor</button></div>
+<div style="padding:12px 18px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:6px;font-size:13px"><span onClick="{{ setRDonTab.contracts }}" style="cursor:pointer;white-space:nowrap;border-radius:6px;padding:3px 8px;background:{{ rDonTab.contracts }}">Contracts</span><span onClick="{{ setRDonTab.agreements }}" style="cursor:pointer;white-space:nowrap;border-radius:6px;padding:3px 8px;display:flex;align-items:center;gap:5px;background:{{ rDonTab.agreements }}">Agreements<sc-if value="{{ pend.rAgreements }}" hint-placeholder-val="{{ false }}"><span style="width:14px;height:14px;border-radius:50%;background:#FF8F2E;color:#fff;font:700 10px/14px 'DM Sans',sans-serif;text-align:center">!</span></sc-if></span></div>
+<sc-if value="{{ rDonTab.isContracts }}" hint-placeholder-val="{{ true }}">
+<div style="border:1px solid #f0eeea;border-radius:8px;overflow:hidden">
+<div style="display:grid;grid-template-columns:.9fr 1.1fr 1.2fr 1.1fr;gap:8px;padding:8px 12px;background:#f4f3f0;font-size:12.5px;color:#6b6b80"><span>Donor</span><span>Status</span><span>Date</span><span></span></div>
+<sc-if value="{{ contract.declined }}" hint-placeholder-val="{{ false }}"><div style="display:grid;grid-template-columns:.9fr 1.1fr 1.2fr 1.1fr;gap:8px;padding:10px 12px;border-top:1px solid #f0eeea;font-size:13.5px;align-items:center"><span>{{ dn }}</span><span><span style="white-space:nowrap;padding:1px 8px;border-radius:999px;font-size:12px;background:#fdeff0;color:#a10d0f;border:1px solid #fbcbcc">Declined</span></span><span style="font-size:12.5px">"Not now." · Priya S. · 29 Sep</span><span></span></div></sc-if>
+<sc-if value="{{ contract.pending }}" hint-placeholder-val="{{ false }}"><div style="display:grid;grid-template-columns:.9fr 1.1fr 1.2fr 1.1fr;gap:8px;padding:10px 12px;border-top:1px solid #f0eeea;font-size:13.5px;align-items:center"><span>{{ dn }}</span><span><span style="white-space:nowrap;padding:1px 8px;border-radius:999px;font-size:12px;background:#fff7f0;color:#de6800;border:1px solid #ffe1c7">Invite pending</span></span><span>expires 29 Oct 2026</span><span></span></div></sc-if>
+<sc-if value="{{ contract.active }}" hint-placeholder-val="{{ false }}"><div style="display:grid;grid-template-columns:.9fr 1.1fr 1.2fr 1.1fr;gap:8px;padding:10px 12px;border-top:1px solid #f0eeea;font-size:13.5px;align-items:center"><span>{{ dn }}</span><span><span style="white-space:nowrap;padding:1px 8px;border-radius:999px;font-size:12px;background:#f2f7ef;color:#0f8a0f;border:1px solid #c1dabe">Active</span></span><span>since 29 Sep 2026</span><span style="display:flex;justify-content:flex-end">
+<sc-if value="{{ noAg }}" hint-placeholder-val="{{ true }}"><button onClick="{{ openBuilder }}" style="background:#5251fd;color:#fff;border:1px solid #5251fd;border-radius:6px;padding:3px 10px;font:500 12.5px 'DM Sans',sans-serif;cursor:pointer;white-space:nowrap">New agreement</button></sc-if>
+<sc-if value="{{ hasAg }}" hint-placeholder-val="{{ false }}"><a onClick="{{ go.rAgreement }}" style="cursor:pointer;font-size:12.5px;white-space:nowrap">View agreement →</a></sc-if>
+</span></div></sc-if>
+</div>
+</sc-if>
+<sc-if value="{{ rDonTab.isAgreements }}" hint-placeholder-val="{{ false }}">
+<div style="border:1px solid #f0eeea;border-radius:8px;overflow:hidden">
+<div style="display:grid;grid-template-columns:56px minmax(0,2fr) .8fr 1.3fr;gap:8px;padding:8px 12px;background:#f4f3f0;font-size:12.5px;color:#6b6b80"><span>Priority</span><span>Agreement</span><span>Import</span><span>Status</span></div>
+<div style="padding:6px 12px;background:#f9f8f6;font-size:12px;color:#6b6b80;border-top:1px solid #f0eeea;display:flex;align-items:center;gap:8px"><span>Contract · {{ dn }} → {{ rn }}</span><span style="flex:1"></span><sc-if value="{{ contract.active }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openBuilder }}" style="background:#fff;color:#5251fd;border:1px solid #d2d2fd;border-radius:6px;padding:2px 9px;font:500 12px 'DM Sans',sans-serif;cursor:pointer;white-space:nowrap">+ New agreement</button></sc-if></div>
+<sc-if value="{{ hasAg }}" hint-placeholder-val="{{ false }}"><div onClick="{{ go.rAgreement }}" style="display:grid;grid-template-columns:56px minmax(0,2fr) .8fr 1.3fr;gap:8px;padding:10px 12px;border-top:1px solid #f0eeea;font-size:13.5px;align-items:center;cursor:pointer" style-hover="background:#f9f8f6"><span style="color:#6b6b80">⋮⋮ 1</span><span>{{ agName }} · v{{ agV }}</span><span>{{ importLabel }}</span><span style="display:flex;align-items:center;gap:6px"><span style="white-space:nowrap;padding:1px 8px;border-radius:999px;font-size:12px;white-space:nowrap;background:{{ rChip.bg }};color:{{ rChip.fg }};border:1px solid {{ rChip.bd }}">{{ rChip.label }}</span><sc-if value="{{ pend.rAgreements }}" hint-placeholder-val="{{ false }}"><span style="width:16px;height:16px;border-radius:50%;background:#FF8F2E;color:#fff;font:700 11px/16px 'DM Sans',sans-serif;text-align:center">!</span></sc-if></span></div></sc-if>
+<sc-if value="{{ noAg }}" hint-placeholder-val="{{ true }}"><div style="padding:12px;border-top:1px solid #f0eeea;font-size:13px;color:#6b6b80">{{ agEmptyMsg }}</div></sc-if>
+</div>
+<div style="font-size:12.5px;color:#6b6b80">Priority is per contract, unique and in sequence. Private to {{ rn }}.</div>
+</sc-if>
+
+</div></div>
+</sc-if>
+
+<sc-if value="{{ r.builder }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Recipient · Agreement builder">
+<div style="padding:14px 18px 10px;border-bottom:1px solid #f0eeea;display:flex;align-items:center;gap:8px"><a onClick="{{ go.rDonors }}" style="cursor:pointer;font-size:13px">{{ dn }}</a><span style="color:#6b6b80">›</span><span style="font-size:16px;font-weight:500">{{ builderTitle }}</span></div>
+<div style="padding:12px 18px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ bSteps }}" as="bs" hint-placeholder-count="5"><span onClick="{{ bs.go }}" style="cursor:pointer;border-radius:999px;padding:2px 10px;font-size:12.5px;background:{{ bs.bg }};color:{{ bs.fg }};border:1px solid {{ bs.bd }}">{{ bs.label }}</span></sc-for></div>
+
+<sc-if value="{{ b.s0 }}" hint-placeholder-val="{{ true }}">
+<div style="font-size:15px;font-weight:600">Setup</div>
+<div style="display:flex;flex-direction:column;gap:5px"><span style="font-size:12.5px;color:#6b6b80">Agreement name</span><div style="display:flex;border:1px solid #e4e0d9;border-radius:8px;overflow:hidden;font-size:13.5px"><span style="background:#f4f3f0;border-right:1px solid #e4e0d9;padding:7px 10px;color:#6b6b80;white-space:nowrap">{{ dn }} &lt;&gt; {{ rn }} ·</span><input value="{{ setup.name }}" onChange="{{ setup.onName }}" placeholder="Name this agreement" style="flex:1;min-width:0;border:0;padding:7px 10px;font:13.5px 'DM Sans',sans-serif;outline:none"></div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:12.5px;color:#6b6b80">Entity type</span><div style="display:flex;gap:16px;font-size:13.5px;flex-wrap:wrap">
+<sc-for list="{{ setup.entities }}" as="en" hint-placeholder-count="3"><span onClick="{{ en.pick }}" style="display:flex;align-items:center;gap:6px;cursor:pointer;color:{{ en.fg }}"><span style="width:14px;height:14px;border-radius:50%;box-sizing:border-box;border:{{ en.bd }}"></span>{{ en.label }}</span></sc-for>
+</div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<div style="display:flex;flex-direction:column;gap:5px"><div style="position:relative;display:flex;align-items:center;gap:5px"><span style="font-size:12.5px;color:#6b6b80">Start date</span><span onMouseEnter="{{ setup.tipOn }}" onMouseLeave="{{ setup.tipOff }}" style="width:14px;height:14px;border:1.5px solid #5251fd;border-radius:50%;color:#5251fd;font:700 9px/11px 'DM Sans',sans-serif;text-align:center;cursor:help;box-sizing:border-box">i</span>
+<sc-if value="{{ setup.tip }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;top:20px;left:0;z-index:5;width:240px;background:#010165;color:#fff;border-radius:8px;padding:8px 10px;font-size:12.5px;line-height:1.4;box-shadow:0 6px 20px rgba(0,0,0,.18)">Sharing starts at 10:00 UTC on this date, once {{ dn }} approves. Cases approved before then aren't shared. Must be today or later.</div></sc-if></div>
+<input type="date" value="{{ setup.start }}" min="2026-09-29" onChange="{{ setup.onStart }}" style="border:1px solid #e4e0d9;border-radius:8px;padding:7px 10px;font:13.5px 'DM Sans',sans-serif;color:#20202c;outline-color:#5251fd;background:#fff"><span style="font-size:12px;color:#6b6b80">Starts 10:00 UTC</span></div>
+<div style="display:flex;flex-direction:column;gap:5px"><span style="font-size:12.5px;color:#6b6b80">End date <span style="color:#bebecf">· optional</span></span>
+<input type="date" value="{{ setup.end }}" min="{{ setup.start }}" disabled="{{ setup.noEnd }}" onChange="{{ setup.onEnd }}" style="border:1px solid #e4e0d9;border-radius:8px;padding:7px 10px;font:13.5px 'DM Sans',sans-serif;color:#20202c;outline-color:#5251fd;background:#fff;opacity:{{ setup.endOpacity }}">
+<span onClick="{{ setup.toggleNoEnd }}" style="display:flex;align-items:center;gap:6px;font-size:12.5px;cursor:pointer"><span style="width:14px;height:14px;border-radius:4px;box-sizing:border-box;color:#fff;font-size:9px;display:flex;align-items:center;justify-content:center;background:{{ setup.chkBg }};border:1px solid {{ setup.chkBd }}">✓</span>No end date</span></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ b.s1 }}" hint-placeholder-val="{{ false }}">
+<div style="font-size:15px;font-weight:600">Eligibility</div>
+<sc-if value="{{ agF.declined }}" hint-placeholder-val="{{ false }}"><div style="background:#fdeff0;border:1px solid #fbcbcc;color:#8e0c0e;border-radius:8px;padding:9px 12px;font-size:13px">{{ dn }} declined this section: "{{ declineText }}"</div></sc-if>
+<div style="border:1px solid #f0eeea;border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:8px"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:12.5px;color:#6b6b80">Rules</span><span style="font-size:12px;color:#bebecf">· a case is shared only if the rules match</span></div>
+<sc-for list="{{ rules }}" as="ru" hint-placeholder-count="1">
+<sc-if value="{{ ru.showJoin }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:8px"><span style="width:14px;height:1px;background:#e4e0d9"></span><div style="display:flex;border:1px solid #d2d2fd;border-radius:6px;overflow:hidden;font-size:11.5px;font-weight:600"><span onClick="{{ ru.setAnd }}" style="cursor:pointer;padding:2px 9px;background:{{ ru.andBg }};color:{{ ru.andFg }}">AND</span><span onClick="{{ ru.setOr }}" style="cursor:pointer;padding:2px 9px;border-left:1px solid #d2d2fd;background:{{ ru.orBg }};color:{{ ru.orFg }}">OR</span></div><span style="flex:1;height:1px;background:#e4e0d9"></span></div></sc-if>
+<div style="display:grid;grid-template-columns:minmax(0,1.3fr) auto minmax(0,1fr) 18px;gap:6px;align-items:center">
+<select value="{{ ru.field }}" onChange="{{ ru.onField }}" style="border:1px solid #e4e0d9;border-radius:6px;padding:4px 6px;font:13px 'DM Sans',sans-serif;color:#20202c;background:#fff;outline-color:#5251fd;width:100%;min-width:0"><sc-for list="{{ ruleFields }}" as="fo" hint-placeholder-count="5"><option value="{{ fo }}">{{ fo }}</option></sc-for></select>
+<select value="{{ ru.op }}" onChange="{{ ru.onOp }}" style="border:1px solid #e4e0d9;border-radius:6px;padding:4px 6px;font:13px 'DM Sans',sans-serif;color:#20202c;background:#fff;outline-color:#5251fd"><option value="is">is</option><option value="is not">is not</option><option value="is one of">is one of</option></select>
+<input value="{{ ru.value }}" onChange="{{ ru.onValue }}" placeholder="Value" style="border:1px solid #e4e0d9;border-radius:6px;padding:4px 6px;font:13px 'DM Sans',sans-serif;color:#20202c;background:#fff;outline-color:#5251fd;width:100%;min-width:0;padding:4px 8px">
+<span style="display:flex;justify-content:center"><sc-if value="{{ ru.canRemove }}" hint-placeholder-val="{{ false }}"><span onClick="{{ ru.remove }}" title="Remove rule" style="cursor:pointer;color:#6b6b80;font-size:15px">×</span></sc-if></span>
+</div>
+</sc-for>
+<span onClick="{{ addRule }}" style="font-size:12.5px;color:#5251fd;cursor:pointer;align-self:flex-start">+ Add rule</span>
+<div style="font-size:12px;color:#6b6b80;background:#f9f8f6;border-radius:6px;padding:6px 8px">{{ rulesText }}</div>
+</div>
+<div style="border:1px solid #f0eeea;border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;align-items:center;gap:8px;font-size:13.5px;flex-wrap:wrap"><span style="color:#6b6b80;font-size:12.5px;width:110px">Max staleness</span><span onClick="{{ setStale.s6 }}" style="cursor:pointer;border-radius:6px;padding:3px 10px;font-size:13px;background:{{ stale.s6.bg }};color:{{ stale.s6.fg }};border:1px solid {{ stale.s6.bd }}">6 months</span><span onClick="{{ setStale.s12 }}" style="cursor:pointer;border-radius:6px;padding:3px 10px;font-size:13px;background:{{ stale.s12.bg }};color:{{ stale.s12.fg }};border:1px solid {{ stale.s12.bd }}">12 months</span><span style="font-size:12.5px;color:#6b6b80">from creation date</span></div>
+<div style="display:flex;align-items:center;gap:8px;font-size:13.5px"><span style="width:15px;height:15px;border-radius:4px;background:#5251fd;color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center">✓</span>End merchant consent<span style="padding:0 7px;border-radius:999px;font-size:11.5px;background:#f4f3f0;color:#6b6b80;border:1px solid #e4e0d9">Required</span></div>
+</div>
+<div style="border:1px solid #f0eeea;border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;font-size:13.5px"><span style="font-size:12.5px;color:#6b6b80">Data shared</span>
+<span style="display:flex;align-items:center;gap:8px"><span style="width:15px;height:15px;border-radius:4px;background:#5251fd;color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center">✓</span>Inputs</span>
+<span style="display:flex;align-items:center;gap:8px;color:#bebecf"><span style="width:15px;height:15px;border-radius:4px;border:1px solid #bebecf"></span>Sections<span style="padding:0 7px;border-radius:999px;font-size:11.5px;background:#f4f3f0;color:#6b6b80;border:1px solid #e4e0d9">Not in phase 1</span></span>
+<span style="display:flex;align-items:center;gap:8px;color:#bebecf"><span style="width:15px;height:15px;border-radius:4px;border:1px solid #bebecf"></span>Verdicts<span style="padding:0 7px;border-radius:999px;font-size:11.5px;background:#f4f3f0;color:#6b6b80;border:1px solid #e4e0d9">Not in phase 1</span></span></div>
+<div style="border:1px solid #f0eeea;border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;background:#f9f8f6"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:12.5px;color:#6b6b80">Inputs (mandatory)</span><span style="padding:0 7px;border-radius:999px;font-size:11.5px;background:#f4f3f0;color:#6b6b80;border:1px solid #e4e0d9">Fixed · from Your config</span></div><div style="display:flex;gap:6px;flex-wrap:wrap;font-size:12.5px"><span style="border:1px solid #e4e0d9;background:#fff;border-radius:999px;padding:1px 9px">Legal name</span><span style="border:1px solid #e4e0d9;background:#fff;border-radius:999px;padding:1px 9px">Reg. number</span><span style="border:1px solid #e4e0d9;background:#fff;border-radius:999px;padding:1px 9px">Address</span><span style="border:1px solid #e4e0d9;background:#fff;border-radius:999px;padding:1px 9px">UBOs</span><span style="border:1px solid #e4e0d9;background:#fff;border-radius:999px;padding:1px 9px">Directors</span></div></div>
+</sc-if>
+
+<sc-if value="{{ b.s2 }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;gap:8px"><span style="font-size:15px;font-weight:600">Your config</span><span style="white-space:nowrap;padding:1px 8px;border-radius:999px;font-size:12px;background:#e7e7fd;color:#3a39c9;border:1px solid #d2d2fd">Private · {{ dn }} won't see this</span></div>
+<div style="border:1px solid #f0eeea;border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:8px;font-size:13.5px"><span style="font-size:12.5px;color:#6b6b80">Import</span>
+<span onClick="{{ setImport.auto }}" style="display:flex;align-items:center;gap:8px;cursor:pointer"><span style="width:14px;height:14px;border-radius:50%;border:{{ imp.auto }}"></span>Automatic <span style="color:#6b6b80;font-size:12.5px">· tokens import as they arrive</span></span>
+<span onClick="{{ setImport.manual }}" style="display:flex;align-items:center;gap:8px;cursor:pointer"><span style="width:14px;height:14px;border-radius:50%;border:{{ imp.manual }}"></span>Manual <span style="color:#6b6b80;font-size:12.5px">· tokens wait in Ready to import</span></span></div>
+<div style="border:1px solid #f0eeea;border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:8px"><span style="font-size:12.5px;color:#6b6b80">Templates to run against</span><div style="display:flex;align-items:center;gap:6px;border:1px solid #e4e0d9;border-radius:8px;padding:5px 8px;font-size:13px"><span style="background:#e7e7fd;border:1px solid #d2d2fd;border-radius:999px;padding:1px 9px;color:#3a39c9">{{ rn }} KYB · tpl_2f81</span><span style="color:#bebecf;flex:1">Search by name or paste template ID</span><span style="color:#6b6b80">▾</span></div></div>
+<div style="border:1px solid #f0eeea;border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;font-size:13px"><span style="font-size:12.5px;color:#6b6b80">Webhook · called when {{ dn }} exports a token</span><span>Account webhook · https://api.recipient.com/aiprise/hooks</span><span style="color:#6b6b80;font-size:12.5px">Event token.received with token ID, Donor, agreement and version.</span></div>
+</sc-if>
+
+<sc-if value="{{ b.s3 }}" hint-placeholder-val="{{ false }}">
+<div style="font-size:15px;font-weight:600">RFI catalog</div>
+<div style="font-size:13px;color:#6b6b80">Add the questions and documents you may request from the Donor, the same way you add them to a template. Nothing outside this catalog can be requested.</div>
+<div style="border:1px solid #f0eeea;border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><span style="font-size:12.5px;color:#6b6b80">Questions · {{ catQCount }}</span><sc-if value="{{ catF.canAddQ }}" hint-placeholder-val="{{ true }}"><button onClick="{{ openAddQ }}" style="background:#fff;color:#20202c;border:1px solid #e4e0d9;border-radius:6px;padding:5px 10px;font:500 12.5px 'DM Sans',sans-serif;cursor:pointer">+ Add question</button></sc-if></div>
+<sc-if value="{{ catF.noQ }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px;color:#6b6b80">No questions yet.</div></sc-if>
+<sc-for list="{{ catQ }}" as="c" hint-placeholder-count="2"><div style="display:flex;align-items:center;gap:10px;border:1px solid #f0eeea;border-radius:6px;padding:7px 10px"><div style="display:flex;flex-direction:column;gap:1px;flex:1;min-width:0"><span style="font-size:13.5px">{{ c.name }}</span><span style="font-size:12px;color:#6b6b80">{{ c.meta }}</span></div><span onClick="{{ c.remove }}" title="Remove" style="cursor:pointer;color:#6b6b80;font-size:15px">×</span></div></sc-for>
+<sc-if value="{{ catF.addQ }}" hint-placeholder-val="{{ false }}"><div style="border:1px solid #d2d2fd;background:#f7f7ff;border-radius:8px;padding:10px;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:12.5px;color:#3e3e56;font-weight:500">Write your question</span><input value="{{ qDraft.name }}" onChange="{{ qDraft.onName }}" placeholder="What would you like to ask?" style="border:1px solid #e4e0d9;border-radius:6px;padding:6px 8px;font:13px 'DM Sans',sans-serif;color:#20202c;background:#fff;outline-color:#5251fd;width:100%;min-width:0;box-sizing:border-box"></div>
+<div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:12.5px;color:#3e3e56;font-weight:500">Choose an answer type</span><select value="{{ qDraft.ans }}" onChange="{{ qDraft.onAns }}" style="border:1px solid #e4e0d9;border-radius:6px;padding:6px 8px;font:13px 'DM Sans',sans-serif;color:#20202c;background:#fff;outline-color:#5251fd;width:100%;min-width:0;box-sizing:border-box;max-width:220px"><sc-for list="{{ ansTypes }}" as="o" hint-placeholder-count="6"><option value="{{ o }}">{{ o }}</option></sc-for></select></div>
+<span onClick="{{ qDraft.toggleReq }}" style="display:flex;align-items:center;gap:6px;font-size:12.5px;cursor:pointer;width:fit-content"><span style="width:14px;height:14px;border-radius:4px;box-sizing:border-box;background:{{ qDraft.reqBox.bg }};border:1px solid {{ qDraft.reqBox.bd }};color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center">✓</span>Required · merchant must answer this</span>
+<div style="display:flex;gap:6px;justify-content:flex-end"><button onClick="{{ cancelAdd }}" style="background:#fff;color:#20202c;border:1px solid #e4e0d9;border-radius:6px;padding:5px 10px;font:500 12.5px 'DM Sans',sans-serif;cursor:pointer">Cancel</button><button onClick="{{ qDraft.save }}" style="background:#5251fd;color:#fff;border:1px solid #5251fd;border-radius:6px;padding:5px 10px;font:500 12.5px 'DM Sans',sans-serif;cursor:pointer;opacity:{{ qDraft.op }}">Add question</button></div>
+</div></sc-if>
+</div>
+<div style="border:1px solid #f0eeea;border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><span style="font-size:12.5px;color:#6b6b80">Documents · {{ catDCount }}</span><sc-if value="{{ catF.canAddD }}" hint-placeholder-val="{{ true }}"><button onClick="{{ openAddD }}" style="background:#fff;color:#20202c;border:1px solid #e4e0d9;border-radius:6px;padding:5px 10px;font:500 12.5px 'DM Sans',sans-serif;cursor:pointer">+ Add document</button></sc-if></div>
+<sc-if value="{{ catF.noD }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px;color:#6b6b80">No documents yet.</div></sc-if>
+<sc-for list="{{ catD }}" as="c" hint-placeholder-count="2"><div style="display:flex;align-items:center;gap:10px;border:1px solid #f0eeea;border-radius:6px;padding:7px 10px"><div style="display:flex;flex-direction:column;gap:1px;flex:1;min-width:0"><span style="font-size:13.5px">{{ c.name }}</span><span style="font-size:12px;color:#6b6b80">{{ c.meta }}</span></div><span onClick="{{ c.remove }}" title="Remove" style="cursor:pointer;color:#6b6b80;font-size:15px">×</span></div></sc-for>
+<sc-if value="{{ catF.addD }}" hint-placeholder-val="{{ false }}"><div style="border:1px solid #d2d2fd;background:#f7f7ff;border-radius:8px;padding:10px;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:12.5px;color:#3e3e56;font-weight:500">Select a document*</span><select value="{{ dDraft.doc }}" onChange="{{ dDraft.onDoc }}" style="border:1px solid #e4e0d9;border-radius:6px;padding:6px 8px;font:13px 'DM Sans',sans-serif;color:#20202c;background:#fff;outline-color:#5251fd;width:100%;min-width:0;box-sizing:border-box;max-width:260px"><option value="">Select a document</option><sc-for list="{{ docTypes }}" as="o" hint-placeholder-count="8"><option value="{{ o }}">{{ o }}</option></sc-for></select></div>
+<div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:12.5px;color:#3e3e56;font-weight:500">Title <span style="color:#6b6b80;font-weight:400">· optional</span></span><input value="{{ dDraft.title }}" onChange="{{ dDraft.onTitle }}" placeholder="Leave empty to use the document name" style="border:1px solid #e4e0d9;border-radius:6px;padding:6px 8px;font:13px 'DM Sans',sans-serif;color:#20202c;background:#fff;outline-color:#5251fd;width:100%;min-width:0;box-sizing:border-box"><span style="font-size:12px;color:#6b6b80">Replaces the document name shown to the merchant.</span></div>
+<span onClick="{{ dDraft.toggleReq }}" style="display:flex;align-items:center;gap:6px;font-size:12.5px;cursor:pointer;width:fit-content"><span style="width:14px;height:14px;border-radius:4px;box-sizing:border-box;background:{{ dDraft.reqBox.bg }};border:1px solid {{ dDraft.reqBox.bd }};color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center">✓</span>Required · merchant must upload this</span>
+<div style="display:flex;gap:6px;justify-content:flex-end"><button onClick="{{ cancelAdd }}" style="background:#fff;color:#20202c;border:1px solid #e4e0d9;border-radius:6px;padding:5px 10px;font:500 12.5px 'DM Sans',sans-serif;cursor:pointer">Cancel</button><button onClick="{{ dDraft.save }}" style="background:#5251fd;color:#fff;border:1px solid #5251fd;border-radius:6px;padding:5px 10px;font:500 12.5px 'DM Sans',sans-serif;cursor:pointer;opacity:{{ dDraft.op }}">Add document</button></div>
+</div></sc-if>
+</div>
+<div style="display:flex;align-items:center;gap:8px;font-size:13.5px;flex-wrap:wrap"><span style="color:#6b6b80;font-size:12.5px">Reuse {{ dn }}'s answers up to</span><select value="{{ reuse }}" onChange="{{ onReuse }}" style="border:1px solid #e4e0d9;border-radius:6px;padding:6px 8px;font:13px 'DM Sans',sans-serif;color:#20202c;background:#fff;outline-color:#5251fd;width:100%;min-width:0;box-sizing:border-box;width:auto"><sc-for list="{{ reuseOpts }}" as="o" hint-placeholder-count="4"><option value="{{ o.v }}">{{ o.label }}</option></sc-for></select><span style="font-size:12.5px;color:#6b6b80">old</span></div>
+</sc-if>
+
+<sc-if value="{{ b.s4 }}" hint-placeholder-val="{{ false }}">
+<div style="font-size:15px;font-weight:600">Review</div>
+<div style="border:1px solid #f0eeea;border-radius:8px;padding:10px 12px;display:grid;grid-template-columns:130px 1fr;gap:5px 12px;font-size:13px">
+<span style="color:#6b6b80">1. Setup</span><span>{{ setupSummary }}</span>
+<span style="color:#6b6b80">2. Eligibility</span><span>{{ rulesText }} · max staleness {{ staleness }} months · inputs only · consent required</span>
+<span style="color:#6b6b80">3. Your config</span><span>Private · {{ importLabel }} import · {{ rn }} KYB</span>
+<span style="color:#6b6b80">4. RFI catalog</span><span>{{ rfiSummary }}</span>
+</div>
+<div style="font-size:12.5px;color:#6b6b80">Sending counts as your acceptance. {{ dn }} reviews Setup, Eligibility and RFI catalog.</div>
+</sc-if>
+
+<div style="display:flex;gap:8px"><sc-if value="{{ b.canBack }}" hint-placeholder-val="{{ false }}"><button onClick="{{ bBack }}" style="background:#fff;color:#20202c;border:1px solid #e4e0d9;border-radius:6px;padding:6px 12px;font:500 13px 'DM Sans',sans-serif;cursor:pointer">Back</button></sc-if><span style="flex:1"></span>
+<sc-if value="{{ b.notLast }}" hint-placeholder-val="{{ true }}"><button onClick="{{ bNext }}" style="background:#5251fd;color:#fff;border:1px solid #5251fd;border-radius:6px;padding:6px 14px;font:500 13px 'DM Sans',sans-serif;cursor:pointer">Next</button></sc-if>
+<sc-if value="{{ b.last }}" hint-placeholder-val="{{ false }}"><button onClick="{{ sendAgreement }}" style="background:#5251fd;color:#fff;border:1px solid #5251fd;border-radius:6px;padding:6px 14px;font:500 13px 'DM Sans',sans-serif;cursor:pointer">{{ sendLabel }}</button></sc-if>
+</div>
+</div></div>
+</sc-if>
+
+
+
+<sc-if value="{{ r.agreement }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Recipient · Agreement detail">
+<div style="padding:14px 18px 10px;border-bottom:1px solid #f0eeea;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+<span style="font-size:16px;font-weight:500">{{ agName }} · v{{ agV }}</span><span style="white-space:nowrap;padding:1px 8px;border-radius:999px;font-size:12px;white-space:nowrap;background:{{ rChip.bg }};color:{{ rChip.fg }};border:1px solid {{ rChip.bd }}">{{ rChip.label }}</span><span style="flex:1"></span>
+<sc-if value="{{ agF.live }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ask.rPause }}" style="background:#fff;color:#20202c;border:1px solid #e4e0d9;border-radius:6px;padding:5px 12px;font:500 13px 'DM Sans',sans-serif;cursor:pointer">Pause</button></sc-if>
+<sc-if value="{{ agF.canTerminate }}" hint-placeholder-val="{{ false }}"><button onClick="{{ ask.rTerminate }}" style="background:#fff;color:#a10d0f;border:1px solid #fbcbcc;border-radius:6px;padding:5px 12px;font:500 13px 'DM Sans',sans-serif;cursor:pointer">Terminate</button></sc-if>
+</div>
+<div style="padding:12px 18px;display:flex;flex-direction:column;gap:10px">
+<sc-if value="{{ noAg }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;color:#6b6b80">No agreement yet.</div></sc-if>
+<sc-if value="{{ agF.review }}" hint-placeholder-val="{{ false }}"><div style="background:#f3f3ff;border:1px solid #d2d2fd;color:#2c2b9e;border-radius:8px;padding:9px 12px;font-size:13px">With {{ dn }} for review. {{ dn }} accepts or declines each section.</div></sc-if>
+<sc-if value="{{ agF.declined }}" hint-placeholder-val="{{ false }}"><div style="background:#fdeff0;border:1px solid #fbcbcc;color:#8e0c0e;border-radius:8px;padding:9px 12px;font-size:13px;display:flex;align-items:center;gap:10px"><span style="flex:1">{{ dn }} declined 1 of 3 sections. Edit and resend as v{{ nextV }}.</span><button onClick="{{ editResend }}" style="background:#5251fd;color:#fff;border:1px solid #5251fd;border-radius:6px;padding:4px 10px;font:500 12.5px 'DM Sans',sans-serif;cursor:pointer;white-space:nowrap">Edit and resend</button></div></sc-if>
+<sc-if value="{{ agF.live }}" hint-placeholder-val="{{ false }}"><div style="background:#f2f7ef;border:1px solid #c1dabe;color:#0e7c0e;border-radius:8px;padding:9px 12px;font-size:13px">Live. Tokens arrive as {{ dn }} approves matching cases.</div></sc-if>
+<sc-if value="{{ pausedMsg.rShow }}" hint-placeholder-val="{{ false }}"><div style="background:#fff7f0;border:1px solid #ffe1c7;color:#9a4a00;border-radius:8px;padding:9px 12px;font-size:13px;display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="flex:1;min-width:180px">{{ pausedMsg.r }}</span>
+<sc-if value="{{ pausedMsg.rCanRequest }}" hint-placeholder-val="{{ false }}"><button onClick="{{ requestResume.r }}" style="background:#5251fd;color:#fff;border:1px solid #5251fd;border-radius:6px;padding:4px 10px;font:500 12.5px 'DM Sans',sans-serif;cursor:pointer">Send resume request</button></sc-if>
+<sc-if value="{{ pausedMsg.rCanAccept }}" hint-placeholder-val="{{ false }}"><button onClick="{{ acceptResume }}" style="background:#5251fd;color:#fff;border:1px solid #5251fd;border-radius:6px;padding:4px 10px;font:500 12.5px 'DM Sans',sans-serif;cursor:pointer">Accept resume</button></sc-if>
+</div></sc-if>
+<sc-if value="{{ agF.terminated }}" hint-placeholder-val="{{ false }}"><div style="background:#fdeff0;border:1px solid #fbcbcc;color:#8e0c0e;border-radius:8px;padding:9px 12px;font-size:13px">Terminated. Tokens already imported stay. New RFIs are blocked.</div></sc-if>
+<sc-if value="{{ hasAg }}" hint-placeholder-val="{{ false }}">
+<sc-for list="{{ rSections }}" as="sec" hint-placeholder-count="3">
+<div style="border:1px solid #f0eeea;border-radius:8px;padding:9px 12px;display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:500"><span>{{ sec.title }}</span><span style="flex:1"></span><span style="white-space:nowrap;padding:1px 8px;border-radius:999px;font-size:12px;font-weight:500;background:{{ sec.chip.bg }};color:{{ sec.chip.fg }};border:1px solid {{ sec.chip.bd }}">{{ sec.chip.label }}</span></div>
+<div style="font-size:13px;color:#3e3e56">{{ sec.summary }}</div>
+<sc-if value="{{ sec.reason }}" hint-placeholder-val="{{ false }}"><div style="border-left:3px solid #a10d0f;padding:2px 10px;font-size:13px;color:#8e0c0e">"{{ declineText }}" · Priya S.</div></sc-if>
+</div>
+</sc-for>
+</sc-if>
+</div></div>
+</sc-if>
+
+<sc-if value="{{ r.imports }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Recipient · Imports">
+<div style="padding:14px 18px 10px;border-bottom:1px solid #f0eeea;font-size:17px;font-weight:500;white-space:nowrap">Imports</div>
+<div style="padding:12px 18px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:6px;font-size:13px"><span onClick="{{ setImpTab.ready }}" style="cursor:pointer;white-space:nowrap;border-radius:6px;padding:3px 8px;background:{{ impTab.ready }}">Ready to import <span style="color:#6b6b80">{{ readyCount }}</span></span><span onClick="{{ setImpTab.imported }}" style="cursor:pointer;white-space:nowrap;border-radius:6px;padding:3px 8px;background:{{ impTab.imported }}">Imported</span></div>
+<sc-if value="{{ impTab.isReady }}" hint-placeholder-val="{{ true }}">
+<sc-if value="{{ tok.ready }}" hint-placeholder-val="{{ false }}">
+<div style="border:1px solid #f0eeea;border-radius:8px;overflow:hidden">
+<div style="display:grid;grid-template-columns:minmax(0,1.3fr) .7fr 1fr 130px;gap:8px;padding:8px 12px;background:#f4f3f0;font-size:12.5px;color:#6b6b80"><span>Entity</span><span>Donor</span><span>Received</span><span></span></div>
+<div style="display:grid;grid-template-columns:minmax(0,1.3fr) .7fr 1fr 130px;gap:8px;padding:10px 12px;border-top:1px solid #f0eeea;font-size:13.5px;align-items:center"><span><span style="display:block">PT Maju Jaya</span><span style="font-size:12px;color:#6b6b80">Business</span></span><span>{{ dn }}</span><span>29 Sep 15:06</span><span style="display:flex;gap:6px;justify-content:flex-end"><button onClick="{{ togglePreview }}" style="background:#fff;color:#20202c;border:1px solid #e4e0d9;border-radius:6px;padding:3px 9px;font:500 12.5px 'DM Sans',sans-serif;cursor:pointer">Preview</button><button onClick="{{ importToken }}" style="background:#5251fd;color:#fff;border:1px solid #5251fd;border-radius:6px;padding:3px 10px;font:500 12.5px 'DM Sans',sans-serif;cursor:pointer">Import</button></span></div>
+<sc-if value="{{ preview }}" hint-placeholder-val="{{ false }}"><div style="border-top:1px solid #f0eeea;background:#f9f8f6;padding:10px 12px;display:grid;grid-template-columns:110px 1fr;gap:5px 12px;font-size:13px">
+<span style="color:#6b6b80">Legal name</span><span>PT Maju Jaya</span><span style="color:#6b6b80">Reg. number</span><span>AHU-0098765</span><span style="color:#6b6b80">Address</span><span>Jl. Thamrin 8, Jakarta</span><span style="color:#6b6b80">UBOs</span><span>2 people</span><span style="color:#6b6b80">Directors</span><span>1 person</span><span style="color:#6b6b80">Will run</span><span style="color:#5251fd">{{ rn }} KYB</span></div>
+<div style="background:#f9f8f6;padding:0 12px 10px;font-size:12px;color:#6b6b80">Inputs only. {{ dn }}'s results and verdict are never shared.</div></sc-if>
+</div>
+</sc-if>
+<sc-if value="{{ tok.notReady }}" hint-placeholder-val="{{ true }}"><div style="border:1px dashed #e4e0d9;border-radius:8px;padding:18px;text-align:center;font-size:13px;color:#6b6b80">Nothing waiting. Tokens from manual-import agreements land here.</div></sc-if>
+</sc-if>
+<sc-if value="{{ impTab.isImported }}" hint-placeholder-val="{{ false }}">
+<div style="border:1px solid #f0eeea;border-radius:8px;overflow:hidden">
+<div style="display:grid;grid-template-columns:minmax(0,1.3fr) .7fr 1fr 1fr;gap:8px;padding:8px 12px;background:#f4f3f0;font-size:12.5px;color:#6b6b80"><span>Entity</span><span>Donor</span><span>Imported</span><span>Template</span></div>
+<sc-if value="{{ tok.imported }}" hint-placeholder-val="{{ false }}"><div onClick="{{ go.rProfile }}" style="display:grid;grid-template-columns:minmax(0,1.3fr) .7fr 1fr 1fr;gap:8px;padding:10px 12px;border-top:1px solid #f0eeea;font-size:13.5px;align-items:center;cursor:pointer" style-hover="background:#f9f8f6"><span><span style="display:block;color:#5251fd">PT Maju Jaya</span><span style="font-size:12px;color:#6b6b80">Open profile</span></span><span>{{ dn }}</span><span>29 Sep 15:07</span><span>{{ rn }} KYB</span></div></sc-if>
+</div>
+</sc-if>
+</div></div>
+</sc-if>
+
+<sc-if value="{{ r.profiles }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Recipient · Business Profiles">
+<div style="padding:14px 18px 10px;border-bottom:1px solid #f0eeea;font-size:17px;font-weight:500;white-space:nowrap">Business Profiles</div>
+<div style="padding:12px 18px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:6px;font-size:13px;flex-wrap:wrap"><span style="border:1px solid #e4e0d9;border-radius:6px;padding:3px 9px">Source: All ▾</span><span style="border:1px solid #e4e0d9;border-radius:6px;padding:3px 9px">Donor ▾</span><span style="border:1px solid #e4e0d9;border-radius:6px;padding:3px 9px">Agreement ▾</span></div>
+<div style="border:1px solid #f0eeea;border-radius:8px;overflow:hidden">
+<div style="display:grid;grid-template-columns:minmax(0,2fr) .7fr 1fr;gap:8px;padding:8px 12px;background:#f4f3f0;font-size:12.5px;color:#6b6b80"><span>Business</span><span>Donor</span><span>Result</span></div>
+<sc-if value="{{ tok.imported }}" hint-placeholder-val="{{ false }}"><div onClick="{{ go.rProfile }}" style="display:grid;grid-template-columns:minmax(0,2fr) .7fr 1fr;gap:8px;padding:10px 12px;border-top:1px solid #f0eeea;font-size:13.5px;align-items:center;cursor:pointer" style-hover="background:#f9f8f6"><span style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">PT Maju Jaya<span style="font-size:11.5px;color:#5251fd;border:1px dashed #5251fd;border-radius:4px;padding:0 5px">via token sharing</span></span><span>{{ dn }}</span><span style="color:#f57200;font-size:12.5px;white-space:nowrap">◉ In Review</span></div></sc-if>
+</div>
+</div></div>
+</sc-if>
+
+<sc-if value="{{ r.profile }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Recipient · Profile">
+<div style="padding:10px 18px;border-bottom:1px solid #f0eeea;display:flex;flex-direction:column;gap:4px">
+<div style="font-size:12.5px;color:#6b6b80"><a onClick="{{ go.rProfiles }}" style="cursor:pointer;color:#6b6b80">Business Profiles</a> › PT Maju Jaya</div>
+<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="font-size:17px;font-weight:500;white-space:nowrap">PT Maju Jaya</span><span style="font-size:11.5px;color:#5251fd;border:1px dashed #5251fd;border-radius:4px;padding:0 5px">via token sharing</span><span style="flex:1"></span><span style="white-space:nowrap;padding:1px 8px;border-radius:999px;font-size:12px;background:#fff7f0;color:#de6800;border:1px solid #ffe1c7">◉ Review</span><button onClick="{{ openRfi }}" style="background:#fff;color:#5251fd;border:1px solid #d2d2fd;border-radius:6px;padding:4px 10px;font:500 12.5px 'DM Sans',sans-serif;cursor:pointer">Request Info</button></div>
+</div>
+<div style="padding:12px 18px;display:flex;flex-direction:column;gap:12px">
+<sc-if value="{{ tok.notImported }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;color:#6b6b80">Import the token first to create this profile.</div></sc-if>
+<div style="border:1px solid #d2d2fd;background:#f7f7ff;border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:8px">
+<div style="font-size:13.5px;font-weight:600;color:#010165">Token sharing</div>
+<div style="display:grid;grid-template-columns:90px 1fr 90px 1fr;gap:5px 10px;font-size:12.5px"><span style="color:#6b6b80">Donor</span><span>{{ dn }}</span><span style="color:#6b6b80">Agreement</span><span>Indonesia KYB, v{{ agV }}</span><span style="color:#6b6b80">Token</span><span style="color:#5251fd">tok_51d9f2</span><span style="color:#6b6b80">Shared</span><span>29 Sep, 15:06</span><span style="color:#6b6b80">Imported</span><span>29 Sep, 15:07</span><span style="color:#6b6b80">Template</span><span>{{ rn }} KYB</span><span style="color:#6b6b80">Last RFI</span><span>{{ lastRfi }}</span></div>
+</div>
+<div style="display:flex;gap:6px;font-size:13px"><span onClick="{{ setProfTab.info }}" style="cursor:pointer;white-space:nowrap;border-radius:6px;padding:3px 8px;background:{{ profTab.info }}">Profile Info</span><span onClick="{{ setProfTab.rfis }}" style="cursor:pointer;white-space:nowrap;border-radius:6px;padding:3px 8px;background:{{ profTab.rfis }}">RFIs <span style="color:#6b6b80">{{ rfiCount }}</span></span><span onClick="{{ setProfTab.timeline }}" style="cursor:pointer;white-space:nowrap;border-radius:6px;padding:3px 8px;background:{{ profTab.timeline }}">Timeline</span></div>
+<sc-if value="{{ profTab.isInfo }}" hint-placeholder-val="{{ true }}">
+<div style="border:1px solid #f0eeea;border-radius:8px;overflow:hidden;font-size:13px">
+<div style="background:#f4f3f0;padding:8px 12px;font-weight:500">Profile Info</div>
+<div style="display:grid;grid-template-columns:150px 1fr">
+<span style="padding:8px 12px;border-top:1px solid #f0eeea;color:#6b6b80;display:flex;gap:6px;align-items:center">Name<span style="font-size:11px;color:#5251fd;border:1px dashed #5251fd;border-radius:4px;padding:0 4px">From {{ dn }}</span></span><span style="padding:8px 12px;border-top:1px solid #f0eeea;border-left:1px solid #f0eeea">PT Maju Jaya</span>
+<span style="padding:8px 12px;border-top:1px solid #f0eeea;color:#6b6b80;display:flex;gap:6px;align-items:center">Reg. number<span style="font-size:11px;color:#5251fd;border:1px dashed #5251fd;border-radius:4px;padding:0 4px">From {{ dn }}</span></span><span style="padding:8px 12px;border-top:1px solid #f0eeea;border-left:1px solid #f0eeea">AHU-0098765</span>
+<span style="padding:8px 12px;border-top:1px solid #f0eeea;color:#6b6b80;display:flex;gap:6px;align-items:center">Address<span style="font-size:11px;color:#5251fd;border:1px dashed #5251fd;border-radius:4px;padding:0 4px">From {{ dn }}</span></span><span style="padding:8px 12px;border-top:1px solid #f0eeea;border-left:1px solid #f0eeea">Jl. Thamrin 8, Jakarta</span>
+<span style="padding:8px 12px;border-top:1px solid #f0eeea;color:#6b6b80">Country</span><span style="padding:8px 12px;border-top:1px solid #f0eeea;border-left:1px solid #f0eeea">Indonesia</span>
+<span style="padding:8px 12px;border-top:1px solid #f0eeea;color:#6b6b80">Website</span><span style="padding:8px 12px;border-top:1px solid #f0eeea;border-left:1px solid #f0eeea">majujaya.co.id</span>
+</div></div>
+</sc-if>
+<sc-if value="{{ profTab.isRfis }}" hint-placeholder-val="{{ false }}">
+<div style="border:1px solid #f0eeea;border-radius:8px;overflow:hidden">
+<sc-if value="{{ rfiF.none }}" hint-placeholder-val="{{ true }}"><div style="padding:14px;font-size:13px;color:#6b6b80">No RFIs yet. Use Request Info to ask {{ dn }}.</div></sc-if>
+<sc-for list="{{ rRfiItems }}" as="it" hint-placeholder-count="0"><div style="padding:10px 12px;border-bottom:1px solid #f0eeea;display:flex;align-items:center;gap:8px;font-size:13.5px;flex-wrap:wrap"><span style="flex:1;min-width:140px"><span style="display:block">{{ it.name }}</span><span style="font-size:12px;color:#6b6b80">{{ it.note }}</span></span><span style="white-space:nowrap;padding:1px 8px;border-radius:999px;font-size:12px;white-space:nowrap;background:{{ it.bg }};color:{{ it.fg }};border:1px solid {{ it.bd }}">{{ it.label }}</span></div></sc-for>
+<sc-if value="{{ rfiF.blocked }}" hint-placeholder-val="{{ false }}"><div style="padding:10px 12px;background:#fdeff0;font-size:13px;color:#8e0c0e">{{ rfiF.blockedMsg }}</div></sc-if>
+</div>
+</sc-if>
+<sc-if value="{{ profTab.isTimeline }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:10px;border-left:2px solid #e4e0d9;padding-left:14px;margin-left:4px">
+<sc-for list="{{ timeline }}" as="ev" hint-placeholder-count="2"><div style="font-size:13px"><span style="color:#6b6b80">{{ ev.t }}</span> · {{ ev.x }}</div></sc-for>
+</div>
+</sc-if>
+</div></div>
+</sc-if>
+
+</div>
+
+<sc-if value="{{ overlay.addDonor }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;background:rgba(15,15,22,.35);display:flex;align-items:center;justify-content:center;padding:20px;z-index:10">
+<div style="background:#fff;border-radius:12px;box-shadow:0 12px 40px rgba(15,15,22,.18);width:100%;max-width:420px;padding:18px;display:flex;flex-direction:column;gap:12px">
+<div style="font-size:16px;font-weight:600">Add a Donor</div>
+<div style="font-size:13px;color:#6b6b80">Enter the admin emails of the company you want to receive data from. Up to 3.</div>
+<div style="border:1px solid #5251fd;border-radius:8px;padding:7px 10px;font-size:13.5px">admin@donor.com</div>
+<div style="font-size:12.5px;color:#5251fd">+ Add another email</div>
+<div style="display:flex;gap:8px;justify-content:flex-end"><button onClick="{{ closeAddDonor }}" style="background:#fff;color:#20202c;border:1px solid #e4e0d9;border-radius:6px;padding:6px 12px;font:500 13px 'DM Sans',sans-serif;cursor:pointer">Cancel</button><button onClick="{{ sendInvite }}" style="background:#5251fd;color:#fff;border:1px solid #5251fd;border-radius:6px;padding:6px 14px;font:500 13px 'DM Sans',sans-serif;cursor:pointer">Send invite</button></div>
+</div></div>
+</sc-if>
+
+<sc-if value="{{ overlay.rfi }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;background:rgba(15,15,22,.35);display:flex;align-items:center;justify-content:center;padding:20px;z-index:10">
+<div style="background:#fff;border-radius:12px;box-shadow:0 12px 40px rgba(15,15,22,.18);width:100%;max-width:420px;padding:18px;display:flex;flex-direction:column;gap:10px">
+<div style="font-size:16px;font-weight:600">Request information</div>
+<div style="font-size:13px;color:#6b6b80">From {{ dn }}'s RFI catalog for Indonesia KYB.</div>
+<sc-for list="{{ rfiChoices }}" as="c" hint-placeholder-count="4"><div onClick="{{ c.toggle }}" style="display:flex;align-items:center;gap:8px;font-size:13.5px;cursor:pointer;padding:3px 0"><span style="width:15px;height:15px;border-radius:4px;color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center;background:{{ c.bg }};border:1px solid {{ c.bd }}">✓</span>{{ c.name }}<span style="font-size:12px;color:#6b6b80">· {{ c.type }}</span></div></sc-for>
+<div style="background:#f3f3ff;border:1px solid #d2d2fd;color:#2c2b9e;border-radius:8px;padding:8px 10px;font-size:12.5px">Answered from {{ dn }}'s data if on file within {{ reuse }} months. Otherwise {{ dn }}'s merchant is asked, under {{ dn }}'s name.</div>
+<div style="display:flex;gap:8px;justify-content:flex-end"><button onClick="{{ closeRfi }}" style="background:#fff;color:#20202c;border:1px solid #e4e0d9;border-radius:6px;padding:6px 12px;font:500 13px 'DM Sans',sans-serif;cursor:pointer">Cancel</button><button onClick="{{ sendRfi }}" style="background:#5251fd;color:#fff;border:1px solid #5251fd;border-radius:6px;padding:6px 14px;font:500 13px 'DM Sans',sans-serif;cursor:pointer">{{ rfiSendLabel }}</button></div>
+</div></div>
+</sc-if>
+
+<sc-if value="{{ overlay.rConfirm }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;background:rgba(15,15,22,.35);display:flex;align-items:center;justify-content:center;padding:20px;z-index:10">
+<div style="background:#fff;border-radius:12px;box-shadow:0 12px 40px rgba(15,15,22,.18);width:100%;max-width:420px;padding:18px;display:flex;flex-direction:column;gap:10px">
+<div style="font-size:16px;font-weight:600">{{ conf.title }}</div>
+<sc-for list="{{ conf.lines }}" as="ln" hint-placeholder-count="2"><div style="font-size:13.5px">{{ ln }}</div></sc-for>
+<div style="display:flex;gap:8px;justify-content:flex-end;margin-top:4px"><button onClick="{{ closeConfirm }}" style="background:#fff;color:#20202c;border:1px solid #e4e0d9;border-radius:6px;padding:6px 12px;font:500 13px 'DM Sans',sans-serif;cursor:pointer">Cancel</button><button onClick="{{ doConfirm }}" style="color:#fff;border:0;border-radius:6px;padding:6px 12px;font:500 13px 'DM Sans',sans-serif;cursor:pointer;background:{{ conf.bg }}">{{ conf.cta }}</button></div>
+</div></div>
+</sc-if>
+
+<sc-if value="{{ toast.r }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:50%;bottom:16px;transform:translateX(-50%);background:#20202c;color:#fff;padding:8px 14px;border-radius:8px;font-size:13px;z-index:20;box-shadow:0 6px 20px rgba(0,0,0,.2);max-width:90%;text-align:center">{{ toast.r }}</div></sc-if>
+</div>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;donorName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Donor&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Demo&quot;},&quot;recipientName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Recipient&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Demo&quot;},&quot;showPresenter&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Demo&quot;},&quot;view&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Both&quot;,&quot;Donor only&quot;,&quot;Recipient only&quot;],&quot;default&quot;:&quot;Both&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Demo&quot;}}">
+const INIT = {
+  step: 0, dScreen: 'd_cases', rScreen: 'r_donors', contract: 'none', emailDismissed: false, addDonorOpen: false,
+  ag: 'none', agV: 0, staleness: 12, bStep: 0, importMode: 'manual', rev: { setup: null, elig: null, rfi: null },
+  declineKey: null, declineText: 'Max staleness should be 6 months, not 12. We re-verify every 6 months.',
+  caseStatus: 'review', token: null, impTab: 'ready', preview: false, rfiOpen: false,
+  rfiSel: { bank: true, sof: true, poa: false, vol: false }, reuse: 6, catalog: null, addQ: false, addD: false, qDraft: { name: '', ans: 'Text', req: true }, dDraft: { doc: '', title: '', req: true }, rfi: null, revoked: false, profTab: 'info',
+  rules: [{ field: 'Country of incorporation', op: 'is', value: 'Indonesia', join: 'AND' }, { field: 'Industry', op: 'is not', value: 'Crypto', join: 'AND' }],
+  agSuffix: 'Indonesia KYB', entity: 'Business Profiles', startDate: '2026-09-29', endDate: '2026-12-31', noEnd: false, tipStart: false,
+  confirm: null, pausedBy: null, resumeReq: null, pauses: 0, resumes: 0, rDonTab: 'contracts', dRecTab: 'contracts', dToast: '', rToast: ''
+};
+const ANS_TYPES = ['Text', 'Number', 'Date', 'Email', 'Single choice', 'Multiple choice', 'File'];
+const DOC_TYPES = ['Articles of association', 'Bank statement', 'Business licence', 'Business registration', 'Certificate of incorporation', 'Financial statement', 'Proof of address', 'Shareholder register', 'Tax certificate', 'Utility bill', 'Other'];
+const CAT = [
+  { k: 'bank', name: 'Bank statement', type: 'Document', src: 'donor', req: true },
+  { k: 'sof', name: 'Source of funds', type: 'Question', src: 'merchant', ans: 'Single choice', req: true },
+  { k: 'poa', name: 'Proof of address', type: 'Document', src: 'donor', req: true },
+  { k: 'vol', name: 'Expected monthly volume', type: 'Question', src: 'merchant', ans: 'Number', req: false }
+];
+const C = {
+  G: { bg: '#f2f7ef', fg: '#0f8a0f', bd: '#c1dabe' }, O: { bg: '#fff7f0', fg: '#de6800', bd: '#ffe1c7' },
+  R: { bg: '#fdeff0', fg: '#a10d0f', bd: '#fbcbcc' }, B: { bg: '#e7e7fd', fg: '#3a39c9', bd: '#d2d2fd' },
+  K: { bg: '#f4f3f0', fg: '#6b6b80', bd: '#e4e0d9' }
+};
+const ch = (c, label) => ({ ...C[c], label });
+const DEMOS = {
+  layout: [['go', 6], ['set', { dScreen: 'd_recipients', dRecTab: 'contracts', rScreen: 'r_donors', rDonTab: 'contracts', barOverride: { title: 'Donor and Recipient workspaces', hint: 'Donor on the left, Recipient on the right. The side marked Your move acts in each step.' } }]],
+  1: [['go', 0], ['set', { addDonorOpen: true }, ['Add Donor', 'r']], ['next', 0, ['Send invite', 'r']], ['set', { dScreen: 'd_invite', emailDismissed: true }, ['Review invite', 'd']], ['next', 0, ['Accept contract', 'd']]],
+  2: [['go', 2], ['set', { rScreen: 'r_builder', bStep: 0 }, ['New agreement', 'r']], ['set', { bStep: 1 }, ['Next', 'r']], ['set', { bStep: 2 }, ['Next', 'r']], ['set', { bStep: 3 }, ['Next', 'r']], ['set', { bStep: 4 }, ['Next', 'r']], ['next', 0, ['Send', 'r']]],
+  3: [['go', 3], ['set', { rev: { setup: 'accept', elig: null, rfi: null } }, ['=Accept', 'd', 0]], ['set', { declineKey: 'elig' }, ['=Decline', 'd', 0]], ['set', { declineKey: null, rev: { setup: 'accept', elig: 'decline', rfi: null } }, ['Decline section', 'd']], ['set', { rev: { setup: 'accept', elig: 'decline', rfi: 'accept' } }, ['=Accept', 'd', 0]], ['next', 0, ['Submit review', 'd']], ['set', { rScreen: 'r_builder', bStep: 1 }, ['Edit and resend', 'r']], ['set', { bStep: 4, staleness: 6 }, ['Next', 'r']], ['next', 0, ['Send', 'r']], ['set', { rev: { setup: 'accept', elig: 'accept', rfi: 'accept' } }, ['=Accept', 'd', 0]], ['next', 0, ['Submit review', 'd']]],
+  4: [['go', 6], ['next', 0, ['Approve', 'd']], ['next', 0, ['Skip the hold', 'd']], ['set', { preview: true }, ['Preview', 'r']], ['next', 0, ['=Import', 'r']], ['next', 0, ['PT Maju Jaya', 'r']]],
+  5: [['go', 10], ['set', { rfiOpen: true }, ['Request Info', 'r']], ['next', 0, ['Send', 'r', -1]], ['next', 0, ['Merchant replies', 'd']]],
+  6: [['go', 12], ['set', { confirm: { side: 'r', kind: 'pause' } }, ['=Pause', 'r', 0]], ['next', 0, ['=Pause', 'r', -1]], ['set', { resumeReq: 'recipient' }, ['Send resume request', 'r']], ['next', 0, ['Accept resume', 'd']], ['set', { confirm: { side: 'd', kind: 'terminate' } }, ['=Terminate', 'd', 0]], ['next', 0, ['=Terminate', 'd', -1]]]
+};
+const CAPS = {
+  1: ['Recipient opens My Donors', 'Recipient clicks Add Donor', "Recipient enters the Donor's admin email and sends the invite", 'Donor gets the invite email and opens it', 'Donor accepts. The contract is now Active on both sides. No data is shared yet.'],
+  2: ['The contract is Active. Recipient opens My Donors', 'Recipient clicks New agreement', 'Setup done. Next: Eligibility, which cases qualify', 'Next: Your config. Templates and webhook, private to the Recipient', 'Next: RFI catalog. What can be requested later', 'Next: Review all sections', 'Recipient sends the agreement to the Donor for review'],
+  3: ['Donor opens the agreement sent for review', 'Donor accepts Setup', 'Donor declines Eligibility', 'Donor gives a reason: max staleness should be 6 months', 'Donor accepts RFI catalog', 'Donor submits. Recipient sees it as Declined, with the reason', 'Recipient clicks Edit and resend', 'Recipient changes max staleness to 6 months', 'Recipient resends it as v2', 'Donor accepts every section of v2', 'Donor submits. The agreement is Live'],
+  4: ['The agreement is Live. Donor has a case in review', 'Donor approves the case. It matches the agreement, so a token is queued', 'The token holds for 30 minutes, then exports to the Recipient', 'Recipient previews the token. It holds inputs only', 'Recipient imports the token', "Recipient opens the new profile. The Recipient's own templates run on the inputs"],
+  5: ['Recipient is on the imported profile', 'Recipient clicks Request Info', "Recipient sends two requests from the RFI catalog. One is answered from the Donor's data", "The merchant answers the other, under the Donor's name"],
+  6: ['The agreement is Live', 'Recipient clicks Pause', 'Recipient confirms. New cases stop. Tokens and RFIs keep working', 'Recipient asks to resume', 'Donor accepts. Sharing is Live again', 'Donor clicks Terminate', 'Donor confirms. Termination is final']
+};
+const demoFind = ([label, side, n = 0]) => {
+  const exact = label[0] === '=', want = (exact ? label.slice(1) : label).toLowerCase();
+  const inBar = el => { for (let p = el, i = 0; p && i < 6; p = p.parentElement, i++) if (getComputedStyle(p).backgroundColor === 'rgb(1, 1, 101)') return true; return false; };
+  let c = [...document.querySelectorAll('button,a,span,div')].filter(el => {
+    const t = (el.textContent || '').trim().replace(/\s+/g, ' ').toLowerCase();
+    if (exact ? t !== want : !t.startsWith(want)) return false;
+    const r = el.getBoundingClientRect(); if (!r.width || !r.height) return false;
+    if (side && ((r.left + r.width / 2 < innerWidth / 2) !== (side === 'd'))) return false;
+    return getComputedStyle(el).cursor === 'pointer' && !inBar(el);
+  });
+  c = c.filter(el => !c.some(o => o !== el && el.contains(o)));
+  return c.length ? c[n < 0 ? c.length + n : Math.min(n, c.length - 1)] : null;
+};
+
+class Component extends DCLogic {
+  state = { ...INIT };
+  names() { return { dn: this.props.donorName || 'Donor', rn: this.props.recipientName || 'Recipient' }; }
+
+  T() {
+    const { dn, rn } = this.names();
+    return {
+      sendInvite: () => ({ contract: 'pending', addDonorOpen: false, emailDismissed: false, rToast: 'Invite sent to admin@donor.com' }),
+      acceptContract: () => ({ contract: 'active', emailDismissed: true, dScreen: 'd_recipients', dRecTab: 'contracts', dToast: 'Contract accepted. No data is shared yet.' }),
+      declineContract: () => ({ contract: 'declined', emailDismissed: true, dScreen: 'd_recipients', dRecTab: 'contracts', rDonTab: 'contracts' }),
+      sendAgreement: s => ({ ag: 'review', agV: (s.agV || 0) + 1, rev: { setup: null, elig: null, rfi: null }, rScreen: 'r_agreement', rToast: `Sent to ${dn} for review` }),
+      submitReview: s => {
+        const anyDecl = Object.values(s.rev).includes('decline');
+        return anyDecl ? { ag: 'declined', dToast: `Sent back to ${rn} with your reason` } : { ag: 'live', dToast: 'Agreement approved. Sharing is live.' };
+      },
+      approveCase: s => ({ caseStatus: 'approved', token: s.ag === 'live' ? 'queued' : s.token, dToast: s.ag === 'live' ? 'Case approved. Token queued for export.' : 'Case approved.' }),
+      fastForward: s => ({ token: s.importMode === 'auto' ? 'imported' : 'ready', dToast: 'Token exported', rToast: s.importMode === 'auto' ? 'Token imported automatically' : `New token from ${dn} ready to import` }),
+      importToken: () => ({ token: 'imported', impTab: 'imported', preview: false, rToast: `Imported. Profile created, ${rn} KYB is running.` }),
+      sendRfi: () => ({ rfi: 'sent', rfiOpen: false, profTab: 'rfis', rToast: 'Requests sent' }),
+      merchantReply: () => ({ rfi: 'answered', dToast: `Answer delivered to ${rn}` }),
+      pause: (s, side) => ({ ag: 'paused', pausedBy: side, resumeReq: null, confirm: null, pauses: s.pauses + 1 }),
+      requestResume: (s, side) => ({ resumeReq: side }),
+      acceptResume: s => ({ ag: 'live', pausedBy: null, resumeReq: null, resumes: s.resumes + 1 }),
+      terminate: () => ({ ag: 'terminated', rules: [{ field: 'Country of incorporation', op: 'is', value: 'Indonesia', join: 'AND' }, { field: 'Industry', op: 'is not', value: 'Crypto', join: 'AND' }],
+  agSuffix: 'Indonesia KYB', entity: 'Business Profiles', startDate: '2026-09-29', endDate: '2026-12-31', noEnd: false, tipStart: false,
+  confirm: null, pausedBy: null, resumeReq: null })
+    };
+  }
+
+  steps() {
+    const { dn, rn } = this.names();
+    const T = this.T();
+    const ap = (s, p) => ({ ...s, ...p });
+    return [
+      { side: 'r', title: 'Invite a Donor', hint: `In ${rn}, open My Donors, then + Add Donor. Enter ${dn}'s admin email and send.`, d: 'd_cases', r: 'r_donors', act: s => T.sendInvite(s), done: s => s.contract !== 'none' },
+      { side: 'd', title: 'Accept the contract', hint: `${dn}'s admin gets the invite email. Review invite, then Accept contract. No data moves yet.`, d: 'd_cases', r: 'r_donors', act: s => T.acceptContract(s), done: s => s.contract === 'active' },
+      { side: 'r', title: 'Write the agreement', hint: `In My Donors, click New agreement on the ${dn} contract. Step through Setup, Eligibility, Your config, RFI catalog, then Send.`, d: 'd_recipients', r: 'r_donors', act: s => T.sendAgreement(s), done: s => s.ag !== 'none' },
+      { side: 'd', title: 'Review section by section', hint: `${dn} accepts Setup and RFI catalog, declines Eligibility with a reason, then submits.`, d: 'd_agreement', r: 'r_agreement', act: s => { const s2 = ap(s, { rev: { setup: 'accept', elig: 'decline', rfi: 'accept' } }); return { ...s2, ...T.submitReview(s2) }; }, done: s => s.ag === 'declined' || s.agV > 1 || ['live', 'paused', 'terminated'].includes(s.ag) },
+      { side: 'r', title: 'Fix and resend', hint: `${rn} reads the reason, clicks Edit and resend, sets max staleness to 6 months and resends as v2.`, d: 'd_agreements', r: 'r_agreement', act: s => { const s2 = ap(s, { staleness: 6 }); return { ...s2, ...T.sendAgreement(s2) }; }, done: s => s.agV >= 2 },
+      { side: 'd', title: 'Approve v2', hint: `${dn} reviews all three sections again, accepts them and submits. The agreement goes live.`, d: 'd_agreement', r: 'r_agreement', act: s => { const s2 = ap(s, { rev: { setup: 'accept', elig: 'accept', rfi: 'accept' } }); return { ...s2, ...T.submitReview(s2) }; }, done: s => ['live', 'paused', 'terminated'].includes(s.ag) },
+      { side: 'd', title: 'Approve a case', hint: `In Case > Business, ${dn} approves PT Maju Jaya. It matches the live agreement, so a token is queued.`, d: 'd_cases', r: 'r_agreements', act: s => T.approveCase(s), done: s => s.caseStatus === 'approved' },
+      { side: 'd', title: 'Token exports after 30 minutes', hint: `Exports shows the token in its 30-minute hold. Skip the hold to export it to ${rn}.`, d: 'd_exports', r: 'r_imports', act: s => T.fastForward(s), done: s => s.token === 'ready' || s.token === 'imported' },
+      { side: 'r', title: 'Import the token', hint: `Import mode is Manual, so the token waits in Ready to import. Preview it, then Import.`, d: 'd_exports', r: 'r_imports', act: s => T.importToken(s), done: s => s.token === 'imported' },
+      { side: 'r', title: 'Open the imported profile', hint: `In Imported, open PT Maju Jaya. It carries a via token sharing badge, a Token sharing panel and From ${dn} tags.`, d: 'd_exports', r: 'r_imports', rs: { impTab: 'imported' }, act: () => ({ rScreen: 'r_profile', profTab: 'info' }), done: s => s.rScreen === 'r_profile' && s.token === 'imported' },
+      { side: 'r', title: 'Request information', hint: `Click Request Info and send Bank statement and Source of funds. ${dn}'s data answers one. The merchant gets the other.`, d: 'd_exports', r: 'r_profile', act: s => T.sendRfi(s), done: s => !!s.rfi },
+      { side: 'd', title: 'Merchant answers', hint: `${dn} opens the export and sees the RFI. The merchant replies under ${dn}'s name and the answer reaches ${rn}.`, d: 'd_export', r: 'r_profile', rs: { profTab: 'rfis' }, act: s => T.merchantReply(s), done: s => s.rfi === 'answered' },
+      { side: 'r', title: 'Pause sharing', hint: `${rn} pauses the agreement. New cases stop. Tokens and RFIs keep working.`, d: 'd_agreements', r: 'r_agreement', act: s => T.pause(s, 'recipient'), done: s => s.pauses > 0 },
+      { side: 'r', title: 'Resume needs both sides', hint: `${rn} sends a resume request. ${dn} accepts it on the agreement page.`, d: 'd_agreement', r: 'r_agreement', act: s => { const s2 = ap(s, T.requestResume(s, 'recipient')); return { ...s2, ...T.acceptResume(s2) }; }, done: s => s.resumes > 0 },
+      { side: 'd', title: 'Terminate', hint: `Either side can terminate. It is final, and RFIs on shared tokens are revoked.`, d: 'd_agreement', r: 'r_agreement', act: s => T.terminate(s), done: s => s.ag === 'terminated' },
+      { side: 'e', title: 'Flow complete', hint: 'That is the full Phase 1 flow. Reset to run it again, or click through freely.', d: 'd_agreement', r: 'r_agreement', act: () => ({}), done: () => false }
+    ];
+  }
+
+  screensFor(i) {
+    const st = this.steps()[i];
+    const tr = {};
+    if (st.d === 'd_agreements') Object.assign(tr, { dScreen: 'd_recipients', dRecTab: 'agreements' });
+    if (st.r === 'r_agreements') Object.assign(tr, { rScreen: 'r_donors', rDonTab: 'agreements' });
+    return { dScreen: st.d, rScreen: st.r, ...tr, ...(st.rs || {}), confirm: null, rfiOpen: false, addDonorOpen: false, declineKey: null, dToast: '', rToast: '', bStep: 0 };
+  }
+  stateAt(i) {
+    const steps = this.steps();
+    let s = { ...INIT };
+    for (let k = 0; k < i; k++) s = { ...s, ...steps[k].act(s) };
+    return { ...s, ...this.screensFor(i), step: i };
+  }
+  goStep = i => this.setState(this.stateAt(i));
+  next = () => {
+    const i = this.state.step, steps = this.steps();
+    if (i >= steps.length - 1) return;
+    const s = { ...this.state, ...steps[i].act(this.state) };
+    this.setState({ ...s, ...this.screensFor(i + 1), step: i + 1 });
+  };
+  prev = () => this.goStep(Math.max(0, this.state.step - 1));
+  reset = () => this.setState({ ...INIT });
+
+  componentDidMount() {
+    const q = new URLSearchParams(location.search), ops = DEMOS[q.get('demo')];
+    if (!ops) return;
+    const play = q.get('play') === '1';
+    const apply = ([op, a]) => { if (op === 'go') this.goStep(a); else if (op === 'set') this.setState(a); else this.next(); };
+    if (!play) { if (q.get('demo') === 'layout') { ops.forEach(apply); return; } return apply(ops[0]); }
+    const cur = document.createElement('div');
+    cur.innerHTML = '<svg width="26" height="26" viewBox="0 0 24 24"><path d="M5 3l14 8-6.5 1.5L9 19z" fill="#0F0F16" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg>';
+    Object.assign(cur.style, { position: 'fixed', left: '50%', top: '60%', zIndex: 9999, pointerEvents: 'none', transition: 'left .9s cubic-bezier(.22,1,.36,1), top .9s cubic-bezier(.22,1,.36,1)', filter: 'drop-shadow(0 2px 3px rgba(0,0,0,.3))' });
+    document.body.appendChild(cur);
+    const ripple = (x, y) => {
+      const r = document.createElement('div');
+      Object.assign(r.style, { position: 'fixed', left: x - 18 + 'px', top: y - 18 + 'px', width: '36px', height: '36px', borderRadius: '50%', border: '3px solid #5251FD', zIndex: 9998, pointerEvents: 'none' });
+      document.body.appendChild(r);
+      r.animate([{ transform: 'scale(.3)', opacity: 1 }, { transform: 'scale(1.4)', opacity: 0 }], { duration: 500, easing: 'ease-out' }).onfinish = () => r.remove();
+    };
+    const cap = document.createElement('div');
+    Object.assign(cap.style, { position: 'fixed', left: '50%', bottom: '64px', transform: 'translateX(-50%)', zIndex: 9997, pointerEvents: 'none', maxWidth: '1100px', background: '#010165', color: '#FDFDFC', font: "500 24px/1.35 'DM Sans',sans-serif", padding: '14px 24px', borderRadius: '12px', boxShadow: '0 10px 30px rgba(15,15,22,.3)', display: 'flex', gap: '16px', alignItems: 'baseline', textAlign: 'left' });
+    document.body.appendChild(cap);
+    const caps = CAPS[q.get('demo')] || [];
+    const say = k => { cap.innerHTML = '<span style="flex:none;font-size:17px;opacity:.75">' + (k + 1) + '/' + ops.length + '</span><span></span>'; cap.lastChild.textContent = caps[k] || ''; cap.animate([{ opacity: 0, transform: 'translate(-50%,8px)' }, { opacity: 1, transform: 'translate(-50%,0)' }], { duration: 260, easing: 'cubic-bezier(.22,1,.36,1)' }); };
+    this._cap = cap;
+    this._mult = q.get('slow') === '1' ? 1.8 : 1; this._paused = false;
+    const T = (fn, ms) => { this._demo = setTimeout(() => (this._paused ? (this._held = fn) : fn()), ms * this._mult); };
+    this._msg = e => {
+      const d = e.data || {}; if (d.type !== 'demo') return;
+      if ('speed' in d) this._mult = d.speed;
+      if (d.cmd === 'pause') this._paused = true;
+      if (d.cmd === 'play') { this._paused = false; const fn = this._held; this._held = null; fn && fn(); }
+      if (d.cmd === 'restart') { clearTimeout(this._demo); this._held = null; this._paused = false; run(0); }
+    };
+    addEventListener('message', this._msg);
+    const run = k => {
+      const o = ops[k], last = k === ops.length - 1, nextK = () => T(() => run(last ? 0 : k + 1), last ? 6000 : 3400);
+      say(k);
+      if (!o[2]) { apply(o); return nextK(); }
+      const el = demoFind(o[2]);
+      if (!el) { apply(o); return nextK(); }
+      const r = el.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
+      cur.style.left = x - 5 + 'px'; cur.style.top = y - 3 + 'px';
+      T(() => { ripple(x, y); cur.animate([{ transform: 'scale(1)' }, { transform: 'scale(.85)' }, { transform: 'scale(1)' }], { duration: 220 }); T(() => { apply(o); nextK(); }, 260); }, 1000);
+    };
+    T(() => run(0), 300);
+    this._cur = cur;
+  }
+  componentWillUnmount() { clearTimeout(this._demo); this._cur && this._cur.remove(); this._cap && this._cap.remove(); this._msg && removeEventListener('message', this._msg); }
+
+  componentDidUpdate(pp, ps) {
+    const steps = this.steps();
+    const i = this.state.step;
+    if (i < steps.length - 1 && steps[i].done(this.state)) this.setState({ step: i + 1 });
+    ['dToast', 'rToast'].forEach(k => {
+      if (this.state[k] && this.state[k] !== ps[k]) {
+        clearTimeout(this['_t' + k]);
+        this['_t' + k] = setTimeout(() => this.setState({ [k]: '' }), 3200);
+      }
+    });
+  }
+
+  act(name, ...a) { const T = this.T(); this.setState(s => T[name](s, ...a)); }
+
+  renderVals() {
+    const s = this.state, { dn, rn } = this.names();
+    const steps = this.steps(), st = steps[s.step];
+    const showBar = this.props.showPresenter ?? true;
+    const view = this.props.view || 'Both';
+    const ACC = '#e7e7fd';
+    const nav = (cur, key) => (cur === key ? ACC : 'transparent');
+    const scr = (prefix, cur) => new Proxy({}, { get: (_, k) => cur === prefix + k });
+    const go = {};
+    ['cases', 'invite', 'recipients', 'agreements', 'agreement', 'exports', 'export', 'empty'].forEach(k => {
+      go['d' + k[0].toUpperCase() + k.slice(1)] = () => this.setState({ dScreen: 'd_' + k, emailDismissed: k === 'invite' ? true : this.state.emailDismissed });
+    });
+    ['donors', 'agreements', 'agreement', 'imports', 'profiles', 'profile'].forEach(k => {
+      go['r' + k[0].toUpperCase() + k.slice(1)] = () => this.setState({ rScreen: 'r_' + k });
+    });
+    go.dAgreements = () => this.setState({ dScreen: 'd_recipients', dRecTab: 'agreements' });
+    go.rAgreements = () => this.setState({ rScreen: 'r_donors', rDonTab: 'agreements' });
+    const d = {}, r = {};
+    ['cases', 'invite', 'recipients', 'agreements', 'agreement', 'exports', 'export', 'empty'].forEach(k => d[k] = s.dScreen === 'd_' + k);
+    ['donors', 'builder', 'agreements', 'agreement', 'imports', 'profiles', 'profile'].forEach(k => r[k] = s.rScreen === 'r_' + k);
+
+    const hasAg = s.ag !== 'none';
+    const agF = { review: s.ag === 'review', declined: s.ag === 'declined', live: s.ag === 'live', paused: s.ag === 'paused', terminated: s.ag === 'terminated' };
+    agF.v2review = agF.review && s.agV > 1;
+    agF.canTerminate = agF.live || agF.paused;
+    const dChip = { none: ch('K', '—'), review: ch('O', 'Needs your review'), declined: ch('K', `Declined · with ${rn}`), live: ch('G', 'Live'), paused: ch('O', 'Paused'), terminated: ch('R', 'Terminated') }[s.ag];
+    const rChip = { none: ch('K', '—'), review: ch('B', `Waiting on ${dn}`), declined: ch('R', 'Declined'), live: ch('G', 'Live'), paused: ch('O', 'Paused'), terminated: ch('R', 'Terminated') }[s.ag];
+    const fmt = iso => { if (!iso) return ''; const [y, m, dd] = iso.split('-').map(Number); return new Date(Date.UTC(y, m - 1, dd)).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }); };
+    const startTxt = fmt(s.startDate) + ', 10:00 UTC';
+    const endTxt = s.noEnd || !s.endDate ? 'No end date' : fmt(s.endDate);
+    const setupSummary = `${s.entity} · ${startTxt} → ${endTxt}`;
+    const rulesText = s.rules.filter(x => x.value).map((x, i) => (i ? x.join + ' ' : '') + `${x.field} ${x.op} ${x.value}`).join(' ') || 'No rules: every approved case qualifies';
+    const agName = `${dn} <> ${rn} · ${s.agSuffix || 'Untitled'}`;
+
+    const catalog = s.catalog || CAT;
+    const catSel = type => catalog.filter(c => c.type === type);
+    const nQ = catSel('Question').length, nD = catSel('Document').length;
+    const rfiSummary = `${nQ} question${nQ === 1 ? '' : 's'} · ${nD} document${nD === 1 ? '' : 's'} · ${s.reuse}-month reuse`;
+    const catItem = c => ({ name: c.name, meta: [c.type === 'Question' ? c.ans : (c.doc && c.doc !== c.name ? c.doc : 'Document'), c.req ? 'Required' : 'Optional'].join(' · '), remove: () => this.setState(x => ({ catalog: (x.catalog || CAT).filter(y => y.k !== c.k) })) });
+    const box = on => ({ bg: on ? '#5251fd' : '#fff', bd: on ? '#5251fd' : '#bebecf' });
+    const addItem = item => this.setState(x => ({ catalog: [...(x.catalog || CAT), { k: 'c' + Date.now(), ...item }], addQ: false, addD: false }));
+    const qd = s.qDraft, dd = s.dDraft;
+    const secDefs = [
+      { key: 'setup', title: '1. Setup', rows: [{ k: 'Entity type', v: s.entity }, { k: 'Start date', v: startTxt }, { k: 'End date', v: endTxt }], summary: setupSummary },
+      { key: 'elig', title: '2. Eligibility', rows: [{ k: 'Rules', v: rulesText }, { k: 'Max staleness', v: `${s.staleness} months from creation date` }, { k: 'End merchant consent', v: 'Required' }, { k: 'Inputs', v: 'Shared · legal name, reg. number, address, UBOs, directors' }, { k: 'Sections', v: 'Not shared' }, { k: 'Verdicts', v: 'Not shared' }], summary: `${rulesText} · max staleness ${s.staleness} months · inputs only · consent required` },
+      { key: 'rfi', title: '3. RFI catalog', rows: [{ k: 'Questions', v: catSel('Question').map(c => c.name).join(' · ') || 'None' }, { k: 'Documents', v: catSel('Document').map(c => c.name).join(' · ') || 'None' }, { k: 'Reuse answers up to', v: `${s.reuse} months old` }], summary: rfiSummary }
+    ];
+    const live = ['live', 'paused', 'terminated'].includes(s.ag);
+    const sections = secDefs.map(def => {
+      const v = live ? 'accept' : s.rev[def.key];
+      return {
+        title: def.title, rows: def.rows, changed: def.key === 'elig' && s.agV > 1 && (agF.review || live),
+        canAct: agF.review && !v, decided: !!v || agF.declined, canUndo: agF.review && !!v,
+        chip: v === 'decline' ? ch('R', 'Declined') : ch('G', 'Accepted'),
+        reason: v === 'decline',
+        accept: () => this.setState(x => ({ rev: { ...x.rev, [def.key]: 'accept' } })),
+        decline: () => this.setState({ declineKey: def.key }),
+        undo: () => this.setState(x => ({ rev: { ...x.rev, [def.key]: null } }))
+      };
+    });
+    const rSections = secDefs.map(def => {
+      const v = live ? 'accept' : s.rev[def.key];
+      const chip = agF.review ? ch('B', `With ${dn}`) : v === 'decline' ? ch('R', 'Declined') : ch('G', 'Accepted');
+      return { title: def.title, summary: def.summary, chip, reason: !agF.review && v === 'decline' };
+    }).concat([{ title: 'Your config · private', summary: `${s.importMode === 'auto' ? 'Automatic' : 'Manual'} import · ${rn} KYB · account webhook`, chip: ch('K', 'Private'), reason: false }]);
+    const decidedCount = Object.values(s.rev).filter(Boolean).length;
+
+    const pm = { d: '', r: '', dShow: agF.paused, rShow: agF.paused, dCanRequest: false, dCanAccept: false, rCanRequest: false, rCanAccept: false };
+    if (agF.paused) {
+      const byR = s.pausedBy === 'recipient';
+      const who = byR ? rn : dn;
+      pm.d = byR ? `${rn} paused this. New cases aren't shared. Existing tokens and RFIs keep working.` : `You paused this. New cases aren't shared.`;
+      pm.r = byR ? `You paused this. New cases aren't shared. Existing tokens and RFIs keep working.` : `${dn} paused this. New cases aren't shared.`;
+      if (s.resumeReq === 'recipient') { pm.d = `${rn} asks to resume sharing.`; pm.dCanAccept = true; pm.r = `Resume request sent. Waiting on ${dn}.`; }
+      else if (s.resumeReq === 'donor') { pm.r = `${dn} asks to resume sharing.`; pm.rCanAccept = true; pm.d = `Resume request sent. Waiting on ${rn}.`; }
+      else { pm.rCanRequest = byR; pm.dCanRequest = !byR; }
+    }
+
+    const tChip = { queued: ch('B', 'Queued · 30-min hold'), ready: ch('O', 'Ready to import'), imported: ch('G', 'Imported') }[s.token] || ch('K', '—');
+    const tok = { has: !!s.token, queued: s.token === 'queued', ready: s.token === 'ready', notReady: s.token !== 'ready', imported: s.token === 'imported', notImported: s.token !== 'imported', chip: tChip, exported: s.token === 'queued' ? '—' : '29 Sep 15:06', rfiDot: !!s.rfi };
+
+    const blocked = s.revoked || agF.terminated;
+    const selected = catalog.filter(c => s.rfiSel[c.k]);
+    const itemFor = (c, side) => {
+      if (c.src === 'donor') return { name: c.name, label: side === 'd' ? 'Answered from your data' : `Answered from ${dn} data`, ...C.G, note: `On file from 12 Jul · within the ${s.reuse}-month threshold` };
+      if (s.rfi === 'answered') return { name: c.name, label: 'Answered by merchant', ...C.B, note: 'Reply received 29 Sep 15:24' };
+      return { name: c.name, label: 'Waiting on merchant', ...C.O, note: `Sent to the merchant under ${dn}'s name · 29 Sep 15:12` };
+    };
+    const rfiItems = s.rfi ? selected : [];
+    const rfiF = {
+      none: !s.rfi, canRevoke: !!s.rfi && !blocked, revoked: s.revoked, blocked: blocked && !!s.token,
+      blockedMsg: agF.terminated ? 'Agreement terminated. New RFIs are blocked.' : `${dn} revoked RFIs on this token. New RFIs are blocked.`,
+      waiting: s.rfi === 'sent' && selected.some(c => c.src === 'merchant') && !blocked
+    };
+    const timeline = [{ t: '29 Sep 15:07', x: `Imported from ${dn} · token tok_51d9f2` }, { t: '29 Sep 15:07', x: `${rn} KYB started` }];
+    if (s.rfi) timeline.push({ t: '29 Sep 15:12', x: `RFI raised: ${selected.map(c => c.name).join(', ')}` });
+    if (s.rfi) timeline.push({ t: '29 Sep 15:12', x: `Answered from ${dn} data` });
+    if (s.rfi === 'answered') timeline.push({ t: '29 Sep 15:24', x: 'Answered by merchant' });
+
+    const bLabels = ['1 Setup', '2 Eligibility', '3 Your config', '4 RFI catalog', 'Review'];
+    const bSteps = bLabels.map((label, i) => ({
+      label, go: () => this.setState({ bStep: i }),
+      ...(i === s.bStep ? { bg: '#e7e7fd', fg: '#3a39c9', bd: '#d2d2fd' } : i < s.bStep ? { bg: '#fff', fg: '#20202c', bd: '#20202c' } : { bg: '#fff', fg: '#6b6b80', bd: '#e4e0d9' })
+    }));
+    const b = { s0: s.bStep === 0, s1: s.bStep === 1, s2: s.bStep === 2, s3: s.bStep === 3, s4: s.bStep === 4, canBack: s.bStep > 0, last: s.bStep === 4, notLast: s.bStep < 4 };
+    const sOn = { bg: '#e7e7fd', fg: '#3a39c9', bd: '#d2d2fd' }, sOff = { bg: '#fff', fg: '#20202c', bd: '#e4e0d9' };
+    const tab = (cur, key) => (cur === key ? ACC : 'transparent');
+
+    const conf = (() => {
+      const c = s.confirm; if (!c) return { title: '', lines: [], cta: '', bg: '#5251fd' };
+      const other = c.side === 'd' ? rn : dn;
+      if (c.kind === 'pause') return { title: `Pause "${agName}"?`, lines: ['No new cases are shared.', 'Existing tokens and RFIs keep working.', `Resuming needs ${other} to agree.`], cta: 'Pause', bg: '#5251fd' };
+      return { title: `Terminate "${agName}"?`, lines: ['No new cases are shared.', 'RFIs on tokens already shared are revoked.', "This can't be undone."], cta: 'Terminate', bg: '#a10d0f' };
+    })();
+
+    const turn = st.side;
+    const ringOn = c => `0 0 0 3px ${c}, 0 0 0 8px color-mix(in srgb, ${c} 18%, transparent), 0 1px 3px rgba(0,0,0,.08)`;
+    const ringOff = '0 1px 3px rgba(0,0,0,.08)';
+
+    return {
+      dn, rn, agName, agV: s.agV, nextV: s.agV + 1, staleness: s.staleness, declineText: s.declineText,
+      bar: { show: showBar, hidden: !showBar, no: s.step + 1, total: steps.length, full: !s.barOverride, title: s.barOverride ? s.barOverride.title : st.title, hint: s.barOverride ? s.barOverride.hint : st.hint, notEnd: s.step < steps.length - 1, side: turn === 'd' ? (dn === 'Donor' ? 'Donor' : `Donor · ${dn}`) : turn === 'r' ? (rn === 'Recipient' ? 'Recipient' : `Recipient · ${rn}`) : 'Done', sideBg: turn === 'd' ? '#FF8F2E' : turn === 'r' ? '#5251fd' : '#0f8a0f' },
+      dots: steps.map((x, i) => ({ go: () => this.goStep(i), title: `${i + 1}. ${x.title}`, bg: i === s.step ? '#fff' : i < s.step ? 'rgba(255,255,255,.55)' : 'rgba(255,255,255,.18)' })),
+      prev: this.prev, next: this.next, reset: this.reset,
+      dPane: { display: view === 'Recipient only' ? 'none' : 'flex', ring: showBar && turn === 'd' ? ringOn('#FF8F2E') : ringOff, turn: showBar && turn === 'd' },
+      rPane: { display: view === 'Donor only' ? 'none' : 'flex', ring: showBar && turn === 'r' ? ringOn('#5251fd') : ringOff, turn: showBar && turn === 'r' },
+      d, r, go,
+      dnav: { cases: nav(s.dScreen, 'd_cases'), empty: nav(s.dScreen, 'd_empty'), recipients: ['d_recipients', 'd_invite', 'd_agreement'].includes(s.dScreen) ? ACC : 'transparent', agreements: s.dScreen === 'd_agreements' || s.dScreen === 'd_agreement' ? ACC : 'transparent', exports: s.dScreen === 'd_exports' || s.dScreen === 'd_export' ? ACC : 'transparent' },
+      rnav: { donors: ['r_donors', 'r_builder', 'r_agreement'].includes(s.rScreen) ? ACC : 'transparent', agreements: s.rScreen === 'r_agreements' || s.rScreen === 'r_agreement' ? ACC : 'transparent', imports: nav(s.rScreen, 'r_imports'), profiles: s.rScreen === 'r_profiles' || s.rScreen === 'r_profile' ? ACC : 'transparent' },
+      showAsDonor: s.contract !== 'none',
+      pend: { dRecipients: s.contract === 'pending' || agF.review || (agF.paused && s.resumeReq === 'recipient'), dAgreements: agF.review || (agF.paused && s.resumeReq === 'recipient'), rAgreements: agF.declined || (agF.paused && s.resumeReq === 'donor') },
+      contract: { pending: s.contract === 'pending', active: s.contract === 'active', declined: s.contract === 'declined' },
+      cChip: s.contract === 'active' ? ch('G', 'Accepted') : s.contract === 'declined' ? ch('R', 'Declined') : ch('O', 'Pending'),
+      caseFlags: { inReview: s.caseStatus === 'review', approved: s.caseStatus === 'approved', queued: s.caseStatus === 'approved' && !!s.token, notShared: s.caseStatus === 'approved' && !s.token },
+      approveCase: () => this.act('approveCase'),
+      acceptContract: () => this.act('acceptContract'),
+      declineContract: () => this.act('declineContract'),
+      dRecTab: { contracts: tab(s.dRecTab, 'contracts'), agreements: tab(s.dRecTab, 'agreements'), archived: tab(s.dRecTab, 'archived'), isContracts: s.dRecTab === 'contracts', isAgreements: s.dRecTab === 'agreements', isArchived: s.dRecTab === 'archived' },
+      setDRecTab: { contracts: () => this.setState({ dRecTab: 'contracts' }), agreements: () => this.setState({ dRecTab: 'agreements' }), archived: () => this.setState({ dRecTab: 'archived' }) },
+      rDonTab: { contracts: tab(s.rDonTab, 'contracts'), agreements: tab(s.rDonTab, 'agreements'), archived: tab(s.rDonTab, 'archived'), isContracts: s.rDonTab === 'contracts', isAgreements: s.rDonTab === 'agreements', isArchived: s.rDonTab === 'archived' },
+      setRDonTab: { contracts: () => this.setState({ rDonTab: 'contracts' }), agreements: () => this.setState({ rDonTab: 'agreements' }), archived: () => this.setState({ rDonTab: 'archived' }) },
+      hasAg, noAg: !hasAg, agF, dChip, rChip, sections, rSections, decidedCount,
+      submitDisabled: decidedCount < 3, submitOpacity: decidedCount < 3 ? 0.45 : 1,
+      submitReview: () => this.act('submitReview'),
+      declineTitle: s.declineKey === 'setup' ? 'Setup' : s.declineKey === 'rfi' ? 'RFI catalog' : 'Eligibility',
+      onDeclineText: e => this.setState({ declineText: e.target.value }),
+      closeDecline: () => this.setState({ declineKey: null }),
+      confirmDecline: () => this.setState(x => ({ rev: { ...x.rev, [x.declineKey]: 'decline' }, declineKey: null })),
+      pausedMsg: pm,
+      requestResume: { d: () => this.act('requestResume', 'donor'), r: () => this.act('requestResume', 'recipient') },
+      acceptResume: () => this.act('acceptResume'),
+      ask: { dPause: () => this.setState({ confirm: { side: 'd', kind: 'pause' } }), dTerminate: () => this.setState({ confirm: { side: 'd', kind: 'terminate' } }), rPause: () => this.setState({ confirm: { side: 'r', kind: 'pause' } }), rTerminate: () => this.setState({ confirm: { side: 'r', kind: 'terminate' } }) },
+      conf, closeConfirm: () => this.setState({ confirm: null }),
+      doConfirm: () => { const c = this.state.confirm; if (!c) return; c.kind === 'pause' ? this.act('pause', c.side === 'd' ? 'donor' : 'recipient') : this.act('terminate'); },
+      tok, fastForward: () => this.act('fastForward'), importToken: () => this.act('importToken'),
+      rfiF, dRfiItems: rfiItems.map(c => itemFor(c, 'd')), rRfiItems: rfiItems.map(c => itemFor(c, 'r')),
+      merchantReply: () => this.act('merchantReply'), revoke: () => this.setState({ revoked: true, dToast: `RFIs revoked. ${rn} can't raise new ones on this token.` }),
+      overlay: {
+        email: s.contract === 'pending' && !s.emailDismissed && s.dScreen !== 'd_invite',
+        decline: !!s.declineKey, dConfirm: !!s.confirm && s.confirm.side === 'd', rConfirm: !!s.confirm && s.confirm.side === 'r',
+        addDonor: s.addDonorOpen, rfi: s.rfiOpen
+      },
+      toast: { d: s.dToast, r: s.rToast },
+      openAddDonor: () => this.setState({ addDonorOpen: true }), closeAddDonor: () => this.setState({ addDonorOpen: false }),
+      sendInvite: () => this.act('sendInvite'),
+      openBuilder: () => this.setState({ rScreen: 'r_builder', bStep: 0 }),
+      setupSummary, rulesText,
+      ruleFields: ['Country of incorporation', 'Industry', 'Business type', 'Risk level', 'Incorporation date', 'Annual revenue'],
+      rules: s.rules.map((x, i) => {
+        const upd = p => this.setState(st => ({ rules: st.rules.map((y, j) => (j === i ? { ...y, ...p } : y)) }));
+        const isAnd = x.join === 'AND';
+        return { ...x, showJoin: i > 0, canRemove: s.rules.length > 1,
+          andBg: isAnd ? '#5251fd' : '#fff', andFg: isAnd ? '#fff' : '#5251fd', orBg: !isAnd ? '#5251fd' : '#fff', orFg: !isAnd ? '#fff' : '#5251fd',
+          setAnd: () => upd({ join: 'AND' }), setOr: () => upd({ join: 'OR' }),
+          onField: e => upd({ field: e.target.value }), onOp: e => upd({ op: e.target.value }), onValue: e => upd({ value: e.target.value }),
+          remove: () => this.setState(st => ({ rules: st.rules.filter((_, j) => j !== i) })) };
+      }),
+      addRule: () => this.setState(st => ({ rules: [...st.rules, { field: 'Risk level', op: 'is', value: '', join: 'AND' }] })),
+      setup: {
+        name: s.agSuffix, onName: e => this.setState({ agSuffix: e.target.value }),
+        entities: ['Business Profiles', 'User Profiles', 'User Sessions'].map(label => ({ label, pick: () => this.setState({ entity: label }), fg: s.entity === label ? '#20202c' : '#6b6b80', bd: s.entity === label ? '4px solid #5251fd' : '1px solid #bebecf' })),
+        start: s.startDate, onStart: e => this.setState({ startDate: e.target.value }),
+        end: s.noEnd ? '' : s.endDate, onEnd: e => this.setState({ endDate: e.target.value }),
+        noEnd: s.noEnd, endOpacity: s.noEnd ? 0.45 : 1, toggleNoEnd: () => this.setState(x => ({ noEnd: !x.noEnd })),
+        chkBg: s.noEnd ? '#5251fd' : '#fff', chkBd: s.noEnd ? '#5251fd' : '#bebecf',
+        tip: s.tipStart, tipOn: () => this.setState({ tipStart: true }), tipOff: () => this.setState({ tipStart: false })
+      },
+      agEmptyMsg: s.contract === 'active' ? 'No agreements yet. Use + New agreement to start one.' : `No agreements yet. ${dn} needs to accept your contract invite first.`,
+      editResend: () => this.setState({ rScreen: 'r_builder', bStep: 1 }),
+      builderTitle: agF.declined ? `${agName} · v${s.agV + 1}` : 'New agreement',
+      bSteps, b, bNext: () => this.setState(x => ({ bStep: Math.min(4, x.bStep + 1) })), bBack: () => this.setState(x => ({ bStep: Math.max(0, x.bStep - 1) })),
+      sendLabel: agF.declined ? `Resend to ${dn} as v${s.agV + 1}` : `Send to ${dn}`,
+      sendAgreement: () => this.act('sendAgreement'),
+      stale: { s6: s.staleness === 6 ? sOn : sOff, s12: s.staleness === 12 ? sOn : sOff },
+      rfiSummary, reuse: s.reuse, catQCount: nQ, catDCount: nD,
+      catQ: catSel('Question').map(catItem), catD: catSel('Document').map(catItem),
+      catF: { noQ: !nQ && !s.addQ, noD: !nD && !s.addD, addQ: s.addQ, addD: s.addD, canAddQ: !s.addQ, canAddD: !s.addD },
+      openAddQ: () => this.setState({ addQ: true, addD: false, qDraft: { name: '', ans: 'Text', req: true } }),
+      openAddD: () => this.setState({ addD: true, addQ: false, dDraft: { doc: '', title: '', req: true } }),
+      cancelAdd: () => this.setState({ addQ: false, addD: false }),
+      ansTypes: ANS_TYPES, docTypes: DOC_TYPES,
+      qDraft: { name: qd.name, ans: qd.ans, reqBox: box(qd.req), op: qd.name.trim() ? 1 : 0.45,
+        onName: e => { const v = e.target.value; this.setState(x => ({ qDraft: { ...x.qDraft, name: v } })); },
+        onAns: e => { const v = e.target.value; this.setState(x => ({ qDraft: { ...x.qDraft, ans: v } })); },
+        toggleReq: () => this.setState(x => ({ qDraft: { ...x.qDraft, req: !x.qDraft.req } })),
+        save: () => { if (!qd.name.trim()) return; addItem({ name: qd.name.trim(), type: 'Question', ans: qd.ans, req: qd.req, src: 'merchant' }); } },
+      dDraft: { doc: dd.doc, title: dd.title, reqBox: box(dd.req), op: dd.doc ? 1 : 0.45,
+        onDoc: e => { const v = e.target.value; this.setState(x => ({ dDraft: { ...x.dDraft, doc: v } })); },
+        onTitle: e => { const v = e.target.value; this.setState(x => ({ dDraft: { ...x.dDraft, title: v } })); },
+        toggleReq: () => this.setState(x => ({ dDraft: { ...x.dDraft, req: !x.dDraft.req } })),
+        save: () => { if (!dd.doc) return; addItem({ name: dd.title.trim() || dd.doc, doc: dd.doc, type: 'Document', req: dd.req, src: 'donor' }); } },
+      reuseOpts: [3, 6, 9, 12, 18, 24].map(m => ({ v: m, label: `${m} months` })),
+      onReuse: e => this.setState({ reuse: Number(e.target.value) }),
+      setStale: { s6: () => this.setState({ staleness: 6 }), s12: () => this.setState({ staleness: 12 }) },
+      imp: { auto: s.importMode === 'auto' ? '4px solid #5251fd' : '1px solid #bebecf', manual: s.importMode === 'manual' ? '4px solid #5251fd' : '1px solid #bebecf' },
+      setImport: { auto: () => this.setState({ importMode: 'auto' }), manual: () => this.setState({ importMode: 'manual' }) },
+      importLabel: s.importMode === 'auto' ? 'Automatic' : 'Manual',
+      impTab: { ready: tab(s.impTab, 'ready'), imported: tab(s.impTab, 'imported'), isReady: s.impTab === 'ready', isImported: s.impTab === 'imported' },
+      setImpTab: { ready: () => this.setState({ impTab: 'ready' }), imported: () => this.setState({ impTab: 'imported' }) },
+      readyCount: s.token === 'ready' ? 1 : 0, preview: s.preview, togglePreview: () => this.setState(x => ({ preview: !x.preview })),
+      profTab: { info: tab(s.profTab, 'info'), rfis: tab(s.profTab, 'rfis'), timeline: tab(s.profTab, 'timeline'), isInfo: s.profTab === 'info', isRfis: s.profTab === 'rfis', isTimeline: s.profTab === 'timeline' },
+      setProfTab: { info: () => this.setState({ profTab: 'info' }), rfis: () => this.setState({ profTab: 'rfis' }), timeline: () => this.setState({ profTab: 'timeline' }) },
+      rfiCount: rfiItems.length, lastRfi: s.rfi ? '29 Sep, 15:12' : '—', timeline,
+      openRfi: () => { if (blocked) { this.setState({ profTab: 'rfis', rToast: 'RFIs are blocked on this token' }); return; } this.setState({ rfiOpen: true }); },
+      closeRfi: () => this.setState({ rfiOpen: false }),
+      rfiChoices: catalog.map(c => ({ name: c.name, type: c.type, bg: s.rfiSel[c.k] ? '#5251fd' : '#fff', bd: s.rfiSel[c.k] ? '#5251fd' : '#bebecf', toggle: () => this.setState(x => ({ rfiSel: { ...x.rfiSel, [c.k]: !x.rfiSel[c.k] } })) })),
+      rfiSendLabel: `Send ${selected.length} request${selected.length === 1 ? '' : 's'}`,
+      sendRfi: () => { if (!selected.length) return; this.act('sendRfi'); }
+    };
+  }
+}
+</script>
+</body>
+</html>

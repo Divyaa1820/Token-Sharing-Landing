@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&amp;display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&amp;display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Articulat CF';src:url('fonts/ArticulatCF-Regular.woff2') format('woff2');font-weight:400 800}
+body{margin:0;background:#FDFDFC;color:#0F0F16;font-family:'Satoshi',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#5251FD;text-decoration:none}a:hover{color:#010165}
+</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column">
+
+<div style="position:sticky;top:0;z-index:5;background:#FDFDFC;border-bottom:1px solid #E4E1D9">
+<div style="max-width:1120px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+<img src="src/assets/aiprise/logo.svg" alt="AiPrise" style="height:24px;display:block">
+<span style="flex:1"></span>
+<nav style="display:flex;align-items:center;gap:24px;font-size:14px;font-weight:500;flex-wrap:wrap">
+<div style="display:flex;align-items:center;gap:12px"><a href="about.dc.html" style="color:#5251FD;padding:4px 0;border-bottom:2px solid #5251FD">About</a><a href="about.dc.html#how" style="color:#5F5F72;font-size:13px">How it works</a><a href="about.dc.html#examples" style="color:#5F5F72;font-size:13px">Examples</a></div>
+<span style="width:1px;height:18px;background:#E4E1D9"></span>
+<a href="demo.dc.html" style="color:#0F0F16;padding:4px 0;border-bottom:2px solid transparent">Product Demo</a>
+<span style="width:1px;height:18px;background:#E4E1D9"></span>
+<a href="roadmap.dc.html" style="color:#0F0F16;padding:4px 0;border-bottom:2px solid transparent">Phases &amp; Timelines</a>
+</nav>
+</div>
+</div>
+
+<section style="background:linear-gradient(160deg,#F7EEF0 0%,#EEF0FB 45%,#FDFDFC 100%)">
+<div style="max-width:1120px;margin:0 auto;padding:96px 24px 88px;display:flex;flex-direction:column;gap:24px">
+<span style="align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5251FD;background:color-mix(in srgb,#5251FD 10%,#FDFDFC);padding:6px 12px;border-radius:999px">Token Sharing</span>
+<h1 style="margin:0;font-family:'Articulat CF',sans-serif;font-weight:700;font-size:clamp(38px,5.8vw,64px);line-height:1.04;letter-spacing:-0.02em;color:#010165;max-width:880px;text-wrap:balance">Verify a Customer Once. Share the Data With Your Partners.</h1>
+
+<p style="margin: 0; font-size: 18px; line-height: 28px; color: #3E3E56; max-width: 680px; text-wrap: pretty; width: 881px; height: 124px">Token Sharing enables two AiPrise customers who serve the same business or user to securely share verified data from an existing case. The receiving partner can choose to accept the shared verification as-is or re-run specific checks based on their own risk appetite and compliance requirements.</p><div style="display:flex;gap:12px;flex-wrap:wrap">
+<a href="demo.dc.html" style="background:#5251FD;color:#FDFDFC;font-weight:500;font-size:15px;padding:12px 20px;border-radius:999px;box-shadow:0 6px 18px color-mix(in srgb,#5251FD 30%,transparent)">Watch the demos</a>
+<a href="roadmap.dc.html" style="background:#FDFDFC;color:#0F0F16;border:1px solid #D2CCC0;font-weight:500;font-size:15px;padding:12px 20px;border-radius:999px">See phases &amp; timelines</a>
+</div>
+</div>
+</section>
+
+<section>
+<div style="max-width:1120px;margin:0 auto;padding:88px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:14px">
+<div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5251FD">The use case</div>
+<h2 style="margin:0;font-family:'Articulat CF',sans-serif;font-weight:700;font-size:clamp(28px,3.6vw,40px);line-height:1.1;letter-spacing:-0.02em;color:#010165">One Customer, Many Regulated Partners</h2>
+<p style="margin:0;font-size:16px;line-height:26px;color:#3E3E56">A merchant that signs up with a payments platform often also needs an account with that platform's banking, settlement or lending partner. Each partner has its own compliance obligations, so the merchant is asked for the same registration documents, ownership details and addresses several times.</p>
+<p style="margin:0;font-size:16px;line-height:26px;color:#3E3E56">With Token Sharing, the company that already verified the merchant shares those inputs under an agreed set of rules. The partner reruns them through its own AiPrise templates. Each company keeps its own policies, results and decisions.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="background:#F0EEEA;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px">
+<div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#5F5F72">Without Token Sharing</div>
+<div style="display:flex;flex-direction:column;gap:8px;font-size:15px;line-height:22px;color:#0F0F16">
+<div style="display:flex;gap:10px"><span style="flex:none;width:8px;height:8px;border-radius:50%;background:#A10D0F;margin-top:7px"></span>The merchant uploads the same documents to every partner.</div>
+<div style="display:flex;gap:10px"><span style="flex:none;width:8px;height:8px;border-radius:50%;background:#A10D0F;margin-top:7px"></span>Each partner collects and checks the data from scratch.</div>
+<div style="display:flex;gap:10px"><span style="flex:none;width:8px;height:8px;border-radius:50%;background:#A10D0F;margin-top:7px"></span>Onboarding with the second partner starts only after the first is done.</div>
+</div>
+</div>
+<div style="background:color-mix(in srgb,#0F8A0F 7%,#FDFDFC);border:1px solid color-mix(in srgb,#0F8A0F 22%,#FDFDFC);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px">
+<div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#0F8A0F">With Token Sharing</div>
+<div style="display:flex;flex-direction:column;gap:8px;font-size:15px;line-height:22px;color:#0F0F16">
+<div style="display:flex;gap:10px"><span style="flex:none;width:8px;height:8px;border-radius:50%;background:#0F8A0F;margin-top:7px"></span>The merchant is verified once by the first partner.</div>
+<div style="display:flex;gap:10px"><span style="flex:none;width:8px;height:8px;border-radius:50%;background:#0F8A0F;margin-top:7px"></span>Approved cases that match the agreement are shared as tokens.</div>
+<div style="display:flex;gap:10px"><span style="flex:none;width:8px;height:8px;border-radius:50%;background:#0F8A0F;margin-top:7px"></span>The partner runs its own checks and asks only for what is missing.</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section style="background:#F0EEEA">
+<div style="max-width:1120px;margin:0 auto;padding:88px 24px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px;max-width:680px">
+<div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5251FD">Two roles</div>
+<h2 style="margin:0;font-family:'Articulat CF',sans-serif;font-weight:700;font-size:clamp(28px,3.6vw,40px);line-height:1.1;letter-spacing:-0.02em;color:#010165">Donor and Recipient</h2>
+<p style="margin:0;font-size:16px;line-height:26px;color:#3E3E56">Every Token Sharing relationship has one Donor and one Recipient. A company can be a Donor to one partner and a Recipient of another.</p>
+</div>
+<div style="background:#FDFDFC;border-radius:16px;padding:28px 32px;display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap;justify-content:center">
+<div style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center"><div style="width:72px;height:72px;border-radius:18px;background:#F0EEEA;display:flex;align-items:center;justify-content:center"><span style="width:34px;height:34px;display:block;background:#0F0F16;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/store.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/store.svg) center/contain no-repeat"></span></div><div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:15px;font-weight:700;color:#010165">Merchant</span><span style="font-size:13px;color:#5F5F72">Verified once</span></div></div>
+<div style="flex:1;min-width:40px;height:2px;background:repeating-linear-gradient(90deg,#D2CCC0 0 8px,transparent 8px 14px);margin-top:36px"></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center"><div style="width:72px;height:72px;border-radius:18px;background:#FFF2E6;display:flex;align-items:center;justify-content:center"><span style="width:34px;height:34px;display:block;background:#FF8F2E;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/badge-check.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/badge-check.svg) center/contain no-repeat"></span></div><div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:15px;font-weight:700;color:#010165">Donor</span><span style="font-size:13px;color:#5F5F72">Verifies and shares inputs</span></div></div>
+<div style="flex:1;min-width:40px;height:2px;background:repeating-linear-gradient(90deg,#FF8F2E 0 8px,transparent 8px 14px);margin-top:36px"></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center"><div style="height:72px;display:flex;align-items:center"><span style="display:flex;align-items:center;gap:8px;background:#010165;color:#FDFDFC;border-radius:999px;padding:10px 16px;font:600 13px 'DM Sans',sans-serif"><span style="width:16px;height:16px;display:block;background:#FDFDFC;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/key-round.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/key-round.svg) center/contain no-repeat"></span>Token</span></div><span style="font-size:13px;color:#5F5F72;max-width:120px">Data package, under a live agreement</span></div>
+<div style="flex:1;min-width:40px;height:2px;background:repeating-linear-gradient(90deg,#5251FD 0 8px,transparent 8px 14px);margin-top:36px"></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center"><div style="width:72px;height:72px;border-radius:18px;background:#ECECFF;display:flex;align-items:center;justify-content:center"><span style="width:34px;height:34px;display:block;background:#5251FD;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/inbox.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/inbox.svg) center/contain no-repeat"></span></div><div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:15px;font-weight:700;color:#010165">Recipient</span><span style="font-size:13px;color:#5F5F72">Imports and runs own checks</span></div></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:16px">
+<div style="background: #FDFDFC; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 16px; border-top: 4px solid #FF8F2E; position: relative">
+
+<div style="display:flex;align-items:center;gap:10px"><span style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:.06em;color:#9A4A00;background:#FFF2E6;padding:4px 10px;border-radius:999px">DONOR</span><span style="font-size:15px;color:#3E3E56">Shares customer data</span></div>
+<div style="font-size:20px;font-weight:700;color:#010165">The company that already verified the end merchant</div>
+<div style="display:flex;flex-direction:column;gap:10px;font-size:15px;line-height:23px;color:#3E3E56">
+
+
+
+
+</div>
+<span style="position: absolute; width: 36px; height: 36px; border-radius: 50%; background: #FF8F2E; border: 3px solid #FDFDFC; display: flex; align-items: center; justify-content: center; left: 491px; top: 17px"><span style="width:18px;height:18px;display:block;background:#FDFDFC;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/badge-check.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/badge-check.svg) center/contain no-repeat"></span></span></div>
+<div style="background: #FDFDFC; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 16px; border-top: 4px solid #5251FD; position: relative">
+
+<div style="display:flex;align-items:center;gap:10px"><span style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:.06em;color:#3A39C9;background:#ECECFF;padding:4px 10px;border-radius:999px">RECIPIENT</span><span style="font-size:15px;color:#3E3E56">Receives customer data</span></div>
+<div style="font-size:20px;font-weight:700;color:#010165">The partner onboarding the same end merchant</div>
+
+<span style="position: absolute; width: 36px; height: 36px; border-radius: 50%; background: #5251FD; border: 3px solid #FDFDFC; display: flex; align-items: center; justify-content: center; left: 488px; top: 20px"><span style="width:18px;height:18px;display:block;background:#FDFDFC;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/inbox.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/inbox.svg) center/contain no-repeat"></span></span></div>
+</div>
+</div>
+</section>
+
+<section id="terms" style="scroll-margin-top:64px">
+<div style="max-width:1120px;margin:0 auto;padding:88px 24px 0;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px;max-width:680px">
+<div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5251FD">Key terms</div>
+<h2 style="margin:0;font-family:'Articulat CF',sans-serif;font-weight:700;font-size:clamp(28px,3.6vw,40px);line-height:1.1;letter-spacing:-0.02em;color:#010165">The Words You Will See</h2>
+</div>
+<div style="display:flex;flex-direction:column;border-top:1px solid #D2CCC0">
+<div style="display:grid;grid-template-columns:40px minmax(120px,200px) minmax(0,1fr);gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid #E4E1D9">
+<span style="width:40px;height:40px;border-radius:10px;background:color-mix(in srgb,#5251FD 10%,#FDFDFC);display:flex;align-items:center;justify-content:center"><span style="width:22px;height:22px;display:block;background:#5251FD;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/handshake.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/handshake.svg) center/contain no-repeat"></span></span>
+<div style="font-size:16px;font-weight:700;color:#010165">Contract</div>
+<p style="margin:0;font-size:14px;line-height:22px;color:#3E3E56">A connection between a Donor and a Recipient. It allows agreements to be proposed. It does not share any data.</p>
+</div>
+<div style="display:grid;grid-template-columns:40px minmax(120px,200px) minmax(0,1fr);gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid #E4E1D9">
+<span style="width:40px;height:40px;border-radius:10px;background:color-mix(in srgb,#5251FD 10%,#FDFDFC);display:flex;align-items:center;justify-content:center"><span style="width:22px;height:22px;display:block;background:#5251FD;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/file-text.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/file-text.svg) center/contain no-repeat"></span></span>
+<div style="font-size:16px;font-weight:700;color:#010165">Agreement</div>
+<p style="margin:0;font-size:14px;line-height:22px;color:#3E3E56">The rules for sharing under a contract: which cases qualify, from when to when, and what may be requested later. The Donor approves it before anything is shared.</p>
+</div>
+<div style="display:grid;grid-template-columns:40px minmax(120px,200px) minmax(0,1fr);gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid #E4E1D9">
+<span style="width:40px;height:40px;border-radius:10px;background:color-mix(in srgb,#5251FD 10%,#FDFDFC);display:flex;align-items:center;justify-content:center"><span style="width:22px;height:22px;display:block;background:#5251FD;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/key-round.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/key-round.svg) center/contain no-repeat"></span></span>
+<div style="font-size:16px;font-weight:700;color:#010165">Token</div>
+<p style="margin:0;font-size:14px;line-height:22px;color:#3E3E56">A package of one approved case's input data, sent from Donor to Recipient under a live agreement.</p>
+</div>
+<div style="display:grid;grid-template-columns:40px minmax(120px,200px) minmax(0,1fr);gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid #E4E1D9">
+<span style="width:40px;height:40px;border-radius:10px;background:color-mix(in srgb,#5251FD 10%,#FDFDFC);display:flex;align-items:center;justify-content:center"><span style="width:22px;height:22px;display:block;background:#5251FD;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/upload.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/upload.svg) center/contain no-repeat"></span></span>
+<div style="font-size:16px;font-weight:700;color:#010165">Export</div>
+<p style="margin:0;font-size:14px;line-height:22px;color:#3E3E56">The Donor side of a token. Approved cases that match the agreement are queued and sent automatically.</p>
+</div>
+<div style="display:grid;grid-template-columns:40px minmax(120px,200px) minmax(0,1fr);gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid #E4E1D9">
+<span style="width:40px;height:40px;border-radius:10px;background:color-mix(in srgb,#5251FD 10%,#FDFDFC);display:flex;align-items:center;justify-content:center"><span style="width:22px;height:22px;display:block;background:#5251FD;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/download.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/download.svg) center/contain no-repeat"></span></span>
+<div style="font-size:16px;font-weight:700;color:#010165">Import</div>
+<p style="margin:0;font-size:14px;line-height:22px;color:#3E3E56">The Recipient side of a token. It is pulled in automatically or by hand, creating a new profile.</p>
+</div>
+<div style="display:grid;grid-template-columns:40px minmax(120px,200px) minmax(0,1fr);gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid #E4E1D9">
+<span style="width:40px;height:40px;border-radius:10px;background:color-mix(in srgb,#5251FD 10%,#FDFDFC);display:flex;align-items:center;justify-content:center"><span style="width:22px;height:22px;display:block;background:#5251FD;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/message-square.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/message-square.svg) center/contain no-repeat"></span></span>
+<div style="font-size:16px;font-weight:700;color:#010165">RFI</div>
+<p style="margin:0;font-size:14px;line-height:22px;color:#3E3E56">A request for information. The Recipient asks for a question or document that is in the agreement's catalog.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="how" style="scroll-margin-top:64px">
+<div style="max-width:1120px;margin:0 auto;padding:88px 24px;display:flex;flex-direction:column;gap:56px">
+<div style="display:flex;flex-direction:column;gap:12px;max-width:680px">
+<div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5251FD">How it works</div>
+<h2 style="margin: 0; font-family: 'Articulat CF',sans-serif; font-weight: 700; font-size: clamp(28px,3.6vw,40px); line-height: 1.1; letter-spacing: -0.02em; color: #010165; width: 703px; height: 49px">How Donor and Recipient Work Together</h2>
+</div>
+<div style="display:flex;flex-direction:column;gap:20px;width:100%;max-width:920px;margin:0 auto">
+<div style="display:flex;flex-direction:column;gap:4px"><div style="font-size:20px;font-weight:700;color:#010165">1. Setting up and sharing</div><div style="font-size:15px;color:#3E3E56">Who does what, from the first invite to the final decision.</div></div>
+<div style="position:relative;padding:0 16px 20px">
+<div style="position:absolute;top:0;bottom:0;left:0;width:calc(50% - 28px);background:#FFFAF5;border:1px solid #FFE1C7;border-radius:16px"></div>
+<div style="position:absolute;top:0;bottom:0;right:0;width:calc(50% - 28px);background:#F7F7FF;border:1px solid #D2D2FD;border-radius:16px"></div>
+<div style="position:relative;display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr);gap:0 12px;padding:18px 0 6px">
+<div style="display:flex;align-items:center;gap:8px;justify-content:center"><span style="width:18px;height:18px;display:block;flex:none;background:#FF8F2E;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/building-2.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/building-2.svg) center/contain no-repeat"></span><span style="font:600 13px 'DM Sans',sans-serif;letter-spacing:.08em;color:#9A4A00">DONOR</span></div><div></div>
+<div style="display:flex;align-items:center;gap:8px;justify-content:center"><span style="width:18px;height:18px;display:block;flex:none;background:#5251FD;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/building-2.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/building-2.svg) center/contain no-repeat"></span><span style="font:600 13px 'DM Sans',sans-serif;letter-spacing:.08em;color:#3A39C9">RECIPIENT</span></div>
+</div>
+<div style="position:relative;display:flex;flex-direction:column">
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr);gap:0 12px;align-items:stretch">
+<div style="padding:0 0 16px"></div>
+<div style="display:flex;flex-direction:column;align-items:center;height:100%">
+<span style="width:34px;height:34px;border-radius:50%;background:#5251FD;color:#FDFDFC;display:flex;align-items:center;justify-content:center;font:600 14px 'DM Sans',sans-serif;flex:none;box-shadow:0 0 0 5px #FDFDFC;margin-top:14px">1</span>
+<span style="flex:1;width:2px;background:#D2CCC0;min-height:20px"></span>
+</div>
+<div style="padding:0 0 16px"><div style="background:#FDFDFC;border:1px solid #D2D2FD;border-radius:14px;padding:16px 18px;box-shadow:0 2px 10px rgba(15,15,22,.05);display:flex;flex-direction:column;gap:4px">
+<div style="font-size:16px;font-weight:700;color:#010165">Invite a partner</div>
+<div style="font-size:14px;line-height:21px;color:#3E3E56">Invite the company that already verified the customer.</div>
+</div></div>
+</div>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr);gap:0 12px;align-items:stretch">
+<div style="padding:0 0 16px"><div style="background:#FDFDFC;border:1px solid #FFE1C7;border-radius:14px;padding:16px 18px;box-shadow:0 2px 10px rgba(15,15,22,.05);display:flex;flex-direction:column;gap:4px">
+<div style="font-size:16px;font-weight:700;color:#010165">Accept the invite</div>
+<div style="font-size:14px;line-height:21px;color:#3E3E56">Nothing is shared yet.</div>
+</div></div>
+<div style="display:flex;flex-direction:column;align-items:center;height:100%">
+<span style="width:34px;height:34px;border-radius:50%;background:#FF8F2E;color:#FDFDFC;display:flex;align-items:center;justify-content:center;font:600 14px 'DM Sans',sans-serif;flex:none;box-shadow:0 0 0 5px #FDFDFC;margin-top:14px">2</span>
+<span style="flex:1;width:2px;background:#D2CCC0;min-height:20px"></span>
+</div>
+<div style="padding:0 0 16px"></div>
+</div>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr);gap:0 12px;align-items:stretch">
+<div style="padding:0 0 16px"></div>
+<div style="display:flex;flex-direction:column;align-items:center;height:100%">
+<span style="width:34px;height:34px;border-radius:50%;background:#5251FD;color:#FDFDFC;display:flex;align-items:center;justify-content:center;font:600 14px 'DM Sans',sans-serif;flex:none;box-shadow:0 0 0 5px #FDFDFC;margin-top:14px">3</span>
+<span style="flex:1;width:2px;background:#D2CCC0;min-height:20px"></span>
+</div>
+<div style="padding:0 0 16px"><div style="background:#FDFDFC;border:1px solid #D2D2FD;border-radius:14px;padding:16px 18px;box-shadow:0 2px 10px rgba(15,15,22,.05);display:flex;flex-direction:column;gap:4px">
+<div style="font-size:16px;font-weight:700;color:#010165">Set the sharing rules</div>
+<div style="font-size:14px;line-height:21px;color:#3E3E56">Which customers, for how long, and what can be asked for later.</div>
+</div></div>
+</div>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr);gap:0 12px;align-items:stretch">
+<div style="padding:0 0 16px"><div style="background:#FDFDFC;border:1px solid #FFE1C7;border-radius:14px;padding:16px 18px;box-shadow:0 2px 10px rgba(15,15,22,.05);display:flex;flex-direction:column;gap:4px">
+<div style="font-size:16px;font-weight:700;color:#010165">Review the rules</div>
+<div style="font-size:14px;line-height:21px;color:#3E3E56">Agree to start sharing.</div><div style="margin-top:8px;display:flex;align-items:center;gap:6px;font-size:13px;line-height:18px;color:#A10D0F;background:color-mix(in srgb,#A10D0F 6%,#FDFDFC);border-radius:8px;padding:6px 10px"><span style="width: 14px; height: 14px; display: block; flex: 0 0 auto; background: rgb(161, 13, 15); mask: url(&quot;https://unpkg.com/lucide-static@0.469.0/icons/corner-up-left.svg&quot;) center center / contain no-repeat;"></span>Not agreed? Sent back to (step 3) Recipient with reason</div>
+</div></div>
+<div style="display:flex;flex-direction:column;align-items:center;height:100%">
+<span style="width:34px;height:34px;border-radius:50%;background:#FF8F2E;color:#FDFDFC;display:flex;align-items:center;justify-content:center;font:600 14px 'DM Sans',sans-serif;flex:none;box-shadow:0 0 0 5px #FDFDFC;margin-top:14px">4</span>
+<span style="flex:1;width:2px;background:#D2CCC0;min-height:20px"></span>
+</div>
+<div style="padding:0 0 16px"></div>
+</div>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr);gap:0 12px;align-items:stretch">
+<div style="padding:0 0 16px"><div style="background:#FDFDFC;border:1px solid #FFE1C7;border-radius:14px;padding:16px 18px;box-shadow:0 2px 10px rgba(15,15,22,.05);display:flex;flex-direction:column;gap:4px">
+<div style="font-size:16px;font-weight:700;color:#010165">Approve a customer</div>
+<div style="font-size:14px;line-height:21px;color:#3E3E56">Customers who match the rules are shared.</div>
+</div></div>
+<div style="display:flex;flex-direction:column;align-items:center;height:100%">
+<span style="width:34px;height:34px;border-radius:50%;background:#FF8F2E;color:#FDFDFC;display:flex;align-items:center;justify-content:center;font:600 14px 'DM Sans',sans-serif;flex:none;box-shadow:0 0 0 5px #FDFDFC;margin-top:14px">5</span>
+<span style="flex:1;width:2px;background:#D2CCC0;min-height:20px"></span>
+</div>
+<div style="padding:0 0 16px"></div>
+</div>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr);gap:0 12px;align-items:stretch">
+<div style="padding:0 0 16px"></div>
+<div style="display:flex;flex-direction:column;align-items:center;height:100%">
+<span style="width:34px;height:34px;border-radius:50%;background:#5251FD;color:#FDFDFC;display:flex;align-items:center;justify-content:center;font:600 14px 'DM Sans',sans-serif;flex:none;box-shadow:0 0 0 5px #FDFDFC;margin-top:14px">6</span>
+<span style="flex:1;width:2px;background:#D2CCC0;min-height:20px"></span>
+</div>
+<div style="padding:0 0 16px"><div style="background:#FDFDFC;border:1px solid #D2D2FD;border-radius:14px;padding:16px 18px;box-shadow:0 2px 10px rgba(15,15,22,.05);display:flex;flex-direction:column;gap:4px">
+<div style="font-size:16px;font-weight:700;color:#010165">Receive the customer's data</div>
+<div style="font-size:14px;line-height:21px;color:#3E3E56">It arrives as a new customer record.</div>
+</div></div>
+</div>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr);gap:0 12px;align-items:stretch">
+<div style="padding:0 0 0px"></div>
+<div style="display:flex;flex-direction:column;align-items:center;height:100%">
+<span style="width:34px;height:34px;border-radius:50%;background:#0F8A0F;color:#FDFDFC;display:flex;align-items:center;justify-content:center;font:600 14px 'DM Sans',sans-serif;flex:none;box-shadow:0 0 0 5px #FDFDFC;margin-top:14px">7</span>
+
+</div>
+<div style="padding:0 0 0px"><div style="background:#FDFDFC;border:1px solid #D2D2FD;border-radius:14px;padding:16px 18px;box-shadow:0 2px 10px rgba(15,15,22,.05);display:flex;flex-direction:column;gap:4px">
+<div style="font-size:16px;font-weight:700;color:#010165">Run your own checks</div>
+<div style="font-size:14px;line-height:21px;color:#3E3E56">Make your own decision.</div>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:20px;width:100%;max-width:920px;margin:0 auto">
+<div style="display:flex;flex-direction:column;gap:4px"><div style="font-size:20px;font-weight:700;color:#010165">2. Asking for more information</div><div style="font-size:15px;color:#3E3E56">When the Recipient needs something the shared data does not cover.</div></div>
+<div style="position:relative;padding:0 16px 20px">
+<div style="position:absolute;top:0;bottom:0;left:0;width:calc(50% - 28px);background:#FFFAF5;border:1px solid #FFE1C7;border-radius:16px"></div>
+<div style="position:absolute;top:0;bottom:0;right:0;width:calc(50% - 28px);background:#F7F7FF;border:1px solid #D2D2FD;border-radius:16px"></div>
+<div style="position:relative;display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr);gap:0 12px;padding:18px 0 6px">
+<div style="display:flex;align-items:center;gap:8px;justify-content:center"><span style="width:18px;height:18px;display:block;flex:none;background:#FF8F2E;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/building-2.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/building-2.svg) center/contain no-repeat"></span><span style="font:600 13px 'DM Sans',sans-serif;letter-spacing:.08em;color:#9A4A00">DONOR</span></div><div></div>
+<div style="display:flex;align-items:center;gap:8px;justify-content:center"><span style="width:18px;height:18px;display:block;flex:none;background:#5251FD;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/building-2.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/building-2.svg) center/contain no-repeat"></span><span style="font:600 13px 'DM Sans',sans-serif;letter-spacing:.08em;color:#3A39C9">RECIPIENT</span></div>
+</div>
+<div style="position:relative;display:flex;flex-direction:column">
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr);gap:0 12px;align-items:stretch">
+<div style="padding:0 0 16px"></div>
+<div style="display:flex;flex-direction:column;align-items:center;height:100%">
+<span style="width:34px;height:34px;border-radius:50%;background:#5251FD;color:#FDFDFC;display:flex;align-items:center;justify-content:center;font:600 14px 'DM Sans',sans-serif;flex:none;box-shadow:0 0 0 5px #FDFDFC;margin-top:14px">1</span>
+<span style="flex:1;width:2px;background:#D2CCC0;min-height:20px"></span>
+</div>
+<div style="padding:0 0 16px"><div style="background:#FDFDFC;border:1px solid #D2D2FD;border-radius:14px;padding:16px 18px;box-shadow:0 2px 10px rgba(15,15,22,.05);display:flex;flex-direction:column;gap:4px">
+<div style="font-size:16px;font-weight:700;color:#010165">Ask for more</div>
+<div style="font-size:14px;line-height:21px;color:#3E3E56">A document or question from the agreed RFI catalog, from the agreement.</div>
+</div></div>
+</div>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr);gap:0 12px;align-items:stretch">
+<div style="padding:0 0 16px"><div style="background:#FDFDFC;border:1px solid #FFE1C7;border-radius:14px;padding:16px 18px;box-shadow:0 2px 10px rgba(15,15,22,.05);display:flex;flex-direction:column;gap:4px">
+<div style="font-size:16px;font-weight:700;color:#010165">Check what is on profile</div>
+<div style="margin-top:10px;display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;gap:8px;align-items:flex-start;font-size:13px;line-height:19px;color:#0F0F16;background:color-mix(in srgb,#0F8A0F 7%,#FDFDFC);border-radius:8px;padding:7px 10px"><span style="width:15px;height:15px;display:block;flex:none;background:#0F8A0F;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/check.svg) center/contain no-repeat"></span><span><b style="color:#0F8A0F">Data available on Donor profile:</b> answered right away.</span></div>
+<div style="display:flex;gap:8px;align-items:flex-start;font-size:13px;line-height:19px;color:#0F0F16;background:color-mix(in srgb,#FF8F2E 9%,#FDFDFC);border-radius:8px;padding:7px 10px"><span style="width:15px;height:15px;display:block;flex:none;background:#9A4A00;-webkit-mask:url(https://unpkg.com/lucide-static@0.469.0/icons/mail.svg) center/contain no-repeat;mask:url(https://unpkg.com/lucide-static@0.469.0/icons/mail.svg) center/contain no-repeat"></span><span><b style="color:#9A4A00">Data not with Donor already:</b> the customer is asked.</span></div>
+</div>
+</div></div>
+<div style="display:flex;flex-direction:column;align-items:center;height:100%">
+<span style="width:34px;height:34px;border-radius:50%;background:#FF8F2E;color:#FDFDFC;display:flex;align-items:center;justify-content:center;font:600 14px 'DM Sans',sans-serif;flex:none;box-shadow:0 0 0 5px #FDFDFC;margin-top:14px">2</span>
+<span style="flex:1;width:2px;background:#D2CCC0;min-height:20px"></span>
+</div>
+<div style="padding:0 0 16px"></div>
+</div>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr);gap:0 12px;align-items:stretch">
+<div style="padding:0 0 0px"></div>
+<div style="display:flex;flex-direction:column;align-items:center;height:100%">
+<span style="width:34px;height:34px;border-radius:50%;background:#0F8A0F;color:#FDFDFC;display:flex;align-items:center;justify-content:center;font:600 14px 'DM Sans',sans-serif;flex:none;box-shadow:0 0 0 5px #FDFDFC;margin-top:14px">3</span>
+
+</div>
+<div style="padding:0 0 0px"><div style="background:#FDFDFC;border:1px solid #D2D2FD;border-radius:14px;padding:16px 18px;box-shadow:0 2px 10px rgba(15,15,22,.05);display:flex;flex-direction:column;gap:4px">
+<div style="font-size:16px;font-weight:700;color:#010165">Receive the answer</div>
+<div style="font-size:14px;line-height:21px;color:#3E3E56">Saved for next time.</div>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="examples" style="background:#F0EEEA;scroll-margin-top:64px">
+<div style="max-width:1120px;margin:0 auto;padding:88px 24px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px;max-width:680px">
+<div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5251FD">Example scenarios</div>
+<h2 style="margin:0;font-family:'Articulat CF',sans-serif;font-weight:700;font-size:clamp(28px,3.6vw,40px);line-height:1.1;letter-spacing:-0.02em;color:#010165">Where Token Sharing Fits</h2>
+<p style="margin:0;font-size:16px;line-height:26px;color:#3E3E56">Illustrative setups based on common partner models. Company types are examples.</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px">
+
+<div style="background:#FDFDFC;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:16px">
+<div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#5251FD">01 / Payments and settlement</div>
+<div style="font-size:19px;font-weight:700;line-height:1.25;color:#010165">A payments platform shares merchant KYB with its settlement partner</div>
+<div style="display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:21px">
+<div style="display:grid;grid-template-columns:84px 1fr;gap:8px"><span style="color:#5F5F72">Donor</span><span>Cross-border payments platform</span></div>
+<div style="display:grid;grid-template-columns:84px 1fr;gap:8px"><span style="color:#5F5F72">Recipient</span><span>Settlement partner</span></div>
+<div style="display:grid;grid-template-columns:84px 1fr;gap:8px"><span style="color:#5F5F72">Agreement</span><span>Business Profiles · Indonesia · not crypto · max 6 months old · automatic import</span></div>
+</div>
+<p style="margin:0;font-size:15px;line-height:24px;color:#3E3E56;border-top:1px solid #E4E1D9;padding-top:14px">Approved merchants arrive at the partner as tokens and run through its own KYB template. A bank statement request is answered from the platform's data on file.</p>
+</div>
+
+<div style="background:#FDFDFC;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:16px">
+<div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#5251FD">02 / Marketplace lending</div>
+<div style="font-size:19px;font-weight:700;line-height:1.25;color:#010165">A marketplace shares seller KYB with a working-capital lender</div>
+<div style="display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:21px">
+<div style="display:grid;grid-template-columns:84px 1fr;gap:8px"><span style="color:#5F5F72">Donor</span><span>B2B marketplace</span></div>
+<div style="display:grid;grid-template-columns:84px 1fr;gap:8px"><span style="color:#5F5F72">Recipient</span><span>Lending partner</span></div>
+<div style="display:grid;grid-template-columns:84px 1fr;gap:8px"><span style="color:#5F5F72">Agreement</span><span>Business Profiles · sellers who opt in · manual import</span></div>
+</div>
+<p style="margin:0;font-size:15px;line-height:24px;color:#3E3E56;border-top:1px solid #E4E1D9;padding-top:14px">The lender reviews each token before importing. Its source-of-funds question goes to the seller under the marketplace's name.</p>
+</div>
+
+<div style="background:#FDFDFC;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:16px">
+<div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#5251FD">03 / Wallet and card issuing</div>
+<div style="font-size:19px;font-weight:700;line-height:1.25;color:#010165">A wallet app shares user KYC with its card-issuing partner</div>
+<div style="display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:21px">
+<div style="display:grid;grid-template-columns:84px 1fr;gap:8px"><span style="color:#5F5F72">Donor</span><span>Consumer wallet</span></div>
+<div style="display:grid;grid-template-columns:84px 1fr;gap:8px"><span style="color:#5F5F72">Recipient</span><span>Card issuer</span></div>
+<div style="display:grid;grid-template-columns:84px 1fr;gap:8px"><span style="color:#5F5F72">Agreement</span><span>User Profiles · approved users · automatic import</span></div>
+</div>
+<p style="margin:0;font-size:15px;line-height:24px;color:#3E3E56;border-top:1px solid #E4E1D9;padding-top:14px">Users who request a card do not repeat identity steps. The issuer runs its own KYC template on the shared inputs.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section>
+<div style="max-width:880px;margin:0 auto;padding:88px 24px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5251FD">FAQ</div>
+<h2 style="margin:0;font-family:'Articulat CF',sans-serif;font-weight:700;font-size:clamp(28px,3.6vw,40px);line-height:1.1;letter-spacing:-0.02em;color:#010165">Common Questions</h2>
+</div>
+<div style="display:flex;flex-direction:column;border-top:1px solid #D2CCC0">
+<sc-for list="{{ faqs }}" as="f" hint-placeholder-count="6">
+<div style="border-bottom:1px solid #E4E1D9">
+<div onClick="{{ f.toggle }}" style="display:flex;align-items:center;gap:16px;padding:20px 0;cursor:pointer"><span style="flex:1;font-size:17px;font-weight:700;color:#010165">{{ f.q }}</span><span style="font:400 22px 'DM Sans',sans-serif;color:#5251FD;width:20px;text-align:center">{{ f.icon }}</span></div>
+<sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}"><p style="margin:0;padding:0 36px 20px 0;font-size:15px;line-height:24px;color:#3E3E56">{{ f.a }}</p></sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section style="background:#010165">
+<div style="max-width:1120px;margin:0 auto;padding:64px 24px;display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+<div style="flex:1;min-width:260px;display:flex;flex-direction:column;gap:8px">
+<div style="font-family:'Articulat CF',sans-serif;font-weight:700;font-size:28px;line-height:1.15;letter-spacing:-0.02em;color:#FDFDFC">See it in the product</div>
+<p style="margin:0;font-size:16px;line-height:26px;color:#FDFDFC">Short videos of every step, from invite to terminate.</p>
+</div>
+<div style="display:flex;gap:12px;flex-wrap:wrap">
+<a href="demo.dc.html" style="background:#5251FD;color:#FDFDFC;font-weight:500;font-size:15px;padding:12px 20px;border-radius:999px">Watch the demos</a>
+<a href="mailto:support@aiprise.com" style="background:transparent;color:#FDFDFC;border:1px solid #FDFDFC;font-weight:500;font-size:15px;padding:12px 20px;border-radius:999px">Contact your account team</a>
+</div>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const FAQ = [
+  ['Does accepting a contract share any data?', 'No. A contract only allows the Recipient to propose agreements. Data moves only after the Donor approves an agreement and it goes live.'],
+  ['Who makes the compliance decision?', "Each company makes its own. The Recipient runs the shared inputs through its own templates and decides. The Donor's results and verdict are not shared in Phase 1."],
+  ['Can the Donor see what the Recipient did with the data?', "The Donor sees whether each token is ready or imported. The Recipient's profile, results and decision stay with the Recipient."],
+  ['What happens when an agreement is paused?', 'No new cases are shared. Tokens already shared and open requests keep working. Resuming needs both sides to agree.'],
+  ['What happens when an agreement is terminated?', 'Sharing stops for good and requests on tokens already shared are revoked. Termination cannot be undone.'],
+  ['Who does the merchant hear from when more information is needed?', "If the Donor doesn't have the answer on file, the merchant is asked under the Donor's name. The answer is saved and reused within the reuse window."]
+];
+class Component extends DCLogic {
+  state = { open: 0 };
+  renderVals() {
+    return {
+      faqs: FAQ.map(([q, a], i) => ({ q, a, open: this.state.open === i, icon: this.state.open === i ? '−' : '+', toggle: () => this.setState(s => ({ open: s.open === i ? -1 : i })) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

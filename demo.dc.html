@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&amp;display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&amp;display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Articulat CF';src:url('fonts/ArticulatCF-Regular.woff2') format('woff2');font-weight:400 800}
+body{margin:0;background:#FDFDFC;color:#0F0F16;font-family:'Satoshi',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#5251FD;text-decoration:none}a:hover{color:#010165}
+</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column">
+
+<div style="position:sticky;top:0;z-index:5;background:#FDFDFC;border-bottom:1px solid #E4E1D9">
+<div style="max-width:1120px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+<img src="src/assets/aiprise/logo.svg" alt="AiPrise" style="height:24px;display:block">
+<span style="flex:1"></span>
+<nav style="display:flex;align-items:center;gap:24px;font-size:14px;font-weight:500;flex-wrap:wrap">
+<div style="display:flex;align-items:center;gap:12px"><a href="about.dc.html" style="color:#0F0F16;padding:4px 0;border-bottom:2px solid transparent">About</a><a href="about.dc.html#how" style="color:#5F5F72;font-size:13px">How it works</a><a href="about.dc.html#examples" style="color:#5F5F72;font-size:13px">Examples</a></div>
+<span style="width:1px;height:18px;background:#E4E1D9"></span>
+<a href="demo.dc.html" style="color:#5251FD;padding:4px 0;border-bottom:2px solid #5251FD">Product Demo</a>
+<span style="width:1px;height:18px;background:#E4E1D9"></span>
+<a href="roadmap.dc.html" style="color:#0F0F16;padding:4px 0;border-bottom:2px solid transparent">Phases &amp; Timelines</a>
+</nav>
+</div>
+</div>
+
+<section style="background:linear-gradient(160deg,#F7EEF0 0%,#EEF0FB 45%,#FDFDFC 100%)">
+<div style="max-width:1120px;margin:0 auto;padding:88px 24px 80px;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<span style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5251FD;background:color-mix(in srgb,#5251FD 10%,#FDFDFC);padding:6px 12px;border-radius:999px">Token Sharing</span>
+<span style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#0F0F16;background:#F0EEEA;padding:6px 12px;border-radius:999px">Phase 1</span>
+</div>
+<h1 style="margin:0;font-family:'Articulat CF',sans-serif;font-weight:700;font-size:clamp(36px,5.4vw,60px);line-height:1.05;letter-spacing:-0.02em;color:#010165;max-width:820px;text-wrap:balance">Share Verified Case Data With Your AiPrise Partners</h1>
+<p style="margin:0;font-size:18px;line-height:28px;color:#3E3E56;max-width:680px;text-wrap:pretty">Token Sharing lets a Donor company share the end merchant input data behind a verified business or user with a Recipient company. The Recipient imports the token and reruns those data on its own templates, so your customer is not asked for the same data twice.</p>
+</div>
+</section>
+
+<section id="demos" style="scroll-margin-top:64px">
+<div style="max-width:1120px;margin:0 auto;padding:80px 24px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px;max-width:680px">
+<div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5251FD">Demo videos</div>
+<h2 style="margin:0;font-family:'Articulat CF',sans-serif;font-weight:700;font-size:clamp(28px,3.6vw,40px);line-height:1.1;letter-spacing:-0.02em;color:#010165">See the Full Flow</h2>
+<p style="margin:0;font-size:16px;line-height:26px;color:#3E3E56">Donor and Recipient appear side by side in every video.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px"><div style="font-size:18px;font-weight:700;color:#010165">Demo layout</div>
+<div data-guide="1" style="position:relative;display:flex;flex-direction:column;gap:24px;width:100%">
+<div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+<div style="display:flex;gap:8px;flex-wrap:wrap"><div data-lbl="5" style="display:flex;align-items:center;gap:8px;padding:4px 12px 4px 4px;border-radius:999px;background:#FDFDFC;border:1px solid #E4E1D9">
+<span style="flex:none;width:20px;height:20px;border-radius:50%;background:#FF8F2E;color:#FDFDFC;display:flex;align-items:center;justify-content:center;font:600 11px 'DM Sans',sans-serif">1</span><span style="font:500 13px 'DM Sans',sans-serif;color:#0F0F16;white-space:nowrap">Donor menu</span>
+</div><div data-lbl="2" style="display:flex;align-items:center;gap:8px;padding:4px 12px 4px 4px;border-radius:999px;background:#FDFDFC;border:1px solid #E4E1D9">
+<span style="flex:none;width:20px;height:20px;border-radius:50%;background:#FF8F2E;color:#FDFDFC;display:flex;align-items:center;justify-content:center;font:600 11px 'DM Sans',sans-serif">2</span><span style="font:500 13px 'DM Sans',sans-serif;color:#0F0F16;white-space:nowrap">Donor side</span>
+</div><div data-lbl="3" style="display:flex;align-items:center;gap:8px;padding:4px 12px 4px 4px;border-radius:999px;background:#FDFDFC;border:1px solid #E4E1D9">
+<span style="flex:none;width:20px;height:20px;border-radius:50%;background:#FF8F2E;color:#FDFDFC;display:flex;align-items:center;justify-content:center;font:600 11px 'DM Sans',sans-serif">3</span><span style="font:500 13px 'DM Sans',sans-serif;color:#0F0F16;white-space:nowrap">Your move</span>
+</div></div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end"><div data-lbl="4" style="display:flex;align-items:center;gap:8px;padding:4px 12px 4px 4px;border-radius:999px;background:#FDFDFC;border:1px solid #E4E1D9">
+<span style="flex:none;width:20px;height:20px;border-radius:50%;background:#5251FD;color:#FDFDFC;display:flex;align-items:center;justify-content:center;font:600 11px 'DM Sans',sans-serif">4</span><span style="font:500 13px 'DM Sans',sans-serif;color:#0F0F16;white-space:nowrap">Recipient side</span>
+</div><div data-lbl="6" style="display:flex;align-items:center;gap:8px;padding:4px 12px 4px 4px;border-radius:999px;background:#FDFDFC;border:1px solid #E4E1D9">
+<span style="flex:none;width:20px;height:20px;border-radius:50%;background:#5251FD;color:#FDFDFC;display:flex;align-items:center;justify-content:center;font:600 11px 'DM Sans',sans-serif">5</span><span style="font:500 13px 'DM Sans',sans-serif;color:#0F0F16;white-space:nowrap">Recipient menu</span>
+</div></div>
+</div>
+<div data-shot="1" style="width:100%;max-width:min(1000px, calc((100vh - 200px) * 16 / 9));margin:0 auto;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#F0EEEA;border:1px solid #E4E1D9;position:relative;box-shadow:0 8px 24px rgba(15,15,22,.08)">
+<iframe data-shot-frame="1" src="prototype.dc.html?demo=layout" title="Donor and Recipient workspaces" tabindex="-1" style="position:absolute;top:0;left:0;width:1600px;height:900px;border:0;transform:scale({{ sc2 }});transform-origin:0 0;pointer-events:none"></iframe>
+</div>
+<svg style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none">
+<defs>
+<marker id="ahn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#010165"></path></marker>
+<marker id="ahd" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#FF8F2E"></path></marker>
+<marker id="ahr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5251FD"></path></marker>
+</defs>
+<sc-for list="{{ guideLines }}" as="l" hint-placeholder-count="0">
+<path d="{{ l.d }}" fill="none" stroke="{{ l.c }}" stroke-width="1.5" stroke-dasharray="4 4" stroke-linecap="round" marker-end="{{ l.m }}"></path>
+</sc-for>
+</svg>
+</div>
+</div>
+<div style="display:flex;flex-direction:column">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:24px 48px;padding:40px 0;border-top:1px solid #E4E1D9;align-items:start">
+<div style="display:flex;flex-direction:column;gap:10px;max-width:440px">
+<div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#5251FD">01 / Connect</div>
+<div style="font-family:'Articulat CF',sans-serif;font-size:26px;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#010165">Form a contract</div>
+<p style="margin:0;font-size:16px;line-height:26px;color:#3E3E56">The Recipient invites the Donor. Once the Donor accepts, the contract shows as Active on both sides. An active contract shares no data. It only allows agreements to be proposed.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:24px"><div style="display:flex;flex-direction:column;gap:10px">
+<div data-thumb="1" style="aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#F0EEEA;border:1px solid #E4E1D9;position:relative">
+<iframe src="prototype.dc.html?demo=1" title="Demo 1 preview" tabindex="-1" loading="lazy" style="position:absolute;top:0;left:0;width:1600px;height:900px;border:0;transform:scale({{ sc }});transform-origin:0 0;pointer-events:none"></iframe>
+<div onClick="{{ open.v1 }}" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(15,15,22,.18)"><span style="width:56px;height:56px;border-radius:50%;background:#FDFDFC;box-shadow:0 2px 8px rgba(15,15,22,.16);display:flex;align-items:center;justify-content:center"><img src="https://unpkg.com/lucide-static@0.469.0/icons/play.svg" alt="Play" style="width:22px;margin-left:3px"></span></div>
+</div>
+<div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap"><span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#5F5F72">Recipient and Donor</span><span style="font-size:15px;font-weight:700;color:#010165">Invite a partner and accept the contract</span></div>
+</div></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:24px 48px;padding:40px 0;border-top:1px solid #E4E1D9;align-items:start">
+<div style="display:flex;flex-direction:column;gap:10px;max-width:440px">
+<div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#5251FD">02 / Agree</div>
+<div style="font-family:'Articulat CF',sans-serif;font-size:26px;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#010165">Set the terms</div>
+<p style="margin:0;font-size:16px;line-height:26px;color:#3E3E56">The Recipient drafts an agreement. The Donor reviews each section and accepts or declines it with a reason.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:24px"><div style="display:flex;flex-direction:column;gap:10px">
+<div style="aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#F0EEEA;border:1px solid #E4E1D9;position:relative">
+<iframe src="prototype.dc.html?demo=2" title="Demo 2 preview" tabindex="-1" loading="lazy" style="position:absolute;top:0;left:0;width:1600px;height:900px;border:0;transform:scale({{ sc }});transform-origin:0 0;pointer-events:none"></iframe>
+<div onClick="{{ open.v2 }}" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(15,15,22,.18)"><span style="width:56px;height:56px;border-radius:50%;background:#FDFDFC;box-shadow:0 2px 8px rgba(15,15,22,.16);display:flex;align-items:center;justify-content:center"><img src="https://unpkg.com/lucide-static@0.469.0/icons/play.svg" alt="Play" style="width:22px;margin-left:3px"></span></div>
+</div>
+<div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap"><span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#5F5F72">Recipient</span><span style="font-size:15px;font-weight:700;color:#010165">Build an agreement in five steps</span></div>
+</div><div style="display:flex;flex-direction:column;gap:10px">
+<div style="aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#F0EEEA;border:1px solid #E4E1D9;position:relative">
+<iframe src="prototype.dc.html?demo=3" title="Demo 3 preview" tabindex="-1" loading="lazy" style="position:absolute;top:0;left:0;width:1600px;height:900px;border:0;transform:scale({{ sc }});transform-origin:0 0;pointer-events:none"></iframe>
+<div onClick="{{ open.v3 }}" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(15,15,22,.18)"><span style="width:56px;height:56px;border-radius:50%;background:#FDFDFC;box-shadow:0 2px 8px rgba(15,15,22,.16);display:flex;align-items:center;justify-content:center"><img src="https://unpkg.com/lucide-static@0.469.0/icons/play.svg" alt="Play" style="width:22px;margin-left:3px"></span></div>
+</div>
+<div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap"><span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#5F5F72">Donor</span><span style="font-size:15px;font-weight:700;color:#010165">Review, decline or approve an agreement</span></div>
+</div></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:24px 48px;padding:40px 0;border-top:1px solid #E4E1D9;align-items:start">
+<div style="display:flex;flex-direction:column;gap:10px;max-width:440px">
+<div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#5251FD">03 / Share</div>
+<div style="font-family:'Articulat CF',sans-serif;font-size:26px;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#010165">Export and import</div>
+<p style="margin:0;font-size:16px;line-height:26px;color:#3E3E56">Once live, eligible cases are exported as input tokens. The Recipient imports them and runs its own templates.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:24px"><div style="display:flex;flex-direction:column;gap:10px">
+<div style="aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#F0EEEA;border:1px solid #E4E1D9;position:relative">
+<iframe src="prototype.dc.html?demo=4" title="Demo 4 preview" tabindex="-1" loading="lazy" style="position:absolute;top:0;left:0;width:1600px;height:900px;border:0;transform:scale({{ sc }});transform-origin:0 0;pointer-events:none"></iframe>
+<div onClick="{{ open.v4 }}" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(15,15,22,.18)"><span style="width:56px;height:56px;border-radius:50%;background:#FDFDFC;box-shadow:0 2px 8px rgba(15,15,22,.16);display:flex;align-items:center;justify-content:center"><img src="https://unpkg.com/lucide-static@0.469.0/icons/play.svg" alt="Play" style="width:22px;margin-left:3px"></span></div>
+</div>
+<div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap"><span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#5F5F72">Donor and Recipient</span><span style="font-size:15px;font-weight:700;color:#010165">Export a token and import it</span></div>
+</div></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:24px 48px;padding:40px 0;border-top:1px solid #E4E1D9;align-items:start">
+<div style="display:flex;flex-direction:column;gap:10px;max-width:440px">
+<div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#5251FD">04 / Request</div>
+<div style="font-family:'Articulat CF',sans-serif;font-size:26px;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#010165">Ask for more</div>
+<p style="margin:0;font-size:16px;line-height:26px;color:#3E3E56">The Recipient can request extra questions or documents, limited to the RFI catalog both sides agreed on.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:24px"><div style="display:flex;flex-direction:column;gap:10px">
+<div style="aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#F0EEEA;border:1px solid #E4E1D9;position:relative">
+<iframe src="prototype.dc.html?demo=5" title="Demo 5 preview" tabindex="-1" loading="lazy" style="position:absolute;top:0;left:0;width:1600px;height:900px;border:0;transform:scale({{ sc }});transform-origin:0 0;pointer-events:none"></iframe>
+<div onClick="{{ open.v5 }}" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(15,15,22,.18)"><span style="width:56px;height:56px;border-radius:50%;background:#FDFDFC;box-shadow:0 2px 8px rgba(15,15,22,.16);display:flex;align-items:center;justify-content:center"><img src="https://unpkg.com/lucide-static@0.469.0/icons/play.svg" alt="Play" style="width:22px;margin-left:3px"></span></div>
+</div>
+<div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap"><span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#5F5F72">Recipient and Donor</span><span style="font-size:15px;font-weight:700;color:#010165">Request and answer additional information</span></div>
+</div></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:24px 48px;padding:40px 0;border-top:1px solid #E4E1D9;align-items:start">
+<div style="display:flex;flex-direction:column;gap:10px;max-width:440px">
+<div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#5251FD">05 / Control</div>
+<div style="font-family:'Articulat CF',sans-serif;font-size:26px;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#010165">Pause, resume or end sharing</div>
+<p style="margin:0;font-size:16px;line-height:26px;color:#3E3E56">Either side can pause or terminate a live agreement. Resuming needs both sides to agree.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:24px"><div style="display:flex;flex-direction:column;gap:10px">
+<div style="aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#F0EEEA;border:1px solid #E4E1D9;position:relative">
+<iframe src="prototype.dc.html?demo=6" title="Demo 6 preview" tabindex="-1" loading="lazy" style="position:absolute;top:0;left:0;width:1600px;height:900px;border:0;transform:scale({{ sc }});transform-origin:0 0;pointer-events:none"></iframe>
+<div onClick="{{ open.v6 }}" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(15,15,22,.18)"><span style="width:56px;height:56px;border-radius:50%;background:#FDFDFC;box-shadow:0 2px 8px rgba(15,15,22,.16);display:flex;align-items:center;justify-content:center"><img src="https://unpkg.com/lucide-static@0.469.0/icons/play.svg" alt="Play" style="width:22px;margin-left:3px"></span></div>
+</div>
+<div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap"><span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#5F5F72">Donor and Recipient</span><span style="font-size:15px;font-weight:700;color:#010165">Pause, resume or terminate an agreement</span></div>
+</div></div>
+</div>
+</div>
+</div>
+</section></div>
+
+
+<section style="background:#F0EEEA">
+<div style="max-width:1120px;margin:0 auto;padding:64px 24px;display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+<div style="flex:1;min-width:260px;display:flex;flex-direction:column;gap:8px">
+<div style="font-family:'Articulat CF',sans-serif;font-weight:700;font-size:28px;line-height:1.15;letter-spacing:-0.02em;color:#010165">Phases &amp; Timelines</div>
+<p style="margin:0;font-size:16px;line-height:26px;color:#3E3E56">See what is included today and what is planned after Phase 1.</p>
+</div>
+<a href="roadmap.dc.html" style="background:#5251FD;color:#FDFDFC;font-weight:500;font-size:15px;padding:12px 20px;border-radius:999px">View phases &amp; timelines</a>
+</div>
+</section>
+
+<section style="background:#010165">
+<div style="max-width:1120px;margin:0 auto;padding:64px 24px;display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+<div style="flex:1;min-width:260px;display:flex;flex-direction:column;gap:8px">
+<div style="font-family:'Articulat CF',sans-serif;font-weight:700;font-size:28px;line-height:1.15;letter-spacing:-0.02em;color:#FDFDFC">Questions about Token Sharing?</div>
+<p style="margin:0;font-size:16px;line-height:26px;color:#FDFDFC">Your AiPrise account team can walk you through Phase 1 on your own data.</p>
+</div>
+<a href="mailto:support@aiprise.com" style="background:#5251FD;color:#FDFDFC;font-weight:500;font-size:15px;padding:12px 20px;border-radius:999px">Contact your account team</a>
+</div>
+</section>
+
+<sc-if value="{{ lb.open }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ close }}" style="position:fixed;inset:0;z-index:50;background:rgba(15,15,22,.82);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px">
+<div style="width:{{ lb.w }}px;max-width:100%;display:flex;align-items:center;gap:16px">
+<div style="flex:1;color:#FDFDFC;font-size:17px;font-weight:700">{{ lb.title }}</div>
+<button onClick="{{ close }}" style="background:#FDFDFC;color:#0F0F16;border:0;border-radius:999px;padding:8px 16px;font:500 14px 'DM Sans',sans-serif;cursor:pointer">Close</button>
+</div>
+<div onClick="{{ stop }}" style="width:{{ lb.w }}px;height:{{ lb.h }}px;border-radius:12px;overflow:hidden;position:relative;background:#FDFDFC">
+<iframe data-lb-frame="1" src="{{ lb.src }}" title="{{ lb.title }}" style="position:absolute;top:0;left:0;width:1600px;height:900px;border:0;transform:scale({{ lb.sc }});transform-origin:0 0"></iframe>
+</div>
+<div onClick="{{ stop }}" style="width:{{ lb.w }}px;max-width:100%;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+<button onClick="{{ togglePlay }}" style="background:#5251FD;color:#FDFDFC;border:0;border-radius:999px;padding:8px 18px;font:500 14px 'DM Sans',sans-serif;cursor:pointer;min-width:88px">{{ lb.playLabel }}</button>
+<button onClick="{{ restart }}" style="background:#FDFDFC;color:#0F0F16;border:0;border-radius:999px;padding:8px 16px;font:500 14px 'DM Sans',sans-serif;cursor:pointer;">Restart</button>
+<span style="flex:1"></span>
+<span style="color:#FDFDFC;font:500 13px 'DM Sans',sans-serif">Speed</span>
+<div style="display:flex;gap:4px;background:rgba(253,253,252,.12);border-radius:999px;padding:3px">
+<button onClick="{{ speed.slow }}" style="border:0;border-radius:999px;padding:6px 14px;font:500 13px 'DM Sans',sans-serif;cursor:pointer;background:{{ lb.slowBg }};color:{{ lb.slowFg }}">Slow</button>
+<button onClick="{{ speed.normal }}" style="border:0;border-radius:999px;padding:6px 14px;font:500 13px 'DM Sans',sans-serif;cursor:pointer;background:{{ lb.normBg }};color:{{ lb.normFg }}">Normal</button>
+</div>
+</div>
+</div>
+</sc-if>
+
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { gDemo: '4', gPlay: false, gPaused: false, gSlow: false, gKey: 0, guideLines: [], paused: false, slow: false, sc: 0.22, sc2: 0.6, open: null, vw: 1280, vh: 800 };
+  componentDidMount() {
+    this._rs = () => this.setState({ vw: innerWidth, vh: innerHeight });
+    this._rs(); addEventListener('resize', this._rs);
+    const hook = () => { const el = document.querySelector('[data-thumb]'), el2 = document.querySelector('[data-shot]'); if (!el || !el2) return setTimeout(hook, 200); this._ro = new ResizeObserver(() => this.setState({ sc: el.clientWidth / 1600, sc2: el2.clientWidth / 1600 })); this._ro.observe(el); this._ro.observe(el2); };
+    hook();
+    this._measure = () => {
+      const wrap = document.querySelector('[data-guide]'), fr = document.querySelector('[data-shot-frame]');
+      const doc = fr && fr.contentDocument; if (!wrap || !doc || !doc.body) return false;
+      const all = [...doc.querySelectorAll('span,div,a,button')];
+      const pick = (test, side) => {
+        let c = all.filter(el => { const t = (el.textContent || '').trim().replace(/\s+/g, ' '); if (!test(t)) return false; const r = el.getBoundingClientRect(); if (!r.width) return false; return !side || ((r.left < 800) === (side === 'd')); });
+        c = c.filter(el => !c.some(x => x !== el && el.contains(x)));
+        c.sort((a, b) => a.getBoundingClientRect().left - b.getBoundingClientRect().left);
+        return c[0] ? c[0].getBoundingClientRect() : null;
+      };
+      const T = {
+        2: pick(t => t.includes('shares customer data'), 'd'),
+        3: pick(t => t === 'Your move', 'd'),
+        4: pick(t => t.includes('receives customer data'), 'r'),
+        5: pick(t => t === 'My Recipients', 'd'),
+        6: pick(t => t === 'My Donors', 'r')
+      };
+      if (!T[5] || !T[6]) return false;
+      const W = wrap.getBoundingClientRect(), F = fr.getBoundingClientRect(), k = F.width / 1600;
+      const col = { 1: ['#010165', 'ahn'], 2: ['#FF8F2E', 'ahd'], 3: ['#FF8F2E', 'ahd'], 4: ['#5251FD', 'ahr'], 5: ['#FF8F2E', 'ahd'], 6: ['#5251FD', 'ahr'] };
+      const lines = [];
+      for (const id in T) {
+        const t = T[id], L = wrap.querySelector('[data-lbl="' + id + '"]'); if (!t || !L) continue;
+        const lr = L.getBoundingClientRect(), top = true;
+        const x1 = lr.left + lr.width / 2 - W.left, y1 = (top ? lr.bottom + 4 : lr.top - 4) - W.top;
+        const ax = (id == 2 || id == 4) ? t.left + t.width * 0.75 : t.left + Math.min(t.width / 2, 40), ay = t.top - 2;
+        const x2 = F.left - W.left + ax * k, y2 = F.top - W.top + ay * k;
+        const my = (y1 + y2) / 2;
+        lines.push({ d: 'M' + x1 + ' ' + y1 + ' C' + x1 + ' ' + (y1 + Math.max(30, (y2 - y1) * 0.5)) + ' ' + x2 + ' ' + (y2 - Math.max(30, (y2 - y1) * 0.5)) + ' ' + x2 + ' ' + y2, x2, y2, c: col[id][0], m: 'url(#' + col[id][1] + ')' });
+      }
+      this.setState({ guideLines: lines });
+      return true;
+    };
+    const tryMeasure = (n = 0) => { if (!this._measure() && n < 40) this._mt = setTimeout(() => tryMeasure(n + 1), 400); };
+    tryMeasure();
+    this._mi = setInterval(() => this.state.gPlay && this._measure(), 900);
+    this._gro = new ResizeObserver(() => { clearTimeout(this._mt2); this._mt2 = setTimeout(() => this._measure(), 150); });
+    const gw = () => { const w = document.querySelector('[data-guide]'); if (!w) return setTimeout(gw, 200); this._gro.observe(w); };
+    gw();
+    this._k = e => { if (e.key === 'Escape') this.setState({ open: null }); };
+    addEventListener('keydown', this._k);
+  }
+  componentWillUnmount() { clearInterval(this._mi); removeEventListener('resize', this._rs); removeEventListener('keydown', this._k); this._ro && this._ro.disconnect(); this._gro && this._gro.disconnect(); clearTimeout(this._mt); }
+  renderVals() {
+    const T = ['Invite a partner and accept the contract', 'Build an agreement in five steps', 'Review, decline or approve an agreement', 'Export a token and import it', 'Request and answer additional information', 'Pause, resume or terminate an agreement'];
+    const s = this.state, open = {};
+    for (let i = 1; i <= 6; i++) open['v' + i] = () => this.setState({ open: i, paused: false, slow: false });
+    const sc = Math.min((s.vw - 48) / 1600, (s.vh - 180) / 900);
+    const post = m => { const fr = document.querySelector('[data-lb-frame]'); fr && fr.contentWindow.postMessage({ type: 'demo', ...m }, '*'); };
+    const setSpeed = slow => { this.setState({ slow }); post({ speed: slow ? 1.8 : 1 }); };
+    return {
+      sc: s.sc, sc2: s.sc2, guideLines: s.guideLines, open,
+      g: (() => {
+        const gpost = m => { const fr = document.querySelector('[data-shot-frame]'); fr && fr.contentWindow.postMessage({ type: 'demo', ...m }, '*'); };
+        const restart = () => this.setState(x => ({ gPlay: true, gPaused: false, gKey: x.gKey + 1 }));
+        return {
+          demo: s.gDemo,
+          src: 'prototype.dc.html?demo=' + s.gDemo + (s.gPlay ? '&play=1' + (s.gSlow ? '&slow=1' : '') + '&k=' + s.gKey : ''),
+          label: !s.gPlay || s.gPaused ? 'Play' : 'Pause',
+          toggle: () => { if (!s.gPlay) return restart(); const p = !s.gPaused; this.setState({ gPaused: p }); gpost({ cmd: p ? 'pause' : 'play' }); },
+          restart,
+          pick: e => this.setState(x => ({ gDemo: e.target.value, gPlay: x.gPlay, gPaused: false, gKey: x.gKey + 1 })),
+          slow: () => { this.setState({ gSlow: true }); gpost({ speed: 1.8 }); },
+          normal: () => { this.setState({ gSlow: false }); gpost({ speed: 1 }); },
+          slowBg: s.gSlow ? '#FDFDFC' : 'transparent', normBg: s.gSlow ? 'transparent' : '#FDFDFC'
+        };
+      })(),
+      togglePlay: () => { const p = !s.paused; this.setState({ paused: p }); post({ cmd: p ? 'pause' : 'play' }); },
+      restart: () => { this.setState({ paused: false }); post({ cmd: 'restart' }); },
+      speed: { slow: () => setSpeed(true), normal: () => setSpeed(false) }, close: () => this.setState({ open: null }), stop: e => e.stopPropagation(),
+      lb: { open: !!s.open, title: s.open ? T[s.open - 1] : '', src: s.open ? `prototype.dc.html?demo=${s.open}&play=1` : '', sc, w: Math.round(1600 * sc), h: Math.round(900 * sc), playLabel: s.paused ? 'Play' : 'Pause',
+        slowBg: s.slow ? '#FDFDFC' : 'transparent', slowFg: s.slow ? '#0F0F16' : '#FDFDFC', normBg: s.slow ? 'transparent' : '#FDFDFC', normFg: s.slow ? '#FDFDFC' : '#0F0F16' }
+    };
+  }
+}
+</script>
+</body>
+</html>
