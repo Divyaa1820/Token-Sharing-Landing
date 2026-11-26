@@ -40,7 +40,7 @@ a{color:#5251FD;text-decoration:none}a:hover{color:#010165}
 <span style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#0F0F16;background:#F0EEEA;padding:6px 12px;border-radius:999px">Phase 1</span>
 </div>
 <h1 style="margin:0;font-family:'Articulat CF',sans-serif;font-weight:700;font-size:clamp(36px,5.4vw,60px);line-height:1.05;letter-spacing:-0.02em;color:#010165;max-width:820px;text-wrap:balance">Share Verified Case Data With Your AiPrise Partners</h1>
-<p style="margin:0;font-size:18px;line-height:28px;color:#3E3E56;max-width:680px;text-wrap:pretty">Token Sharing lets a Donor company share the end merchant input data behind a verified business or user with a Recipient company. The Recipient imports the token and reruns those data on its own templates, so your customer is not asked for the same data twice.</p>
+<p style="margin:0;font-size:18px;line-height:28px;color:#3E3E56;max-width:680px;text-wrap:pretty">Token Sharing lets a Donor company share a verified business or user with a Recipient company it is connected to. The Recipient imports the token and either runs its own checks on the shared inputs (No reliance) or relies on the Donor’s checks and verdict (Full reliance), so your customer is not asked for the same data twice.</p>
 </div>
 </section>
 
@@ -86,56 +86,62 @@ a{color:#5251FD;text-decoration:none}a:hover{color:#010165}
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:24px 48px;padding:40px 0;border-top:1px solid #E4E1D9;align-items:start">
 <div style="display:flex;flex-direction:column;gap:10px;max-width:440px">
 <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#5251FD">01 / Connect</div>
-<div style="font-family:'Articulat CF',sans-serif;font-size:26px;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#010165">Form a contract</div>
-<p style="margin:0;font-size:16px;line-height:26px;color:#3E3E56">The Recipient invites the Donor. Once the Donor accepts, the contract shows as Active on both sides. An active contract shares no data. It only allows agreements to be proposed.</p>
+<div style="font-family:'Articulat CF',sans-serif;font-size:26px;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#010165">Form a connection</div>
+<p style="margin:0;font-size:16px;line-height:26px;color:#3E3E56">The Recipient invites an admin at the Donor by email. Once the Donor accepts, both sides show the connection as Connected. A connection shares no data. It only lets the Recipient propose agreements.</p>
 </div>
 <div style="display:flex;flex-direction:column;gap:24px"><div style="display:flex;flex-direction:column;gap:10px">
 <div data-thumb="1" style="aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#F0EEEA;border:1px solid #E4E1D9;position:relative">
 <iframe src="prototype.dc.html?demo=1" title="Demo 1 preview" tabindex="-1" loading="lazy" style="position:absolute;top:0;left:0;width:1600px;height:900px;border:0;transform:scale({{ sc }});transform-origin:0 0;pointer-events:none"></iframe>
 <div onClick="{{ open.v1 }}" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(15,15,22,.18)"><span style="width:56px;height:56px;border-radius:50%;background:#FDFDFC;box-shadow:0 2px 8px rgba(15,15,22,.16);display:flex;align-items:center;justify-content:center"><img src="https://unpkg.com/lucide-static@0.469.0/icons/play.svg" alt="Play" style="width:22px;margin-left:3px"></span></div>
 </div>
-<div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap"><span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#5F5F72">Recipient and Donor</span><span style="font-size:15px;font-weight:700;color:#010165">Invite a partner and accept the contract</span></div>
+<div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap"><span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#5F5F72">Recipient and Donor</span><span style="font-size:15px;font-weight:700;color:#010165">Invite a partner and connect</span></div>
 </div></div>
 </div>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:24px 48px;padding:40px 0;border-top:1px solid #E4E1D9;align-items:start">
 <div style="display:flex;flex-direction:column;gap:10px;max-width:440px">
 <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#5251FD">02 / Agree</div>
 <div style="font-family:'Articulat CF',sans-serif;font-size:26px;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#010165">Set the terms</div>
-<p style="margin:0;font-size:16px;line-height:26px;color:#3E3E56">The Recipient drafts an agreement. The Donor reviews each section and accepts or declines it with a reason.</p>
+<p style="margin:0;font-size:16px;line-height:26px;color:#3E3E56">The Recipient builds an agreement in four steps: Setup, Eligibility, Import configuration and Review. Eligibility sets the reliance: No reliance or Full reliance. The Donor accepts the agreement or declines it with feedback, and the Recipient can edit and resend it.</p>
 </div>
 <div style="display:flex;flex-direction:column;gap:24px"><div style="display:flex;flex-direction:column;gap:10px">
 <div style="aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#F0EEEA;border:1px solid #E4E1D9;position:relative">
 <iframe src="prototype.dc.html?demo=2" title="Demo 2 preview" tabindex="-1" loading="lazy" style="position:absolute;top:0;left:0;width:1600px;height:900px;border:0;transform:scale({{ sc }});transform-origin:0 0;pointer-events:none"></iframe>
 <div onClick="{{ open.v2 }}" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(15,15,22,.18)"><span style="width:56px;height:56px;border-radius:50%;background:#FDFDFC;box-shadow:0 2px 8px rgba(15,15,22,.16);display:flex;align-items:center;justify-content:center"><img src="https://unpkg.com/lucide-static@0.469.0/icons/play.svg" alt="Play" style="width:22px;margin-left:3px"></span></div>
 </div>
-<div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap"><span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#5F5F72">Recipient</span><span style="font-size:15px;font-weight:700;color:#010165">Build an agreement in five steps</span></div>
+<div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap"><span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#5F5F72">Recipient</span><span style="font-size:15px;font-weight:700;color:#010165">Build an agreement in four steps</span></div>
 </div><div style="display:flex;flex-direction:column;gap:10px">
 <div style="aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#F0EEEA;border:1px solid #E4E1D9;position:relative">
 <iframe src="prototype.dc.html?demo=3" title="Demo 3 preview" tabindex="-1" loading="lazy" style="position:absolute;top:0;left:0;width:1600px;height:900px;border:0;transform:scale({{ sc }});transform-origin:0 0;pointer-events:none"></iframe>
 <div onClick="{{ open.v3 }}" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(15,15,22,.18)"><span style="width:56px;height:56px;border-radius:50%;background:#FDFDFC;box-shadow:0 2px 8px rgba(15,15,22,.16);display:flex;align-items:center;justify-content:center"><img src="https://unpkg.com/lucide-static@0.469.0/icons/play.svg" alt="Play" style="width:22px;margin-left:3px"></span></div>
 </div>
-<div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap"><span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#5F5F72">Donor</span><span style="font-size:15px;font-weight:700;color:#010165">Review, decline or approve an agreement</span></div>
+<div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap"><span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#5F5F72">Donor</span><span style="font-size:15px;font-weight:700;color:#010165">Review, decline or accept an agreement</span></div>
 </div></div>
 </div>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:24px 48px;padding:40px 0;border-top:1px solid #E4E1D9;align-items:start">
 <div style="display:flex;flex-direction:column;gap:10px;max-width:440px">
 <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#5251FD">03 / Share</div>
 <div style="font-family:'Articulat CF',sans-serif;font-size:26px;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#010165">Export and import</div>
-<p style="margin:0;font-size:16px;line-height:26px;color:#3E3E56">Once live, eligible cases are exported as input tokens. The Recipient imports them and runs its own templates.</p>
+<p style="margin:0;font-size:16px;line-height:26px;color:#3E3E56">Once an agreement is accepted, the Donor shares profiles as tokens and tracks them in Exports. The Recipient imports each token from Imports. Business profiles and user verifications now show who a case is shared with or imported from.</p>
 </div>
 <div style="display:flex;flex-direction:column;gap:24px"><div style="display:flex;flex-direction:column;gap:10px">
 <div style="aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#F0EEEA;border:1px solid #E4E1D9;position:relative">
 <iframe src="prototype.dc.html?demo=4" title="Demo 4 preview" tabindex="-1" loading="lazy" style="position:absolute;top:0;left:0;width:1600px;height:900px;border:0;transform:scale({{ sc }});transform-origin:0 0;pointer-events:none"></iframe>
 <div onClick="{{ open.v4 }}" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(15,15,22,.18)"><span style="width:56px;height:56px;border-radius:50%;background:#FDFDFC;box-shadow:0 2px 8px rgba(15,15,22,.16);display:flex;align-items:center;justify-content:center"><img src="https://unpkg.com/lucide-static@0.469.0/icons/play.svg" alt="Play" style="width:22px;margin-left:3px"></span></div>
 </div>
-<div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap"><span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#5F5F72">Donor and Recipient</span><span style="font-size:15px;font-weight:700;color:#010165">Export a token and import it</span></div>
+<div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap"><span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#5F5F72">Donor and Recipient</span><span style="font-size:15px;font-weight:700;color:#010165">Share a profile and import the token</span></div>
+</div><div style="display:flex;flex-direction:column;gap:10px">
+<div style="aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#F0EEEA;border:1px solid #E4E1D9;position:relative">
+<iframe src="prototype.dc.html?demo=7" title="Demo 7 preview" tabindex="-1" loading="lazy" style="position:absolute;top:0;left:0;width:1600px;height:900px;border:0;transform:scale({{ sc }});transform-origin:0 0;pointer-events:none"></iframe>
+<div onClick="{{ open.v7 }}" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(15,15,22,.18)"><span style="width:56px;height:56px;border-radius:50%;background:#FDFDFC;box-shadow:0 2px 8px rgba(15,15,22,.16);display:flex;align-items:center;justify-content:center"><img src="https://unpkg.com/lucide-static@0.469.0/icons/play.svg" alt="Play" style="width:22px;margin-left:3px"></span></div>
+</div>
+<div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap"><span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#5F5F72">Donor and Recipient</span><span style="font-size:15px;font-weight:700;color:#010165">See sharing on user verifications</span></div>
 </div></div>
 </div>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:24px 48px;padding:40px 0;border-top:1px solid #E4E1D9;align-items:start">
 <div style="display:flex;flex-direction:column;gap:10px;max-width:440px">
 <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#5251FD">04 / Request</div>
 <div style="font-family:'Articulat CF',sans-serif;font-size:26px;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#010165">Ask for more</div>
-<p style="margin:0;font-size:16px;line-height:26px;color:#3E3E56">The Recipient can request extra questions or documents, limited to the RFI catalog both sides agreed on.</p>
+<p style="margin:0;font-size:16px;line-height:26px;color:#3E3E56">The Recipient requests documents or answers on an imported profile. The Donor reviews each request and approves or declines it, and both sides track every request and its status.</p>
 </div>
 <div style="display:flex;flex-direction:column;gap:24px"><div style="display:flex;flex-direction:column;gap:10px">
 <div style="aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#F0EEEA;border:1px solid #E4E1D9;position:relative">
@@ -143,20 +149,32 @@ a{color:#5251FD;text-decoration:none}a:hover{color:#010165}
 <div onClick="{{ open.v5 }}" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(15,15,22,.18)"><span style="width:56px;height:56px;border-radius:50%;background:#FDFDFC;box-shadow:0 2px 8px rgba(15,15,22,.16);display:flex;align-items:center;justify-content:center"><img src="https://unpkg.com/lucide-static@0.469.0/icons/play.svg" alt="Play" style="width:22px;margin-left:3px"></span></div>
 </div>
 <div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap"><span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#5F5F72">Recipient and Donor</span><span style="font-size:15px;font-weight:700;color:#010165">Request and answer additional information</span></div>
+</div><div style="display:flex;flex-direction:column;gap:10px">
+<div style="aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#F0EEEA;border:1px solid #E4E1D9;position:relative">
+<iframe src="prototype.dc.html?demo=8" title="Demo 8 preview" tabindex="-1" loading="lazy" style="position:absolute;top:0;left:0;width:1600px;height:900px;border:0;transform:scale({{ sc }});transform-origin:0 0;pointer-events:none"></iframe>
+<div onClick="{{ open.v8 }}" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(15,15,22,.18)"><span style="width:56px;height:56px;border-radius:50%;background:#FDFDFC;box-shadow:0 2px 8px rgba(15,15,22,.16);display:flex;align-items:center;justify-content:center"><img src="https://unpkg.com/lucide-static@0.469.0/icons/play.svg" alt="Play" style="width:22px;margin-left:3px"></span></div>
+</div>
+<div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap"><span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#5F5F72">Donor and Recipient</span><span style="font-size:15px;font-weight:700;color:#010165">Decline an information request</span></div>
 </div></div>
 </div>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:24px 48px;padding:40px 0;border-top:1px solid #E4E1D9;align-items:start">
 <div style="display:flex;flex-direction:column;gap:10px;max-width:440px">
 <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#5251FD">05 / Control</div>
-<div style="font-family:'Articulat CF',sans-serif;font-size:26px;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#010165">Pause, resume or end sharing</div>
-<p style="margin:0;font-size:16px;line-height:26px;color:#3E3E56">Either side can pause or terminate a live agreement. Resuming needs both sides to agree.</p>
+<div style="font-family:'Articulat CF',sans-serif;font-size:26px;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#010165">Revoke, change or end sharing</div>
+<p style="margin:0;font-size:16px;line-height:26px;color:#3E3E56">The Donor can revoke a token before it is imported. A change to a live agreement pauses sharing until the Donor accepts it. Either side can terminate an agreement or disconnect.</p>
 </div>
 <div style="display:flex;flex-direction:column;gap:24px"><div style="display:flex;flex-direction:column;gap:10px">
 <div style="aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#F0EEEA;border:1px solid #E4E1D9;position:relative">
 <iframe src="prototype.dc.html?demo=6" title="Demo 6 preview" tabindex="-1" loading="lazy" style="position:absolute;top:0;left:0;width:1600px;height:900px;border:0;transform:scale({{ sc }});transform-origin:0 0;pointer-events:none"></iframe>
 <div onClick="{{ open.v6 }}" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(15,15,22,.18)"><span style="width:56px;height:56px;border-radius:50%;background:#FDFDFC;box-shadow:0 2px 8px rgba(15,15,22,.16);display:flex;align-items:center;justify-content:center"><img src="https://unpkg.com/lucide-static@0.469.0/icons/play.svg" alt="Play" style="width:22px;margin-left:3px"></span></div>
 </div>
-<div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap"><span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#5F5F72">Donor and Recipient</span><span style="font-size:15px;font-weight:700;color:#010165">Pause, resume or terminate an agreement</span></div>
+<div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap"><span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#5F5F72">Donor and Recipient</span><span style="font-size:15px;font-weight:700;color:#010165">Revoke a token and change a live agreement</span></div>
+</div><div style="display:flex;flex-direction:column;gap:10px">
+<div style="aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#F0EEEA;border:1px solid #E4E1D9;position:relative">
+<iframe src="prototype.dc.html?demo=9" title="Demo 9 preview" tabindex="-1" loading="lazy" style="position:absolute;top:0;left:0;width:1600px;height:900px;border:0;transform:scale({{ sc }});transform-origin:0 0;pointer-events:none"></iframe>
+<div onClick="{{ open.v9 }}" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(15,15,22,.18)"><span style="width:56px;height:56px;border-radius:50%;background:#FDFDFC;box-shadow:0 2px 8px rgba(15,15,22,.16);display:flex;align-items:center;justify-content:center"><img src="https://unpkg.com/lucide-static@0.469.0/icons/play.svg" alt="Play" style="width:22px;margin-left:3px"></span></div>
+</div>
+<div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap"><span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#5F5F72">Recipient and Donor</span><span style="font-size:15px;font-weight:700;color:#010165">End an agreement or disconnect</span></div>
 </div></div>
 </div>
 </div>
@@ -168,7 +186,7 @@ a{color:#5251FD;text-decoration:none}a:hover{color:#010165}
 <div style="max-width:1120px;margin:0 auto;padding:64px 24px;display:flex;align-items:center;gap:24px;flex-wrap:wrap">
 <div style="flex:1;min-width:260px;display:flex;flex-direction:column;gap:8px">
 <div style="font-family:'Articulat CF',sans-serif;font-weight:700;font-size:28px;line-height:1.15;letter-spacing:-0.02em;color:#010165">Phases &amp; Timelines</div>
-<p style="margin:0;font-size:16px;line-height:26px;color:#3E3E56">See what is included today and what is planned after Phase 1.</p>
+<p style="margin:0;font-size:16px;line-height:26px;color:#3E3E56">See when each reliance mode is released.</p>
 </div>
 <a href="roadmap.dc.html" style="background:#5251FD;color:#FDFDFC;font-weight:500;font-size:15px;padding:12px 20px;border-radius:999px">View phases &amp; timelines</a>
 </div>
@@ -260,9 +278,9 @@ class Component extends DCLogic {
   }
   componentWillUnmount() { clearInterval(this._mi); removeEventListener('resize', this._rs); removeEventListener('keydown', this._k); this._ro && this._ro.disconnect(); this._gro && this._gro.disconnect(); clearTimeout(this._mt); }
   renderVals() {
-    const T = ['Invite a partner and accept the contract', 'Build an agreement in five steps', 'Review, decline or approve an agreement', 'Export a token and import it', 'Request and answer additional information', 'Pause, resume or terminate an agreement'];
+    const T = ['Invite a partner and connect', 'Build an agreement in four steps', 'Review, decline or accept an agreement', 'Share a profile and import the token', 'Request and answer additional information', 'Revoke a token and change a live agreement', 'See sharing on user verifications', 'Decline an information request', 'End an agreement or disconnect'];
     const s = this.state, open = {};
-    for (let i = 1; i <= 6; i++) open['v' + i] = () => this.setState({ open: i, paused: false, slow: false });
+    for (let i = 1; i <= 9; i++) open['v' + i] = () => this.setState({ open: i, paused: false, slow: false });
     const sc = Math.min((s.vw - 48) / 1600, (s.vh - 180) / 900);
     const post = m => { const fr = document.querySelector('[data-lb-frame]'); fr && fr.contentWindow.postMessage({ type: 'demo', ...m }, '*'); };
     const setSpeed = slow => { this.setState({ slow }); post({ speed: slow ? 1.8 : 1 }); };
